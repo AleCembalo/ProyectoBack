@@ -7,8 +7,7 @@
     "status": true,
     "thumbnail": "ruta/imagen1",
     "code": "cod1",
-    "stock": 30,
-    "id": 1
+    "stock": 30
   },
   {
     "title": "Producto 2",
@@ -18,8 +17,7 @@
     "status": true,
     "thumbnail": "ruta/imagen2",
     "code": "cod2",
-    "stock": 5,
-    "id": 2
+    "stock": 5
   },
   {
     "title": "Producto 3",
@@ -29,8 +27,7 @@
     "status": false,
     "thumbnail": "ruta/imagen3",
     "code": "cod3",
-    "stock": 20,
-    "id": 3
+    "stock": 2
   },
   {
     "title": "Producto 4",
@@ -43,8 +40,7 @@
       "ruta2/imagen4"
     ],
     "code": "cod4",
-    "stock": 20,
-    "id": 4
+    "stock": 20
   },
   {
     "title": "Producto 5",
@@ -54,7 +50,6 @@
     "status": true,
     "category": "category 2",
     "code": "cod5",
-    "stock": 10,
-    "id": 5
+    "stock": 10
   }
 ]

@@ -3,16 +3,22 @@
 
     <input type="text" id="chat" name="chat" placeholder="Ingresar mensaje" style="width: 300px;">
     <br />
-    <button onClick="sendMessage()">Enviar</button>
+    <button id="buttonChat">Enviar</button>
+</div>
+
+<div>
+    <p id="chatList"></p>
 </div>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
 
 <script>
 
-    const socketClient = io();
+    const serverAddress = 'ws://localhost:8080';
+    const socketClient = io(serverAddress);
     const chat = document.getElementById('chat');
-
+    const chatList = document.getElementById('chatList');
+    const buttonChat = document.getElementById('buttonChat');
 
     socketClient.on('newMessageConfirmation', data => {
         console.log(data);
@@ -22,6 +28,11 @@
         if (chat.value !== '') {
             socketClient.emit('newMessage', chat.value);
             console.log('Mensaje enviado');
+            chat.value = '';
         }
     }
+
+    buttonChat.addEventListener('click', (evt) => {
+        sendMessage();
+    });
 </script>

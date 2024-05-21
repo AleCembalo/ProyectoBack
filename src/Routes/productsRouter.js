@@ -1,30 +1,35 @@
 
 import { Router } from 'express';
 import ProductManager from '../Manager/productManager.js';
+import productsModel from '../dao/models/products.model.js';
 
 const productRouter = Router();
 const productManager = new ProductManager();
 
 productRouter.get ('/', async (req, res) => {
-    const limit = +req.query.limit || 0;
-    const products = await productManager.getProducts(limit);
+    
+    const products = await productsModel.find();
+    // const limit = +req.query.limit || 0;
+    // const products = await productManager.getProducts(limit);
 
     res.status(200).send ({status: 1, payload: products})
 });
 
 productRouter.get ('/:pid', async (req, res) => {
-    const product = await productManager.getProductById(req.params.pid);
+    // const product = await productManager.getProductById(req.params.pid);
+    const product = await productsModel.findById(req.params.pid);
 
     res.status(200).send ({status: 1, payload: product})
 });
 
 productRouter.post ('/', async (req, res) => {
-
+    
     const socketServer = req.app.get('socketServer');
-    await productManager.addProduct(req.body);
+    const product = await productManager.addProduct(req.body);
+    console.log(product);
 
     res.status(200).send ({status: 1, payload: `se agrego ${req.body.title} correctamente`})
-    socketServer.emit('newProduct', 'Se cargo nuevo producto');
+    socketServer.emit('newProduct', product);
 });
 
 productRouter.delete('/:id', async (req, res) => {

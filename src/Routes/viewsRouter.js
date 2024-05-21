@@ -2,10 +2,8 @@ import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
 import config from '../Config/config.js';
-// import ProductManager from '../Manager/productManager.js';
 
 const viewsRouter = Router();
-// const productManager = new ProductManager();
 
 const urlProd = path.join(config.DIRNAME, '/Data/products.json');
 const data = await fs.promises.readFile(urlProd, 'utf-8');

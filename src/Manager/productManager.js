@@ -23,13 +23,19 @@ class ProductManager {
 
     async addProduct(product) {
         await this.getProducts(0);
+        const { title, description, category, price, thumbnail, code, status = true, stock } = product;
+        
+        let exist = this.products.find((p) => p.code === product.code);
 
-        if (product.title && product.description && product.status && product.category && product.price && product.thumbnail &&
-            product.code && product.stock !== '') {
-                product.id = this.products.length + 1;
-                this.products.push(product);
-                await this.writeFile();
-            } else {
+        if (exist) {
+            console.log("Código existente!");
+            return;
+        }
+        if ((title && description && category && price && thumbnail && code && status && stock) !== '') {
+            product.id = this.products.length + 1;
+            this.products.push(product);
+            await this.writeFile();
+        } else {
             console.log("Debe completar todos los campos");
         }
     }
@@ -112,14 +118,14 @@ export default ProductManager;
 // });
 
 // await productManager.addProduct({
-//     title: "Producto 4",
-//     description: "Descripción 4",
-//     code: "cod4",
+//     title: "Producto 6",
+//     description: "Descripción 6",
+//     code: "cod6",
 //     price: 150,
 //     status: false,
-//     category: "category2",  
-//     thumbnail: "ruta/imagen4",
-//     stock: 20,
+//     category: "category1",  
+//     thumbnail: "ruta/imagen6",
+//     stock: 21,
 // });
 
 

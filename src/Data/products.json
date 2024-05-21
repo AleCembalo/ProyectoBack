@@ -1,55 +1,55 @@
 [
-  {
-    "title": "Producto 1",
-    "description": "Descripción 1",
-    "price": 200,
-    "category": "category1",
-    "status": true,
-    "thumbnail": "ruta/imagen1",
-    "code": "cod1",
-    "stock": 30
-  },
-  {
-    "title": "Producto 2",
-    "description": "Descripción 2",
-    "price": 200,
-    "category": "category1",
-    "status": true,
-    "thumbnail": "ruta/imagen2",
-    "code": "cod2",
-    "stock": 5
-  },
-  {
-    "title": "Producto 3",
-    "description": "Descripción 3",
-    "price": 150,
-    "category": "category2",
-    "status": false,
-    "thumbnail": "ruta/imagen3",
-    "code": "cod3",
-    "stock": 2
-  },
-  {
-    "title": "Producto 4",
-    "description": "Descripción 4",
-    "price": 150,
-    "category": "category2",
-    "status": false,
-    "thumbnail": [
-      "ruta1/imagen4",
-      "ruta2/imagen4"
-    ],
-    "code": "cod4",
-    "stock": 20
-  },
-  {
-    "title": "Producto 5",
-    "description": "Descripción 5",
-    "price": 350,
-    "thumbnail": "ruta/imagen5",
-    "status": true,
-    "category": "category 2",
-    "code": "cod5",
-    "stock": 10
-  }
+    {
+        "title": "Producto 1",
+        "description": "Descripción 1",
+        "price": 200,
+        "category": "category1",
+        "status": true,
+        "thumbnail": "ruta/imagen1",
+        "code": "cod1",
+        "stock": 30
+    },
+    {
+        "title": "Producto 2",
+        "description": "Descripción 2",
+        "price": 200,
+        "category": "category1",
+        "status": true,
+        "thumbnail": "ruta/imagen2",
+        "code": "cod2",
+        "stock": 5
+    },
+    {
+        "title": "Producto 3",
+        "description": "Descripción 3",
+        "price": 150,
+        "category": "category2",
+        "status": false,
+        "thumbnail": "ruta/imagen3",
+        "code": "cod3",
+        "stock": 2
+    },
+    {
+        "title": "Producto 4",
+        "description": "Descripción 4",
+        "price": 150,
+        "category": "category2",
+        "status": false,
+        "thumbnail": [
+            "ruta1/imagen4",
+            "ruta2/imagen4"
+        ],
+        "code": "cod4",
+        "stock": 20
+    },
+    {
+        "title": "Producto 5",
+        "description": "Descripción 5",
+        "price": 350,
+        "thumbnail": "ruta/imagen5",
+        "status": true,
+        "category": "category 2",
+        "code": "cod5",
+        "stock": 10
+    }
 ]

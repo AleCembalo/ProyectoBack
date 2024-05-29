@@ -27,7 +27,7 @@ app.use('/static', express.static(`${config.DIRNAME}/public`));
 
 const expressInstance = app.listen ( config.PORT, async () => {
     await mongoose.connect(config.MONGODB_URI);
-    console.log (`Servidor activo en puerto ${config.PORT} enlazada a bbdd`); 
+    console.log (`Servidor activo en puerto ${config.PORT} enlazada a bbdd ${config.SERVER}`); 
 });
 
 const socketServer = initSocket(expressInstance);

@@ -17,7 +17,7 @@ const initSocket = (httpServer) => {
     
         client.on('newMessage', data => {
             messages.push(data);
-            console.log(`Mensaje recibido desde ${client.id}: ${data.message}`);
+            console.log(`Mensaje recibido desde ${client.id}: ${data}`);
     
             io.emit('messageArrived', data);
         });

@@ -1,30 +1,102 @@
 
 import { Router } from 'express';
-import CartManager from '../Manager/cartManager.js';
-import cartsModel from '../dao/models/carts.model.js';
+import config from '../Config/config.js';
+import CartManager from '../dao/cartManager.mdb.js'
+import ProductManager from '../dao/productManager.mdb.js';
 
 const cartsRouter = Router();
-const cartManager = new CartManager();
+const manager = new CartManager();
+const managerP = new ProductManager();
+
+cartsRouter.get('/', async (req, res) => {
+    try {
+        const carts = await manager.getAll();
+        res.status(200).send({ origin: config.SERVER, payload: carts });
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
+});
 
 cartsRouter.post ('/', async (req, res) => {
 
-    await cartManager.createCart();
-    res.status(200).send ({status: 1, payload: `se agrego el carrito Id:  ${req.body.id} correctamente`})
+    try {
+        const cart = await manager.add(req.body);
+        res.status(200).send({ origin: config.SERVER, payload: cart });
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
 });
 
-cartsRouter.get ('/:cid', async (req, res) => {
+cartsRouter.put('/:id', async (req, res) => {
+    try {
+        const filter = { _id: req.params.id };
+        const update = req.body;
+        const options = { new: true };
+        const cart = await manager.update(filter, update, options);
+        
+        res.status(200).send({ origin: config.SERVER, payload: cart });
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
+});
 
-    const cartId = await cartManager.getCartById(req.params.cid);
-    res.status(200).send ({status: 1, payload: cartId.products})
+cartsRouter.delete('/:id', async (req, res) => {
+    try {
+        const filter = { _id: req.params.id };
+        const cart = await manager.delete(filter);
+
+        res.status(200).send({ origin: config.SERVER, payload: cart });
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
 });
 
 cartsRouter.post ('/:cid/product/:pid', async (req, res) => {
 
-    const cid = req.params.cid;
-    const pid = req.params.pid;
-    await cartManager.productToCar(pid,cid);
-    
-    res.status(200).send ({status: 1, payload: `se agrego el producto id: ${pid} al carrito id: ${cid}`})
+    try {
+        const filterCart = {_id: req.params.cid};
+        const filterProduct = {_id: req.params.pid};
+        const process = await manager.productToCart(filterProduct, filterCart)
+        // const cart = await manager.getById(filterCart);
+        // const product = await managerP.getById(filterProduct);
+        
+        // let productExist = cart.products.find((p) => p.product === +pid) || {};
+        // console.log(cart);
 
-});
+        // if (productExist) {
+        //     const quantity = productExist.quantity || 1;
+        //     cart.products[productExist].quantity++;
+        // } else {
+        //     cart.products.push({ product: product, quantity: 1});
+
+        //     cart.products.push({
+        //         product: product,
+        //         quantity
+        //     })
+        // }
+        
+        res.status(200).send({ origin: config.SERVER, payload: cart });
+        return process;
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
+});    
+    
+    // let cart = this.carts.find((c) => c.id === +cid); 
+    // let product = cart.products.find((p) => p.id === +pid);
+    // let exist = cart.products.find((p) => p.product === +pid) || {};
+
+    // let quantity = exist.quantity || 1;
+    // if (exist.product) {
+        
+    //     exist.quantity = quantity+1;
+        
+    // } else {
+    //     cart.products.push({
+    //         product: product.id,
+    //         quantity
+    //     });
+    // }
+
+
 export default cartsRouter;

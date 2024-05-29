@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 mongoose.pluralize(null);
 
-const collection = 'products';
+const collection = 'messages';
 const schema = new mongoose.Schema({
     
 });

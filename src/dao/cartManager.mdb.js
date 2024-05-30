@@ -50,13 +50,13 @@ class CartManager {
 
     productToCart = async (idp, idc) => {
         try {
-            const cart = await cartsModel.findById(idc);
-            const product = await productsModel.findById(idp);
-            console.log(cart);
-            cart.products.push(product);
-            console.log(cart);
-            console.log(product);
+            let cart = await cartsModel.findById(idc);
+            const product = await productsModel.findById(idp);;
             
+            cart.products.push(product);
+            cart = await cartsModel.findByIdAndUpdate(idc, { products: cart.products }, { new: true }).populate({ path: 'products._id', model: productsModel })
+            
+            return cart;
         } catch (err) {
             return err.message;
         }

@@ -52,7 +52,11 @@ class CartManager {
         try {
             const cart = await cartsModel.findById(idc);
             const product = await productsModel.findById(idp);
-            cart.push(product);
+            console.log(cart);
+            cart.products.push(product);
+            console.log(cart);
+            console.log(product);
+            
         } catch (err) {
             return err.message;
         }

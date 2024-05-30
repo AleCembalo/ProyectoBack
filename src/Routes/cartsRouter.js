@@ -6,7 +6,6 @@ import ProductManager from '../dao/productManager.mdb.js';
 
 const cartsRouter = Router();
 const manager = new CartManager();
-const managerP = new ProductManager();
 
 cartsRouter.get('/', async (req, res) => {
     try {
@@ -51,12 +50,13 @@ cartsRouter.delete('/:id', async (req, res) => {
     }
 });
 
-cartsRouter.post ('/:cid/product/:pid', async (req, res) => {
+cartsRouter.post ('/:pid/product/:cid', async (req, res) => {
 
     try {
         const filterCart = {_id: req.params.cid};
         const filterProduct = {_id: req.params.pid};
-        const process = await manager.productToCart(filterProduct, filterCart)
+        return productToCart(filterProduct, filterCart);
+        // console.log(process);
         // const cart = await manager.getById(filterCart);
         // const product = await managerP.getById(filterProduct);
         
@@ -75,8 +75,7 @@ cartsRouter.post ('/:cid/product/:pid', async (req, res) => {
         //     })
         // }
         
-        res.status(200).send({ origin: config.SERVER, payload: cart });
-        return process;
+        res.status(200).send({ origin: config.SERVER, payload: 20});
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
     }

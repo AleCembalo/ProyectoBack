@@ -49,12 +49,16 @@ cartsRouter.delete('/:id', async (req, res) => {
     }
 });
 
-cartsRouter.put ('/:pid/product/:cid', async (req, res) => {
+cartsRouter.delete('/:cid/products/pid', async (req, res) => {
+
+});
+
+cartsRouter.put ('/:pid/products/:cid', async (req, res) => {
 
     try {
         const filterCart = req.params.cid;
         const filterProduct = req.params.pid;
-        const quantity = req.body.quantity ?? 1;
+        const quantity = req.body.quantity || 1;
 
         const cart = await manager.productToCart(filterProduct, filterCart, quantity);        
         

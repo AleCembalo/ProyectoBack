@@ -1,3 +1,4 @@
+
 import productsModel from '../dao/models/products.model.js';
 
 class ProductManager {
@@ -5,13 +6,13 @@ class ProductManager {
     constructor() {
     }
 
-    getAll = async (limit = 0) => {
+    getAll = async (category, limit, page) => {
+
         try {
-            return await productsModel.paginate({ category: 'category1'}, { page: 1, limit: 10, sort: {price:1}});
-            // return limit === 0 ? await productsModel.find().lean(): await productsModel.find().limit(limit).lean();
+            return await productsModel.paginate({category},{limit, page});
         } catch (err) {
             return err.message;
-        };
+        }
     };
 
     add = async (newData) => {
@@ -24,7 +25,7 @@ class ProductManager {
 
     getById = async (id) => {
         try {
-            return await productsModel.findById(id);
+            return await productsModel.findById(id).lean();
         } catch (err) {
             return err.message;
         };

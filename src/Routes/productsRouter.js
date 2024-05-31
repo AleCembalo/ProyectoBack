@@ -7,10 +7,14 @@ import ProductManager from '../dao/productManager.mdb.js'
 const productRouter = Router();
 const manager = new ProductManager();
 
-productRouter.get ('/', async (req, res) => {
+productRouter.get ('/:category/:limit/:page', async (req, res) => {
     
+    // const category = req.params.category;
+    // const limit = req.params.limit;
+    // const page = req.params.page;
+
     try {
-        const products = await manager.getAll();
+        const products = await manager.getAll(req.params.category,req.params.limit,req.params.page);
         res.status(200).send({ origin: config.SERVER, payload: products });
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });

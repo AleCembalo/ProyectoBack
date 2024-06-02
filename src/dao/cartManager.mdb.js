@@ -68,6 +68,7 @@ class CartManager {
 
             if (exist > -1) {
                 cart.products[exist].quantity += quantity;
+                cart = await cartsModel.findOneAndUpdate(idc, { quantity: cart.products.quantity }, { new: true }).populate({ path: 'products._id', model: productsModel });
             } else {
                 cart.products.push({ product: product, quantity: 1});
                 cart = await cartsModel.findByIdAndUpdate(idc, { products: cart.products}, { new: true }).populate({ path: 'products._id', model: productsModel })

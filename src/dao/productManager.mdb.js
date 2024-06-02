@@ -3,13 +3,20 @@ import productsModel from '../dao/models/products.model.js';
 
 class ProductManager {
 
-    constructor() {
-    }
+    constructor() {}
 
-    getAll = async (category, limit, page) => {
-
+    getAll = async ({ page , limit , sort, query }) => {
+        
         try {
-            return await productsModel.paginate({category},{limit, page});
+            const order = sort === 'asc' ? 1 : -1;
+            const options = {
+                page,
+                limit,
+                sort: { price: order },
+            };
+            console.log(options)
+            return await productsModel.paginate({query}, {options, lean: true});
+        
         } catch (err) {
             return err.message;
         }

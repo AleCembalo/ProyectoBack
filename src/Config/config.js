@@ -9,8 +9,10 @@ const config = {
     get UPLOAD_DIR() {
         return `${this.DIRNAME}/public/img`
     },
-    // MONGODB_URI: 'mongodb://127.0.0.1:27017/ecommerce'
-    MONGODB_URI: 'mongodb+srv://CoderBack:coderback2024@clustercoder.7swfcjo.mongodb.net/ecommerce'
+    // MONGODB_URI: 'mongodb://127.0.0.1:27017/ecommerce',
+    MONGODB_URI: 'mongodb+srv://CoderBack:coderback2024@clustercoder.7swfcjo.mongodb.net/ecommerce',
+    SECRET: 'coder2024',
+    PRODUCTS_PER_PAGE: 10
 }
 
 export default config;

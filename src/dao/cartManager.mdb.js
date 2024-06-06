@@ -1,5 +1,6 @@
 import cartsModel from '../dao/models/carts.model.js';
 import productsModel from '../dao/models/products.model.js';
+import usersModel from '../dao/models/users.model.js'
 
 class CartManager {
 
@@ -7,6 +8,7 @@ class CartManager {
         try {
             return await cartsModel
             .find()
+            .populate({ path: 'user', model: usersModel })
             .populate({ path: 'products._id', model: productsModel })
             .lean();
         } catch (err) {

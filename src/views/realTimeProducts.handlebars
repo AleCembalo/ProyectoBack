@@ -1,5 +1,112 @@
+<style>
+    body {
+        background-color: #333 !important;
+    }
+
+    .a3 {
+        color: #f1f1f1;
+    }
+
+    .a3:hover {
+        color: #fff;
+    }
+</style>
 
 <div>
+    <h1>Listado de productos en tiempo real</h1>
+
+    <ul id="productsList" class="list-group">
+        {{#each products.docs}}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{title}} ($ {{price}})
+                <span class="badge">
+                    <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick="addToCart('{{_id}}')"></i></button>
+                </span>
+            </li>
+        {{/each}}
+    </ul>
+</div>
+
+<div class="mt-2 text-end">
+    {{#if products.prevPage}}
+    <a class="a3" href="/realtimeproducts/{{products.prevPage}}">Anterior</a>
+    {{/if}}
+    
+    &nbsp;|&nbsp;
+    
+    {{#if products.nextPage}}
+    <a class="a3" href="/realtimeproducts/{{products.nextPage}}">Siguiente</a>
+    {{/if}}
+</div>
+
+<div class="mt-5">
+    <h3>Nuevo producto</h3>
+
+    <form id="productForm">
+        <input class="form-control" type="text" id="title" name="title" placeholder="Title" style="width: 300px;"><br />
+        <input class="form-control" type="text" id="description" name="description" placeholder="Description" style="width: 300px;"><br />
+        <input class="form-control" type="number" id="price" name="price" placeholder="Price" style="width: 100px;"><br />
+        <input class="form-control" type="text" id="category" name="category" placeholder="Category" style="width: 300px;"><br />
+        <input class="form-control" type="boolean" id="status" name="status" placeholder="Status" style="width: 300px;"><br />
+        <input class="form-control" type="text" id="thumbnail" name="thumbnail" placeholder="Thumbnail" style="width: 300px;"><br />
+        <input class="form-control" type="text" id="code" name="code" placeholder="Code" style="width: 300px;"><br />
+        <input class="form-control" type="number" id="stock" name="stock" placeholder="stock" style="width: 300px;"><br />
+
+        <button type="submit" class="btn btn-success">Cargar</button>
+    </form>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+<script type="module">
+
+    const serverAddress = 'ws://localhost:8080';
+    const socketClient = io(serverAddress);
+    const productsList = document.getElementById('productsList');
+    const productForm = document.getElementById('productForm');    
+
+    socketClient.on('newProduct', product => {
+        const li = document.createElement('li');
+        li.textContent = `${product.title} ($ ${product.price})`;
+        li.classList.add('list-group-item');
+        productsList.appendChild(li);
+        
+    });
+
+    productForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const price = document.getElementById('price').value;
+        const description = document.getElementById('description').value;
+        const category = document.getElementById('category').value;
+        const status = document.getElementById('status').value;
+        const thumbnail = document.getElementById('thumbnail').value;
+        const code = document.getElementById('code').value;
+        const stock = document.getElementById('stock').value;
+
+        const process = await fetch('/api/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, price, description, category, status, thumbnail, code, stock })
+        });
+    });
+
+        const addToCart = ('submit', async (pid) => {
+
+        const cart = '66588235650c7a76c7a05219';
+        alert(`Quiere agregar al carrito el producto ${id}`);
+
+        const process = await fetch(`/api/carts/${cart}/products/${pid}`, {
+            method: 'PUT'
+        });
+        const result = await process.json();
+        console.log(result);
+    })
+
+</script> 
+
+
+{{!-- <div>
     <h1>Listado de productos</h1>
 
     <ul id="productsList" class="list-group">
@@ -61,4 +168,4 @@
             body: JSON.stringify({ title, price, description, category, status, thumbnail, code, stock })
         });
     });
-</script>
+</script> --}}

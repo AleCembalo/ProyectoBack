@@ -20,6 +20,14 @@ class UsersManager {
         };
     };
 
+    getOne = async (filter) => {
+        try {
+            return await usersModel.findOne(filter).lean();
+        } catch (err) {
+            return err.message;
+        };
+    };
+
     getAggregated = async (match, sort) => {
         try {
             return await usersModel.aggregate([

@@ -1,9 +1,24 @@
+
 <div>
     <h1>Lista de productos</h1>
-
+    <h2>Hola {{user.firstName}}</h2>
     <ul class="list-group">
         {{#each products}}
         <li class="list-group-item">{{title}}, ($ {{price}}), (Stock: {{stock}})</li>
         {{/each}}
     </ul>
 </div>
+
+
+<script type="module">
+    const welcomeUser = async () => {
+        
+        const result = await Swal.fire({
+            title: `Hola`,
+            width: 600,
+            padding: "3em",
+            color: "#716add",
+});
+    }
+    await welcomeUser();
+</script>

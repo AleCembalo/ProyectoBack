@@ -5,8 +5,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
-// import FileStore from 'session-file-store';
-import MongoStore from 'connect-mongo';
+import FileStore from 'session-file-store';
+// import MongoStore from 'connect-mongo';
+import passport from 'passport';
 
 import initSocket from './sockets.js';
 import config from './Config/config.js';
@@ -24,14 +25,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(config.SECRET));
 
-// const fileStorage = FileStore(session);
+const fileStorage = FileStore(session);
 app.use(session({
-    // store: new fileStorage({ path: './sessions', ttl: 100, retries: 0 }),
-    store: MongoStore.create({ mongoUrl: config.MONGODB_URI, ttl: 600 }),
+    store: new fileStorage({ path: './sessions', ttl: 600, retries: 0 }),
+    // store: MongoStore.create({ mongoUrl: config.MONGODB_URI, ttl: 600 }),
     secret: config.SECRET,
     resave: true,
     saveUninitialized: true
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', `${config.DIRNAME}views`);

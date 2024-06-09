@@ -16,7 +16,8 @@ const manager = new ProductsManager();
 
 viewsRouter.get('/products', async (req, res) => {
     const products = await productsModel.find().lean();
-    res.render('home', { products: products });
+    const user = req.session.user;
+    res.render('home', { products: products, user: user });
 });
 
 viewsRouter.get('/realtimeproducts/:page', async (req, res) => {

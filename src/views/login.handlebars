@@ -21,6 +21,10 @@
     .a2:hover {
         color: #000;
     }
+
+    .submit_btn {
+        width: 160px;
+    }
 </style>
 
 
@@ -38,7 +42,15 @@
             <input type="password" name="password" class="form-control" required="required">
         </div>
 
-        <button type="submit" class="btn btn-success">Ingresar</button>
+        {{#if showError}}
+            <div class="alert alert-danger" role="alert" style="margin-top: 16px;">
+                {{ errorMessage }}
+            </div>
+        {{/if}}
+
+        <button type="submit" class="btn btn-success submit_btn">Ingresar</button>
+        <br><br>
+        <button class="btn btn-info submit_btn" onclick="window.location.replace('/api/sessions/ghlogin')">Github</button>
 
         <div style="margin-top: 24px;">
             No tenés cuenta?: <a class="a2" href="/register">Registrate</a>

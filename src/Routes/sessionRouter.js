@@ -3,13 +3,11 @@ import passport from "passport";
 import config from "../Config/config.js";
 import UsersManager from "../dao/users.manager.mdb.js";
 import { verifyRequired, isValidPassword, createHash, adminAuth } from "../utils.js";
-
+import initAuthStrategies from '../auth/passport.strategies.js';
 const sessionsRouter = Router();
 const manager = new UsersManager();
+initAuthStrategies();
 
-sessionsRouter.get('/hash/:password', async (req, res) => {
-    res.status(200).send({ origin: config.SERVER, payload: createHash(req.params.password) });
-});
 
 sessionsRouter.post('/register', verifyRequired(['firstName', 'lastName', 'email', 'password']), async (req, res) => {
     try{
@@ -33,6 +31,8 @@ sessionsRouter.post('/register', verifyRequired(['firstName', 'lastName', 'email
     }
 });
 
+sessionsRouter.post('ppregister', verifyRequired(['firstName', 'lastName', 'email', 'password']), passport.authenticate ('register', { failureRedirect: `/login?error=${encodeURI('Usuario o clave no válidos')}`}), async (req, res) )
+
 sessionsRouter.post('/login', verifyRequired(['email', 'password']), async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -48,8 +48,9 @@ sessionsRouter.post('/login', verifyRequired(['email', 'password']), async (req,
             return res.status(404).json({ message: 'User not found' });
         }
 
-        if (foundUser.email === email && foundUser.password === password) {
-            req.session.user = { firstName: foundUser.firstName, lastName: foundUser.lastName, email: foundUser.email};
+        if (foundUser && isValidPassword (password, foundUser.password)) {
+            const { password, ...filteredFoundUser } = foundUser;
+            req.session.user = filteredFoundUser;
             req.session.save(err => {
                 if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
 
@@ -63,8 +64,23 @@ sessionsRouter.post('/login', verifyRequired(['email', 'password']), async (req,
 
 sessionsRouter.post('/pplogin', verifyRequired(['email', 'password']), passport.authenticate('login', { failureRedirect: `/login?error=${encodeURI('Usuario o clave no válidos')}`}), async (req, res) => {
     try {
-        // Passport inyecta los datos del done en req.user
         req.session.user = req.user;
+        req.session.save(err => {
+            if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+        
+            res.redirect('/profile');
+        });
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
+});
+
+sessionsRouter.get('/ghlogin', passport.authenticate('ghlogin', {scope: ['user']}), async (req, res) => {
+});
+
+sessionsRouter.get('/ghlogincallback', passport.authenticate('ghlogin', {failureRedirect: `/login?error=${encodeURI('Error al identificar con Github')}`}), async (req, res) => {
+    try {
+        req.session.user = req.user
         req.session.save(err => {
             if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
         
@@ -91,6 +107,14 @@ sessionsRouter.get('/profile', async (req, res) => {
     try {
         if (!req.session.user) return res.redirect('/login');
         res.render('profile', {user:req.session.user});
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
+});
+
+sessionsRouter.get('/admin', adminAuth, async (req, res) => {
+    try {
+        res.status(200).send({ origin: config.SERVER, payload: 'Bienvenido ADMIN!' });
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
     }

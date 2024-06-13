@@ -4,10 +4,10 @@ import config from "../Config/config.js";
 import UsersManager from "../dao/users.manager.mdb.js";
 import { verifyRequired, isValidPassword, createHash, adminAuth } from "../utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
+
 const sessionsRouter = Router();
 const manager = new UsersManager();
 initAuthStrategies();
-
 
 sessionsRouter.post('/register', verifyRequired(['firstName', 'lastName', 'email', 'password']), async (req, res) => {
     try{
@@ -31,7 +31,18 @@ sessionsRouter.post('/register', verifyRequired(['firstName', 'lastName', 'email
     }
 });
 
-sessionsRouter.post('ppregister', verifyRequired(['firstName', 'lastName', 'email', 'password']), passport.authenticate ('register', { failureRedirect: `/login?error=${encodeURI('Usuario o clave no válidos')}`}), async (req, res) )
+sessionsRouter.post('ppregister', verifyRequired(['firstName', 'lastName', 'email', 'password']), passport.authenticate ('register', { failureRedirect: `/register?error=${encodeURI('Error al identificar')}`}), async (req, res) =>{
+    try {
+        req.session.user = req.user;
+        req.session.save(err => {
+            if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+        
+            res.redirect('/profile');
+        });
+    } catch (err) {
+        res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+    }
+});
 
 sessionsRouter.post('/login', verifyRequired(['email', 'password']), async (req, res) => {
     try {

@@ -15,9 +15,29 @@ const initAuthStrategies = () => {
         {passReqToCallback: true, usernameField: 'email'},
         async (req, username, password, done) => {
             try {
+                
                 const foundUser = await manager.getOne({ email: username });
 
                 if (foundUser && isValidPassword(password, foundUser.password)) {
+                    const { password, ...filteredFoundUser } = foundUser;
+                    return done(null, filteredFoundUser);
+                } else {
+                    return done(null, false);
+                }
+            } catch (err) {
+                return done(err, false);
+            }
+        }
+    ));
+
+    passport.use('register', new localStrategy(
+        {passReqToCallback: true, usernameField: 'email'},
+        async (req, username, password, done) => {
+            try {
+                const foundUser = await manager.getOne({ email: username });
+
+                if (!foundUser) {
+                    await manager.add({ firstName, lastName, email, password});
                     const { password, ...filteredFoundUser } = foundUser;
                     return done(null, filteredFoundUser);
                 } else {
@@ -37,17 +57,13 @@ const initAuthStrategies = () => {
         },
         async (req, accessToken, refreshToken, profile, done) => {
             try {
-                // Si passport llega hasta acá, es porque la autenticación en Github
-                // ha sido correcta, tendremos un profile disponible
+
                 const email = profile._json?.email || null;
                 
-                // Necesitamos que en el profile haya un email
                 if (email) {
-                    // Tratamos de ubicar en NUESTRA base de datos un usuario
-                    // con ese email, si no está lo creamos y lo devolvemos,
-                    // si ya existe retornamos directamente esos datos
-                    const foundUser = await manager.getOne({ email: email });
 
+                    const foundUser = await manager.getOne({ email: email });
+                    
                     if (!foundUser) {
                         const user = {
                             firstName: profile._json.name.split(' ')[0],

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // import fs from 'fs';
 // import path from 'path';
-import config from '../Config/config.js';
+import config from '../config.js';
 import productsModel from '../dao/models/products.model.js';
 import ProductsManager from '../dao/productManager.mdb.js';
 

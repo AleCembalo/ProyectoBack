@@ -1,6 +1,6 @@
 
 import { Router } from 'express';
-import config from '../Config/config.js';
+import config from '../config.js';
 import ProductManager from '../dao/productManager.mdb.js'
 
 

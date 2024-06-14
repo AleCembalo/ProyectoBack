@@ -10,7 +10,7 @@ import FileStore from 'session-file-store';
 import passport from 'passport';
 
 import initSocket from './sockets.js';
-import config from './Config/config.js';
+import config from './config.js';
 import productRouter from './Routes/productsRouter.js';
 import cartsRouter from './Routes/cartsRouter.js';
 import usersRouter from './Routes/usersRouter.js'

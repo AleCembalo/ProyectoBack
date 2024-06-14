@@ -2,7 +2,7 @@ import passport from 'passport';
 import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 
-import config from '../Config/config.js';
+import config from '../config.js';
 import UsersManager from '../dao/users.manager.mdb.js';
 import { isValidPassword, createHash } from '../utils.js';
 
@@ -34,7 +34,7 @@ const initAuthStrategies = () => {
         {passReqToCallback: true, usernameField: 'email'},
         async (req, username, password, done) => {
             try {
-                const { firstName, lastName, email, password} = req.body;
+                const { firstName, lastName, password} = req.body;
                 const foundUser = await manager.getOne({ email: username });
                 const passHash = createHash(password);
 
@@ -63,7 +63,6 @@ const initAuthStrategies = () => {
                 const email = profile._json?.email || null;
                 
                 if (email) {
-
                     const foundUser = await manager.getOne({ email: email });
 
                     if (!foundUser) {
@@ -73,9 +72,7 @@ const initAuthStrategies = () => {
                             email: email,
                             password: 'none'
                         }
-
                         const process = await manager.add(user);
-
                         return done(null, process);
                     } else {
                         return done(null, foundUser);

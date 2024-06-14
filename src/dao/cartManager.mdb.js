@@ -80,24 +80,6 @@ class CartManager {
             return err.message;
         }
     };
-
-    // productOutCart = async (idp, idc, quantity) => {
-    //     try {
-    //         let cart = await cartsModel.findById(idc);
-    //         // const product = await productsModel.findById(idp);
-    //         const productOut = cart.products.find(p => p.product.toString() === idp) ;
-
-    //         if (exist > -1) {
-    //             cart.products[exist].quantity += quantity;
-    //         } else {
-    //             cart.products.push({ product: product, quantity: 1});
-    //             cart = await cartsModel.findByIdAndUpdate(idc, { products: cart.products}, { new: true }).populate({ path: 'products._id', model: productsModel })
-    //         }
-    //         return cart;
-    //     } catch (err) {
-    //         return err.message;
-    //     }
-    // };
-}    
+};
 
 export default CartManager;

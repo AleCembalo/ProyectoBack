@@ -5,6 +5,11 @@
         "deletecookie",
         "ecommerce",
         "getcookies",
+        "ghlogin",
+        "ghlogincallback",
+        "pplogin",
+        "ppregister",
+        "proyectocembalo",
         "realtimeproducts",
         "resave",
         "setcookie"

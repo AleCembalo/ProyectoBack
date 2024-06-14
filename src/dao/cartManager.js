@@ -1,6 +1,6 @@
 // import fs from 'fs';
 // import path from 'path';
-// import config from '../Config/config.js'
+// import config from '../config.js'
 
 // const url = path.join(config.DIRNAME, '/Data/carts.json');
 // const urlProd = path.join(config.DIRNAME, '/Data/products.json');

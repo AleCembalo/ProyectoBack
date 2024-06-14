@@ -1,6 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
-import config from "../Config/config.js";
+import config from "../config.js";
 import UsersManager from "../dao/users.manager.mdb.js";
 import { verifyRequired, isValidPassword, createHash, adminAuth } from "../utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
@@ -32,13 +32,13 @@ sessionsRouter.post('/register', verifyRequired(['firstName', 'lastName', 'email
 });
 
 sessionsRouter.post('/ppregister', verifyRequired(['firstName', 'lastName', 'email', 'password']), passport.authenticate ('register', { failureRedirect: `/register?error=${encodeURI('El email ya se encuentra registrado')}`}), async (req, res) =>{
+
     try {
-        req.session.user = req.user;
-        console.log(req.session.user);
+        req.session.user = req.user._doc;
         req.session.save(err => {
             if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
         
-            res.redirect('/profile');
+            res.redirect('/products');
         });
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
@@ -76,6 +76,7 @@ sessionsRouter.post('/login', verifyRequired(['email', 'password']), async (req,
 
 sessionsRouter.post('/pplogin', verifyRequired(['email', 'password']), passport.authenticate('login', { failureRedirect: `/login?error=${encodeURI('Usuario o clave no válidos')}`}), async (req, res) => {
     try {
+
         req.session.user = req.user;
         req.session.save(err => {
             if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });

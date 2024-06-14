@@ -1,10 +1,11 @@
 import * as url from 'url';
 
 const config = {
+    APP_NAME: 'proyectocembalo',
     // SERVER: 'Local',
     SERVER: 'Remote',
     PORT: 8080,
-    DIRNAME: url.fileURLToPath(new URL('../',
+    DIRNAME: url.fileURLToPath(new URL('../src/',
         import.meta.url)),
     get UPLOAD_DIR() {
         return `${this.DIRNAME}/public/img`

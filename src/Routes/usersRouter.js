@@ -1,7 +1,7 @@
 
 import { Router } from 'express';
 
-import config from '../Config/config.js';
+import config from '../config.js';
 import UsersManager from '../dao/users.manager.mdb.js';
 
 const router = Router();

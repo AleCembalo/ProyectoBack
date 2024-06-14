@@ -4,7 +4,7 @@ import GitHubStrategy from 'passport-github2';
 
 import config from '../Config/config.js';
 import UsersManager from '../dao/users.manager.mdb.js';
-import { isValidPassword } from '../utils.js';
+import { isValidPassword, createHash } from '../utils.js';
 
 const localStrategy = local.Strategy;
 const manager = new UsersManager();
@@ -34,12 +34,14 @@ const initAuthStrategies = () => {
         {passReqToCallback: true, usernameField: 'email'},
         async (req, username, password, done) => {
             try {
+                const { firstName, lastName, email, password} = req.body;
                 const foundUser = await manager.getOne({ email: username });
+                const passHash = createHash(password);
 
                 if (!foundUser) {
-                    await manager.add({ firstName, lastName, email, password});
-                    const { password, ...filteredFoundUser } = foundUser;
-                    return done(null, filteredFoundUser);
+                    const newUser = await manager.add({ firstName: firstName, lastName: lastName, email: username, password: passHash});
+                    const { password, ...filteredUser} = newUser
+                    return done(null, filteredUser );
                 } else {
                     return done(null, false);
                 }
@@ -63,7 +65,7 @@ const initAuthStrategies = () => {
                 if (email) {
 
                     const foundUser = await manager.getOne({ email: email });
-                    
+
                     if (!foundUser) {
                         const user = {
                             firstName: profile._json.name.split(' ')[0],

@@ -24,16 +24,17 @@ sessionsRouter.post('/register', verifyRequired(['firstName', 'lastName', 'email
             })
             
         } else {
-            res.status(400).send({ origin: config.SERVER, payload: 'El email ya se encuentra registrado' });
+            res.status(401).send({ origin: config.SERVER, payload: 'El email ya se encuentra registrado' });
         }
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
     }
 });
 
-sessionsRouter.post('ppregister', verifyRequired(['firstName', 'lastName', 'email', 'password']), passport.authenticate ('register', { failureRedirect: `/register?error=${encodeURI('Error al identificar')}`}), async (req, res) =>{
+sessionsRouter.post('/ppregister', verifyRequired(['firstName', 'lastName', 'email', 'password']), passport.authenticate ('register', { failureRedirect: `/register?error=${encodeURI('El email ya se encuentra registrado')}`}), async (req, res) =>{
     try {
         req.session.user = req.user;
+        console.log(req.session.user);
         req.session.save(err => {
             if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
         
@@ -79,7 +80,7 @@ sessionsRouter.post('/pplogin', verifyRequired(['email', 'password']), passport.
         req.session.save(err => {
             if (err) return res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
         
-            res.redirect('/profile');
+            res.redirect('/products');
         });
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });

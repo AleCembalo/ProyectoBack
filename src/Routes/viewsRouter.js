@@ -31,12 +31,12 @@ viewsRouter.get('/chat', async (req, res) => {
 });
 
 viewsRouter.get('/register', (req, res) => {
-    res.render('register', {});
+    res.render('register', { msg: req.query.error });
 });
 
 viewsRouter.get('/login', (req, res) => {
     if (req.session.user) return res.redirect('/profile');
-    res.render('login', {});
+    res.render('login', { showError: req.query.error ? true: false, errorMessage: req.query.error });
 });
 
 viewsRouter.get('/profile', (req, res) => {

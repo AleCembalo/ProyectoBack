@@ -16,7 +16,7 @@ import cartsRouter from './Routes/cartsRouter.js';
 import usersRouter from './Routes/usersRouter.js'
 import viewsRouter from './Routes/viewsRouter.js';
 import cookiesRouters from './Routes/cookiesRouter.js';
-import sessionsRouter from './Routes/sessionRouter.js';
+import authRouter from './Routes/AuthRouter.js';
 
 const app = express();
 
@@ -35,18 +35,18 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', `${config.DIRNAME}views`);
 app.set('view engine', 'handlebars');
 
-app.use('/api/sessions', sessionsRouter)
+app.use('/', viewsRouter);
+app.use('/api/auth', authRouter)
 app.use('/api/cookies', cookiesRouters);
 app.use('/api/products', productRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/carts', cartsRouter);
-app.use('/', viewsRouter);
 app.use('/static', express.static(`${config.DIRNAME}/public`));
 
 const expressInstance = app.listen ( config.PORT, async () => {
@@ -56,6 +56,3 @@ const expressInstance = app.listen ( config.PORT, async () => {
 
 const socketServer = initSocket(expressInstance);
 app.set('socketServer', socketServer);
-
-
-

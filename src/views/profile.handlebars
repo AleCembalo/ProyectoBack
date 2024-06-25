@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #333;
+        background-color: hsl(217, 54%, 11%);
     }
 
     .a2 {
@@ -17,6 +17,6 @@
 <h2>Usuario: {{user.firstName}}, {{user.lastName}}</h2>
 <h3>Rol: {{user.role}}</h3>
 
-<form action="/api/sessions/logout" method="get">
+<form action="/api/auth/logout" method="get">
     <button type="submit" class="btn btn-success">Salir</button>
 </form>

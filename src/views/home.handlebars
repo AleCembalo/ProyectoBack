@@ -1,24 +1,156 @@
+<style>
+    body {
+        background-color: hsl(217, 54%, 11%);
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+        align-items: center;
+    }
+    .containerTarget{
+        justify-content:space-around;
+    }
 
-<div>
-    <h1>Lista de productos</h1>
-    <h2>Hola {{user.firstName}}</h2>
-    <ul class="list-group">
+    .tarjeta {
+        width: 200px;
+        min-height: 430px;
+        padding: 16px;
+        margin: 0;
+        margin: 50px;
+        background-color: hsl(216, 50%, 16%);
+        border-radius: 8px;
+        box-shadow: 0px 15px 25px rgb(0, 0, 0,0.15);
+    }
+    .imagen {
+        width: 100%;
+        height: 170px;
+        border-radius: 8px;
+        position: relative;
+    }        
+    .coco {
+        width: 100%;
+        height: 170px;
+    }
+    .icono {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: hsl(178, 100%, 50%, 35%);
+        transition: 1s;
+        opacity: 0;
+        position: absolute;
+        top: 0px;
+        border-radius: 8px;
+    }
+    .icono:hover {
+        opacity: 1;
+    }    
+    .texto1 {
+        color: hsl(0, 0%, 100%);
+        font-weight: 600;
+        transition: .25s;
+        margin-top: .8em;
+        margin-bottom: .8em;
+    }
+    .texto1:hover {
+        cursor: pointer;
+        color: hsl(178, 100%, 50%);
+    }
+    .texto2 {
+        color: hsl(215, 50%, 70%);
+        font-weight: 300;
+        font-size: .8em;
+    }
+    .texto3 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .izquierda {
+        display: flex;
+        flex-direction: row;
+        gap: .3em;
+        font-weight: 400;
+        font-size: .7em;
+        color: hsl(178, 100%, 50%);
+    }
+    .centro {
+        display: flex;
+        flex-direction: row;
+        gap: .3em;
+        font-weight: 400;
+        font-size: .7em;
+        color: hsl(178, 100%, 50%);
+    }
+
+    .texto4 {
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+    }
+    button {
+        background-color: hsl(216, 50%, 16%);
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+    .fa-cart-arrow-down {
+        width: 25px;
+        height: 25px;
+    }
+    span {
+        color: hsl(215, 50%, 70%);
+        font-size: .7em;
+        padding-top: .2em;
+    }
+
+</style>
+
+<div class="home">
+    <h1 style="text-align: center;">Lista de productos</h1>
+    <h2 style="text-align: center;">Hola {{user.firstName}}</h2>
+    <div class="row containerTarget">
         {{#each products}}
-        <li class="list-group-item">{{title}}, ($ {{price}}), (Stock: {{stock}})</li>
+            <section class="col-sm-12 col-md-6 col-lg-4 col-xl-4 tarjeta">    
+                            <div class="imagen">
+                            <img class="coco" src='' alt="productPic">
+                                <div class="icono">
+                                    <strong>STOCK<br>{{stock}}</strong>
+                                </div>
+                            </div>
+                            <div class="texto1">
+                                {{title}}
+                            </div>
+                            <div class="texto2">
+                                {{category}}
+                            </div>
+                            <div class="texto3">
+                                <div class="izquierda">
+                                    <div>
+                                        PRICE:  ${{price}}
+                                    </div>
+                                </div>
+                                <div class="centro">
+                                    <div>
+                                        CODE:  {{code}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="texto4">
+                                <button class="comprar">
+                                    <i class="fa-solid fa-cart-arrow-down" style="color: #ffffff;"></i>
+                                    <span>Agregar al carrito</span>
+                                </button>
+                            </div>
+                        </section>
         {{/each}}
-    </ul>
+    </div>
 </div>
 
 
-<script type="module">
-    const welcomeUser = async () => {
-        
-        const result = await Swal.fire({
-            title: `Hola`,
-            width: 600,
-            padding: "3em",
-            color: "#716add",
-});
-    }
-    await welcomeUser();
-</script>

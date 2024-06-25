@@ -1,9 +1,9 @@
 import { Router } from "express";
 import config from "../config.js";
 
-const cookiesRouter = Router();
+const router = Router();
 
-cookiesRouter.get('/getcookies', async (req, res) => {
+router.get('/getcookies', async (req, res) => {
     try {
         const data = JSON.parse(req.signedCookies['codercookie']);
         
@@ -13,7 +13,7 @@ cookiesRouter.get('/getcookies', async (req, res) => {
     }
 });
 
-cookiesRouter.get('/setcookie', async (req, res) => {
+router.get('/setcookie', async (req, res) => {
     try {
         const cookieData = { user: 'cperren', email: 'idux.net@gmail.com' };
         res.cookie('codercookie', JSON.stringify(cookieData), { maxAge: 30000, signed: true });
@@ -24,7 +24,7 @@ cookiesRouter.get('/setcookie', async (req, res) => {
     }
 });
 
-cookiesRouter.get('/deletecookie', async (req, res) => {
+router.get('/deletecookie', async (req, res) => {
     try {
         res.clearCookie('codercookie');
         res.status(200).send({ origin: config.SERVER, payload: 'Cookie eliminada' });
@@ -33,4 +33,4 @@ cookiesRouter.get('/deletecookie', async (req, res) => {
     }
 });
 
-export default cookiesRouter;
+export default router;

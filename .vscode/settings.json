@@ -7,11 +7,21 @@
         "getcookies",
         "ghlogin",
         "ghlogincallback",
+        "googlelogin",
+        "goologin",
+        "goologincallback",
+        "jwtlogin",
+        "jwtregister",
+        "originalname",
         "pplogin",
         "ppregister",
         "proyectocembalo",
         "realtimeproducts",
         "resave",
+        "sesionlogin",
+        "sessionadmin",
+        "sessionlogin",
+        "sessionregister",
         "setcookie"
     ]
 }

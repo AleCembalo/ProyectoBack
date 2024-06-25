@@ -3,10 +3,10 @@ import { Router } from 'express';
 import config from '../config.js';
 import CartManager from '../dao/cartManager.mdb.js'
 
-const cartsRouter = Router();
+const router = Router();
 const manager = new CartManager();
 
-cartsRouter.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const carts = await manager.getAll();
         res.status(200).send({ origin: config.SERVER, payload: carts });
@@ -15,7 +15,7 @@ cartsRouter.get('/', async (req, res) => {
     }
 });
 
-cartsRouter.post ('/', async (req, res) => {
+router.post ('/', async (req, res) => {
 
     try {
         const cart = await manager.add(req.body);
@@ -25,7 +25,7 @@ cartsRouter.post ('/', async (req, res) => {
     }
 });
 
-cartsRouter.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const filter = { _id: req.params.id };
         const update = req.body;
@@ -38,7 +38,7 @@ cartsRouter.put('/:id', async (req, res) => {
     }
 });
 
-cartsRouter.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const filter = { _id: req.params.id };
         const cart = await manager.delete(filter);
@@ -49,11 +49,11 @@ cartsRouter.delete('/:id', async (req, res) => {
     }
 });
 
-cartsRouter.delete('/:cid/products/pid', async (req, res) => {
+router.delete('/:cid/products/pid', async (req, res) => {
 
 });
 
-cartsRouter.put ('/:pid/products/:cid', async (req, res) => {
+router.put ('/:pid/products/:cid', async (req, res) => {
 
     try {
         const filterCart = req.params.cid;
@@ -68,4 +68,4 @@ cartsRouter.put ('/:pid/products/:cid', async (req, res) => {
     }
 });    
 2
-export default cartsRouter;
+export default router;

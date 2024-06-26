@@ -65,78 +65,78 @@ const initAuthStrategies = () => {
         }
     ));
 
-    passport.use('ghlogin', new GitHubStrategy(
-        {
-            clientID: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            callbackURL: config.GITHUB_CALLBACK_URL
-        },
-        async (accessToken, refreshToken, profile, done) => {
-            try {
-                console.log({profile});
-                const email = profile._json?.email || null;
+    // passport.use('ghlogin', new GitHubStrategy(
+    //     {
+    //         clientID: process.env.GITHUB_CLIENT_ID,
+    //         clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    //         callbackURL: config.GITHUB_CALLBACK_URL
+    //     },
+    //     async (accessToken, refreshToken, profile, done) => {
+    //         try {
+    //             console.log({profile});
+    //             const email = profile._json?.email || null;
                 
-                if (email) {
-                    const foundUser = await manager.getOne({ email: email });
+    //             if (email) {
+    //                 const foundUser = await manager.getOne({ email: email });
 
-                    if (!foundUser) {
-                        const user = {
-                            firstName: profile._json.name.split(' ')[0],
-                            lastName: profile._json.name.split(' ')[1],
-                            email: email,
-                            password: 'none'
-                        }
-                        const process = await manager.add(user);
-                        return done(null, process);
-                    } else {
-                        return done(null, foundUser);
-                    }
-                } else {
-                    return done(new Error('Faltan datos de perfil'), null);
-                }
-            } catch (err) {
-                return done(err, false);
-            }
-        }
-    ));
+    //                 if (!foundUser) {
+    //                     const user = {
+    //                         firstName: profile._json.name.split(' ')[0],
+    //                         lastName: profile._json.name.split(' ')[1],
+    //                         email: email,
+    //                         password: 'none'
+    //                     }
+    //                     const process = await manager.add(user);
+    //                     return done(null, process);
+    //                 } else {
+    //                     return done(null, foundUser);
+    //                 }
+    //             } else {
+    //                 return done(new Error('Faltan datos de perfil'), null);
+    //             }
+    //         } catch (err) {
+    //             return done(err, false);
+    //         }
+    //     }
+    // ));
 
-    passport.use('googlelogin', new GoogleStrategy(
-        {
-            clientID: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: config.GOOGLE_CALLBACK_URL
-        },
-        async (accessToken, refreshToken, profile, cb) => {
-            console.log(accessToken);
-            console.log(refreshToken);
-            console.log(profile);
-            cb(null, profile);
-            // try {
-            //     const email = profile._json?.email || null;
+    // passport.use('googlelogin', new GoogleStrategy(
+    //     {
+    //         clientID: process.env.GOOGLE_CLIENT_ID,
+    //         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    //         callbackURL: config.GOOGLE_CALLBACK_URL
+    //     },
+    //     async (accessToken, refreshToken, profile, cb) => {
+    //         console.log(accessToken);
+    //         console.log(refreshToken);
+    //         console.log(profile);
+    //         cb(null, profile);
+    //         try {
+    //             const email = profile._json?.email || null;
                 
-            //     if (email) {
-            //         const foundUser = await manager.getOne({ email: email });
+    //             if (email) {
+    //                 const foundUser = await manager.getOne({ email: email });
 
-            //         if (!foundUser) {
-            //             const user = {
-            //                 firstName: profile._json.name.split(' ')[0],
-            //                 lastName: profile._json.name.split(' ')[1],
-            //                 email: email,
-            //                 password: 'none'
-            //             }
-            //             const process = await manager.add(user);
-            //             return cb(null, process);
-            //         } else {
-            //             return cb(null, foundUser);
-            //         }
-            //     } else {
-            //         return cb(new Error('Faltan datos de perfil'), null);
-            //     }
-            // } catch (err) {
-            //     return cb(err, false);
-            // }
-        }
-    ));
+    //                 if (!foundUser) {
+    //                     const user = {
+    //                         firstName: profile._json.name.split(' ')[0],
+    //                         lastName: profile._json.name.split(' ')[1],
+    //                         email: email,
+    //                         password: 'none'
+    //                     }
+    //                     const process = await manager.add(user);
+    //                     return cb(null, process);
+    //                 } else {
+    //                     return cb(null, foundUser);
+    //                 }
+    //             } else {
+    //                 return cb(new Error('Faltan datos de perfil'), null);
+    //             }
+    //         } catch (err) {
+    //             return cb(err, false);
+    //         }
+    //     }
+    // ));
 
     passport.use('jwtlogin', new jwtStrategy(
         {

@@ -9,9 +9,9 @@ const schema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    category: { type: String, enum: ['category1', 'category2', 'category3'], default: 'category1' },
+    category: { type: String, enum: ['Fontanería', 'Herramientas', 'Electricidad'] },
     status: { type: Boolean, required: true },
-    thumbnail: { type: String, required: true },
+    thumbnail: { type: String, required: true, default: [] },
     code: { type: String, required: true },
     stock: { type: Number, required: true },
 });

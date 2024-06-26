@@ -15,13 +15,13 @@ const config = {
     SECRET: 'coder2024',
     PRODUCTS_PER_PAGE: 10,
 
-    GITHUB_CLIENT_ID: 'Iv23liqZjFhkaxU0ocIM',
-    GITHUB_CLIENT_SECRET: '64841f59fd26cfc4ab4582c6b2a92128f1d71dd4',
-    GITHUB_CALLBACK_URL: 'http://localhost:8080/api/auth/ghlogincallback',
+    // GITHUB_CLIENT_ID: 'Iv23liqZjFhkaxU0ocIM',
+    // GITHUB_CLIENT_SECRET: '64841f59fd26cfc4ab4582c6b2a92128f1d71dd4',
+    // GITHUB_CALLBACK_URL: 'http://localhost:8080/api/auth/ghlogincallback',
 
-    GOOGLE_CLIENT_ID: '157928750794-3lgdn3a8kodol11kvk5ddapmuh3p3dhr.apps.googleusercontent.com',
-    GOOGLE_CLIENT_SECRET: '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',
-    GOOGLE_CALLBACK_URL: 'http://localhost:8080/api/auth/goologincallback'
+    // GOOGLE_CLIENT_ID: '157928750794-3lgdn3a8kodol11kvk5ddapmuh3p3dhr.apps.googleusercontent.com',
+    // GOOGLE_CLIENT_SECRET: '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',
+    // GOOGLE_CALLBACK_URL: 'http://localhost:8080/api/auth/goologincallback'
 }
 
 export default config;

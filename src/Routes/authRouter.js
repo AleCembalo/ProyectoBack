@@ -52,7 +52,6 @@ router.post('/login', verifyRequired(['email', 'password']), async (req, res) =>
         const foundUser = await manager.getOne({ email: email });
 
         if (!foundUser) {
-            console.log("Usuario no encontrado");
             return res.status(404).json({ message: 'User not found' });
         }
 
@@ -150,5 +149,9 @@ router.get('/logout', async (req, res) => {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
     }
 });
+
+router.all('*', async (req, res) => {
+    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
+}); 
 
 export default router;

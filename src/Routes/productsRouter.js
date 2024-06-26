@@ -8,6 +8,13 @@ import ProductManager from '../dao/productManager.mdb.js'
 const router = Router();
 const manager = new ProductManager();
 
+router.param('id', async (req, res, next, id) => {
+    if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
+        return res.status(400).send({ origin: config.SERVER, payload: null, error: 'Id no válido' });
+    }
+    next();
+});
+
 router.get ('/:page/:limit/:sort/:query', async (req, res) => {
 
     const query = req.params.query;
@@ -24,10 +31,9 @@ router.get ('/:page/:limit/:sort/:query', async (req, res) => {
     
 });
 
-router.get ('/:pid', async (req, res) => {
-
+router.get ('/:id', async (req, res) => {
     try {
-        const product = await manager.getById(req.params.pid);
+        const product = await manager.getById(req.params.id);
         res.status(200).send({ origin: config.SERVER, payload: product });
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
@@ -91,9 +97,12 @@ router.put('/:id', uploader.single('thumbnail'), async (req, res) => {
         const product = await manager.update(filter, update, options);
         
         res.status(200).send({ origin: config.SERVER, payload: product });
-
     }
 });
+
+router.all('*', async (req, res) => {
+    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
+}); 
 
 export default router;
 

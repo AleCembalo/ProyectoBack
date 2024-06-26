@@ -61,7 +61,6 @@ class CartManager {
         };
     };
     
-
     productToCart = async (idp, idc, quantity) => {
         try {
             let cart = await cartsModel.findById(idc);

@@ -6,6 +6,13 @@ import CartManager from '../dao/cartManager.mdb.js'
 const router = Router();
 const manager = new CartManager();
 
+router.param('id, cid, pid', async (req, res, next, id) => {
+    if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
+        return res.status(400).send({ origin: config.SERVER, payload: null, error: 'Id no válido' });
+    }
+    next();
+});
+
 router.get('/', async (req, res) => {
     try {
         const carts = await manager.getAll();
@@ -16,7 +23,6 @@ router.get('/', async (req, res) => {
 });
 
 router.post ('/', async (req, res) => {
-
     try {
         const cart = await manager.add(req.body);
         res.status(200).send({ origin: config.SERVER, payload: cart });
@@ -66,6 +72,10 @@ router.put ('/:pid/products/:cid', async (req, res) => {
     } catch (err) {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
     }
-});    
-2
+});   
+
+router.all('*', async (req, res) => {
+    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
+}); 
+
 export default router;

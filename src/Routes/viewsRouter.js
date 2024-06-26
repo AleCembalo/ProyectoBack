@@ -39,4 +39,8 @@ router.get('/profile', (req, res) => {
     res.render('profile', { user: req.user });
 });
 
+router.all('*', async (req, res) => {
+    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
+}); 
+
 export default router;

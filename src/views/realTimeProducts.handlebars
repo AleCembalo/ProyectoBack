@@ -10,6 +10,7 @@
     .a3:hover {
         color: #fff;
     }
+
 </style>
 
 <div>
@@ -20,7 +21,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{title}} ($ {{price}})
                 <span class="badge">
-                    <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick="addToCart('{{_id}}')"></i></button>
+                    <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "addToCart(`{{_id}}`)"></i></button>
                 </span>
             </li>
         {{/each}}
@@ -48,7 +49,7 @@
         <input class="form-control" type="number" id="price" name="price" placeholder="Price" style="width: 100px;"><br />
         <input class="form-control" type="text" id="category" name="category" placeholder="Category" style="width: 300px;"><br />
         <input class="form-control" type="boolean" id="status" name="status" placeholder="Status" style="width: 300px;"><br />
-        <input class="form-control" type="text" id="thumbnail" name="thumbnail" placeholder="Thumbnail" style="width: 300px;"><br />
+        <button class="btn btn-success">upload</button><br><input class="form-control" type="text" id="thumbnail" name="thumbnail" placeholder="Thumbnail" style="width: 300px;"><br />
         <input class="form-control" type="text" id="code" name="code" placeholder="Code" style="width: 300px;"><br />
         <input class="form-control" type="number" id="stock" name="stock" placeholder="stock" style="width: 300px;"><br />
 
@@ -91,16 +92,16 @@
         });
     });
 
-        const addToCart = ('submit', async (pid) => {
+    const addToCart = ('submit', async (pid) => {
 
-        const cart = '66588235650c7a76c7a05219';
-        alert(`Quiere agregar al carrito el producto ${id}`);
+        const cart = '66552d69384d02184363ddb7';
+        alert(`Quiere agregar al carrito el producto ${pid}`);
 
-        const process = await fetch(`/api/carts/${cart}/products/${pid}`, {
+        const process = await fetch(`/api/carts/${pid}/products/${cart}`, {
             method: 'PUT'
         });
         const result = await process.json();
         console.log(result);
-    })
+    });
 
 </script> 

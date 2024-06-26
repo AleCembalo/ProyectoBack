@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
     price: { type: Number, required: true },
     category: { type: String, enum: ['Fontanería', 'Herramientas', 'Electricidad'] },
     status: { type: Boolean, required: true },
-    thumbnail: { type: String, required: true, default: [] },
+    thumbnails: { type: String, required: true, default: [] },
     code: { type: String, required: true },
     stock: { type: Number, required: true },
 });

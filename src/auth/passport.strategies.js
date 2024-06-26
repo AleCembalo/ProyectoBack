@@ -67,8 +67,8 @@ const initAuthStrategies = () => {
 
     passport.use('ghlogin', new GitHubStrategy(
         {
-            clientID: config.GITHUB_CLIENT_ID,
-            clientSecret: config.GITHUB_CLIENT_SECRET,
+            clientID: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
             callbackURL: config.GITHUB_CALLBACK_URL
         },
         async (accessToken, refreshToken, profile, done) => {
@@ -102,8 +102,8 @@ const initAuthStrategies = () => {
 
     passport.use('googlelogin', new GoogleStrategy(
         {
-            clientID: config.GOOGLE_CLIENT_ID,
-            clientSecret: config.GOOGLE_CLIENT_SECRET,
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: config.GOOGLE_CALLBACK_URL
         },
         async (accessToken, refreshToken, profile, cb) => {

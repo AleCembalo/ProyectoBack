@@ -4,16 +4,8 @@ import { uploader } from '../uploader.js';
 import config from '../config.js';
 import ProductManager from '../dao/productManager.mdb.js'
 
-
 const router = Router();
 const manager = new ProductManager();
-
-router.param('id', async (req, res, next, id) => {
-    if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
-        return res.status(400).send({ origin: config.SERVER, payload: null, error: 'Id no válido' });
-    }
-    next();
-});
 
 router.get ('/:page/:limit/:sort/:query', async (req, res) => {
 
@@ -40,9 +32,9 @@ router.get ('/:id', async (req, res) => {
     }
 });
 
-router.post ('/', uploader.array('thumbnails', 3), async (req, res) => {
+router.post ('/', uploader.single('thumbnails'), async (req, res) => {
     const { title, description, price, code, stock, category } = req.body;
-    const thumbnails = req.files ? req.files.map(file => file.filename) : [];
+    const thumbnails = req.file ? req.file.filename : [];
 
     if (!req.file) {
         res.status(400).send({ origin: 'server1', payload: [], error: 'Se requiere archivo img' });
@@ -99,10 +91,6 @@ router.put('/:id', uploader.single('thumbnail'), async (req, res) => {
         res.status(200).send({ origin: config.SERVER, payload: product });
     }
 });
-
-router.all('*', async (req, res) => {
-    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
-}); 
 
 export default router;
 

@@ -7,13 +7,6 @@ import UsersManager from '../dao/users.manager.mdb.js';
 const router = Router();
 const manager = new UsersManager();
 
-router.param('id', async (req, res, next, id) => {
-    if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
-        return res.status(400).send({ origin: config.SERVER, payload: null, error: 'Id no válido' });
-    }
-    next();
-});
-
 router.get('/aggregate/:role', async (req, res) => {
     try {
         if (req.params.role === 'admin' || req.params.role === 'premium' || req.params.role === 'user') {
@@ -75,9 +68,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
     }
 });
-
-router.all('*', async (req, res) => {
-    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
-}); 
 
 export default router;

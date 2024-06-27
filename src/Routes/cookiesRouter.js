@@ -33,8 +33,4 @@ router.get('/deletecookie', async (req, res) => {
     }
 });
 
-router.all('*', async (req, res) => {
-    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
-}); 
-
 export default router;

@@ -14,7 +14,8 @@ const schema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, enum: ['admin', 'premium', 'user'], default: 'user' },
     cart: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'carts', }
-});
+},
+{versionKey: false});
 
 schema.plugin(mongoosePaginate);
 const model = mongoose.model(collection, schema);

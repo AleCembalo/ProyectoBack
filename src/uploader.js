@@ -3,8 +3,7 @@ import config from './config.js';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, MONGODB_URI)
-        // cb(null, `${config.DIRNAME}/${config.UPLOAD_DIR}`)
+        cb(null, `${config.DIRNAME}/${config.UPLOAD_DIR}`)
         // cb(null, config.UPLOAD_DIR)
     },
 
@@ -13,4 +12,6 @@ const storage = multer.diskStorage({
     }
 });
 
-export const uploader = multer({ storage: storage });
+export const uploader = multer({
+    storage: storage
+});

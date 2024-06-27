@@ -6,7 +6,6 @@ import ProductsManager from '../dao/productManager.mdb.js';
 const router = Router();
 const manager = new ProductsManager();
 
-
 router.get('/products', async (req, res) => {
     const products = await productsModel.find().lean();
     const user = req.user;
@@ -38,9 +37,5 @@ router.get('/profile', (req, res) => {
     if (!req.user) return res.redirect('/login');
     res.render('profile', { user: req.user });
 });
-
-router.all('*', async (req, res) => {
-    res.status(404).send({ origin: config.SERVER, payload: null, error: 'No se encuentra la ruta solicitada' }); 
-}); 
 
 export default router;

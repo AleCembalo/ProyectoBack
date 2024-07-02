@@ -10,12 +10,12 @@ import passport from 'passport';
 
 import initSocket from './sockets.js';
 import config from './config.js';
-import productRouter from './Routes/productsRouter.js';
-import cartsRouter from './Routes/cartsRouter.js';
-import usersRouter from './Routes/usersRouter.js'
-import viewsRouter from './Routes/viewsRouter.js';
-import cookiesRouters from './Routes/cookiesRouter.js';
-import authRouter from './Routes/AuthRouter.js';
+import ProductsRouter from './Routes/products.routes.js';
+import AuthRouter from './Routes/auth.routes.js';
+import CartsRouter from './Routes/carts.routes.js';
+import CookiesRouter from './Routes/cookies.routes.js';
+import UsersRouter from './Routes/users.routes.js';
+import ViewsRouter from './Routes/views.routes.js';
 
 const app = express();
 
@@ -40,18 +40,18 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', `${config.DIRNAME}views`);
 app.set('view engine', 'handlebars');
 
-app.use('/', viewsRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/cookies', cookiesRouters);
-app.use('/api/products', productRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/carts', cartsRouter);
+app.use('/', new ViewsRouter().getRouter());
+app.use('/api/auth', new AuthRouter().getRouter());
+app.use('/api/cookies', new CookiesRouter().getRouter());
+app.use('/api/products', new ProductsRouter().getRouter());
+app.use('/api/users', new UsersRouter().getRouter());
+app.use('/api/carts', new CartsRouter().getRouter());
 app.use('/static', express.static(`${config.DIRNAME}/public`));
 
 const expressInstance = app.listen(config.PORT, async () => {

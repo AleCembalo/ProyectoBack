@@ -3,6 +3,105 @@
         background-color: hsl(217, 54%, 11%);
     }
 
+    header {
+        height: 100px;
+        padding: 0px 30px;
+        border-bottom: 2px solid hsl(216, 50%, 16%);
+        box-shadow: 0px 5px 20px hsl(0, 0%, 100%);
+    }
+
+    @media only screen and (min-width:660px){
+        header {
+            padding: 10px 70px 0px 50px;
+        }
+    }
+
+    @media only screen and (min-width:960px){
+        header {
+            padding: 10px 100px 0px 100px;
+            height: 150px;
+        }
+    }
+    
+    .navbar{
+        font-size: 25px;
+    }
+
+    a{
+        color: hsl(215, 50%, 70%);
+    }
+
+    .logo {
+        color: hsl(215, 50%, 70%);
+        font-size: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media only screen and (min-width:960px){
+        .logo {
+            font-size: 32px;
+        }
+    }
+
+    .carrito {
+        font-size: 25px;
+        position: relative;
+    }
+
+    @media only screen and (min-width:660px){
+        .carrito{
+            font-size: 30px;
+        }
+    }
+
+    @media only screen and (min-width:960px){
+        .carrito {
+            font-size: 40px;
+        }
+    }
+
+    button {
+        background-color: hsl(217, 54%, 11%);
+        padding: 5px 10px;
+        border: none;
+    }
+
+    i{
+        position: absolute;
+        top:10px;
+        right: 0px;
+    }
+
+    span{
+        font-size: 12px;
+        color: hsl(217, 54%, 11%);
+        font-weight: bold;
+        position: absolute;
+        top:10px;
+        right: 10px;
+    }
+
+    @media only screen and (min-width:960px){
+        span{
+            font-size: 18px;
+            top:10px;
+            right: 15px;
+        }
+    }
+
+    .collapse{
+        justify-content: right;
+        padding-top: 25px;
+    }
+
+    .dropdown-menu{
+        background-color: hsl(217, 54%, 11%);
+        border-color: hsl(215, 50%, 70%);
+    }
+
     .a3 {
         color: #f1f1f1;
     }
@@ -13,95 +112,125 @@
 
 </style>
 
-<div>
-    <h1>Listado de productos en tiempo real</h1>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a id="inicio" class="navbar-brand botonMenu logo" href="">Chemba</a>
+                <div class="carrito">
+                    <button>
+                        <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
+                        <span id="numerito" class="numerito">0</span>
+                    <button>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i class="fa-solid fa-bars fa-spin fa-spin-reverse" style="color: #8bacda;"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a id="herramientas" class="nav-link botonMenu" href="#" style="color: #8bacda;">Herramientas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="fontaneria" class="nav-link botonMenu" href="#" style="color: #8bacda;">Fontanería</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="electricidad" class="nav-link botonMenu" href="#" style="color: #8bacda;">Electricidad</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <ul id="productsList" class="list-group">
-        {{#each products.docs}}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{title}} ($ {{price}})
-                <span class="badge">
-                    <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "addToCart(`{{_id}}`)"></i></button>
-                </span>
-            </li>
-        {{/each}}
-    </ul>
-</div>
+    <div>
+        <h1>Listado de productos en tiempo real</h1>
 
-<div class="mt-2 text-end">
-    {{#if products.prevPage}}
-    <a class="a3" href="/realtimeproducts/{{products.prevPage}}">Anterior</a>
-    {{/if}}
-    
-    &nbsp;|&nbsp;
-    
-    {{#if products.nextPage}}
-    <a class="a3" href="/realtimeproducts/{{products.nextPage}}">Siguiente</a>
-    {{/if}}
-</div>
+        <ul id="productsList" class="list-group">
+            {{#each products.docs}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{title}} ($ {{price}})
+                    <span class="badge">
+                        <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "addToCart(`{{_id}}`)"></i></button>
+                    </span>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
 
-<div class="mt-5">
-    <h3>Nuevo producto</h3>
-
-    <form id="productForm">
-        <input class="form-control" type="text" id="title" name="title" placeholder="Title" style="width: 300px;"><br />
-        <input class="form-control" type="text" id="description" name="description" placeholder="Description" style="width: 300px;"><br />
-        <input class="form-control" type="number" id="price" name="price" placeholder="Price" style="width: 100px;"><br />
-        <input class="form-control" type="text" id="category" name="category" placeholder="Category" style="width: 300px;"><br />
-        <input class="form-control" type="boolean" id="status" name="status" placeholder="Status" style="width: 300px;"><br />
-        <button class="btn btn-success">upload</button><br><input class="form-control" type="text" id="thumbnails" name="thumbnails" placeholder="Thumbnails" style="width: 300px;"><br />
-        <input class="form-control" type="text" id="code" name="code" placeholder="Code" style="width: 300px;"><br />
-        <input class="form-control" type="number" id="stock" name="stock" placeholder="stock" style="width: 300px;"><br />
-
-        <button type="submit" class="btn btn-success">Cargar</button>
-    </form>
-</div>
-
-<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
-<script type="module">
-
-    const serverAddress = 'ws://localhost:8080';
-    const socketClient = io(serverAddress);
-    const productsList = document.getElementById('productsList');
-    const productForm = document.getElementById('productForm');    
-
-    socketClient.on('newProduct', product => {
-        const li = document.createElement('li');
-        li.textContent = `${product.title} ($ ${product.price})`;
-        li.classList.add('list-group-item');
-        productsList.appendChild(li);
+    <div class="mt-2 text-end">
+        {{#if products.prevPage}}
+        <a class="a3" href="/realtimeproducts/{{products.prevPage}}">Anterior</a>
+        {{/if}}
         
-    });
+        &nbsp;|&nbsp;
+        
+        {{#if products.nextPage}}
+        <a class="a3" href="/realtimeproducts/{{products.nextPage}}">Siguiente</a>
+        {{/if}}
+    </div>
 
-    productForm.addEventListener('submit', async (evt) => {
-        evt.preventDefault();
+    <div class="mt-5">
+        <h3>Nuevo producto</h3>
 
-        const title = document.getElementById('title').value;
-        const price = document.getElementById('price').value;
-        const description = document.getElementById('description').value;
-        const category = document.getElementById('category').value;
-        const status = document.getElementById('status').value;
-        const thumbnails = document.getElementById('thumbnails').value;
-        const code = document.getElementById('code').value;
-        const stock = document.getElementById('stock').value;
+        <form id="productForm">
+            <input class="form-control" type="text" id="title" name="title" placeholder="Title" style="width: 300px;"><br />
+            <input class="form-control" type="text" id="description" name="description" placeholder="Description" style="width: 300px;"><br />
+            <input class="form-control" type="number" id="price" name="price" placeholder="Price" style="width: 100px;"><br />
+            <input class="form-control" type="text" id="category" name="category" placeholder="Category" style="width: 300px;"><br />
+            <input class="form-control" type="boolean" id="status" name="status" placeholder="Status" style="width: 300px;"><br />
+            <button class="btn btn-success">upload</button><br><input class="form-control" type="text" id="thumbnails" name="thumbnails" placeholder="Thumbnails" style="width: 300px;"><br />
+            <input class="form-control" type="text" id="code" name="code" placeholder="Code" style="width: 300px;"><br />
+            <input class="form-control" type="number" id="stock" name="stock" placeholder="stock" style="width: 300px;"><br />
 
-        const process = await fetch('/api/products', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, price, description, category, status, thumbnails, code, stock })
+            <button type="submit" class="btn btn-success">Cargar</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+    <script type="module">
+
+        const serverAddress = 'ws://localhost:8080';
+        const socketClient = io(serverAddress);
+        const productsList = document.getElementById('productsList');
+        const productForm = document.getElementById('productForm');    
+
+        socketClient.on('newProduct', product => {
+            const li = document.createElement('li');
+            li.textContent = `${product.title} ($ ${product.price})`;
+            li.classList.add('list-group-item');
+            productsList.appendChild(li);
+            
         });
-    });
 
-    const addToCart = ('submit', async (pid) => {
+        productForm.addEventListener('submit', async (evt) => {
+            evt.preventDefault();
 
-        const cart = '66552d69384d02184363ddb7';
-        alert(`Quiere agregar al carrito el producto ${pid}`);
+            const title = document.getElementById('title').value;
+            const price = document.getElementById('price').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const status = document.getElementById('status').value;
+            const thumbnails = document.getElementById('thumbnails').value;
+            const code = document.getElementById('code').value;
+            const stock = document.getElementById('stock').value;
 
-        const process = await fetch(`/api/carts/${pid}/products/${cart}`, {
-            method: 'PUT'
+            const process = await fetch('/api/products', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, price, description, category, status, thumbnails, code, stock })
+            });
         });
-        const result = await process.json();
-        console.log(result);
-    });
 
-</script> 
+        const addToCart = ('submit', async (pid) => {
+
+            const cart = '66552d69384d02184363ddb7';
+            alert(`Quiere agregar al carrito el producto ${pid}`);
+
+            const process = await fetch(`/api/carts/${pid}/products/${cart}`, {
+                method: 'PUT'
+            });
+            const result = await process.json();
+            console.log(result);
+        });
+
+    </script> 

@@ -22,6 +22,9 @@ const schema = new mongoose.Schema({
             default: 1,
         },
     }],
+}
+, {
+    versionKey: false
 });
 
 const model = mongoose.model(collection, schema);

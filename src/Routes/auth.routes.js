@@ -1,7 +1,6 @@
 import CustomRouter from './custom.router.js';
 import passport from "passport";
-import config from "../config.js";
-import UsersManager from "../dao/users.manager.mdb.js";
+import UsersManager from "../controllers/users.manager.mdb.js";
 import { verifyRequired, isValidPassword, createHash, adminAuth, createToken, verifyToken, verifyAuthorization } from "../utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
 

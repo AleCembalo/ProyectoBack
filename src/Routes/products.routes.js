@@ -1,7 +1,6 @@
 import CustomRouter from './custom.router.js';
-import ProductManager from '../dao/productManager.mdb.js';
+import ProductManager from '../controllers/productManager.mdb.js';
 import config from '../config.js';
-import { uploader } from '../uploader.js';
 
 const manager = new ProductManager();
 
@@ -22,41 +21,39 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.get ('/:page/:limit/:sort/:query', async (req, res) => {
+        this.get ('/:category/:page/:limit/:sort', async (req, res) => {
 
-            const query = req.params.query;
-            const limit = +req.params.limit;
-            const page = +req.params.page;
-            const sort = req.params.sort;
+            const category = req.params.category || null;
+            const limit = +req.params.limit || 5;
+            const page = +req.params.page || 1;
+            const sort = req.params.sort || 'asc';
         
             try {
-                const products = await manager.getAll( page, limit, sort, query);
+                const products = await manager.getAll(category, page, limit, sort);
                 res.sendSuccess( products );
             } catch (err) {
                 res.sendServerError( 'error' );
             }
         });
 
-        this.post ('/', uploader.single('thumbnails'), async (req, res) => {
-
-            const { title, description, price, code, stock, category } = req.body;
-            const thumbnails = req.file ? req.file.filename : [];
-        
-            if (!req.file) 
-                res.sendUserError( 'Se requiere archivo img' );
+        this.post ('/', async (req, res) => {
             
             try {
                 const socketServer = req.app.get('socketServer');
-                console.log(req.file);
+                
+                const { title, description, price, code, stock, status, thumbnails, category } = req.body;
+
                 const newProduct = {
-                    title,
-                    description,
-                    price,
-                    code,
-                    stock,
-                    category,
+                    title: title,
+                    description: description,
+                    price: price,
+                    code: code,
+                    stock: stock,
+                    status: status,
+                    category: category,
                     thumbnails: thumbnails || []
                 };
+                
                 const product = await manager.add(newProduct);
             
                 res.sendSuccess( `se agrego ${product.title} correctamente` );
@@ -83,7 +80,7 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.put('/:id', uploader.single('thumbnails'), async (req, res) => {
+        this.put('/:id', async (req, res) => {
             const { id } = req.params;
             const nid = +id;
 

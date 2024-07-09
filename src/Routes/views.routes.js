@@ -1,7 +1,7 @@
 import CustomRouter from './custom.router.js';
 import config from '../config.js';
-import productsModel from '../dao/models/products.model.js';
-import ProductsManager from '../dao/productManager.mdb.js';
+import productsModel from '../models/products.model.js';
+import ProductsManager from '../controllers/productManager.mdb.js';
 
 const manager = new ProductsManager();
 

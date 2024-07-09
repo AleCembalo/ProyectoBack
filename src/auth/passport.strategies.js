@@ -2,14 +2,17 @@ import passport from 'passport';
 import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import GoogleStrategy from 'passport-google-oauth20';
+import dotenv from 'dotenv';
 
 import config from '../config.js';
-import UsersManager from '../dao/users.manager.mdb.js';
+import UsersManager from '../controllers/users.manager.mdb.js';
 import { isValidPassword, createHash } from '../utils.js';
 
 const localStrategy = local.Strategy;
 
 const manager = new UsersManager();
+
+dotenv.config({path: '../.env'});
 
 const initAuthStrategies = () => { 
 
@@ -55,9 +58,9 @@ const initAuthStrategies = () => {
 
     passport.use('ghlogin', new GitHubStrategy(
         {
-            clientID: config.GITHUB_CLIENT_ID,
-            clientSecret: config.GITHUB_CLIENT_SECRET,
-            callbackURL: config.GITHUB_CALLBACK_URL
+            clientID: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            callbackURL: process.env.GITHUB_CALLBACK_URL
         },
         async (accessToken, refreshToken, profile, done) => {
             try {
@@ -90,9 +93,9 @@ const initAuthStrategies = () => {
 
     passport.use('googlelogin', new GoogleStrategy(
         {
-            clientID: config.GOOGLE_CLIENT_ID,
-            clientSecret: config.GOOGLE_CLIENT_SECRET,
-            callbackURL: config.GOOGLE_CALLBACK_URL
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: process.env.GOOGLE_CALLBACK_URL
         },
         async (accessToken, refreshToken, profile, cb) => {
             console.log(accessToken);

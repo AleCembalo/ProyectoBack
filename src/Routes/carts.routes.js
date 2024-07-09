@@ -1,6 +1,6 @@
 import CustomRouter from './custom.router.js';
 import config from '../config.js';
-import CartManager from '../dao/cartManager.mdb.js'
+import CartManager from '../controllers/cartManager.mdb.js'
 
 const manager = new CartManager();
 
@@ -22,7 +22,7 @@ export default class CartsRouter extends CustomRouter {
                 const cart = await manager.add(req.body);
                 res.sendSuccess( cart );
             } catch (err) {
-                res.sendServerError(  'error');
+                res.sendServerError('error');
             }
         });
         
@@ -73,6 +73,19 @@ export default class CartsRouter extends CustomRouter {
             if (!config.MONGODB_ID_REGEX.test(req.params.cid)) {
                 return res.sendUserError( 'Id no válido' );
             }
+
+            try {
+
+                const filterCart = req.params.cid;
+                const filterProduct = req.params.pid;
+        
+                const cart = await manager.addToCart(filterProduct, filterCart);
+
+                res.sendSuccess( cart );
+            }
+            catch (err) {
+                res.sendServerError( 'error');
+            }
         });
         
         this.put('/:pid/products/:cid', async (req, res) => {
@@ -89,12 +102,12 @@ export default class CartsRouter extends CustomRouter {
                 const filterCart = req.params.cid;
                 const filterProduct = req.params.pid;
                 const quantity = req.body.quantity || 1;
-        
-                const cart = await manager.productToCart(filterProduct, filterCart, quantity);
-        
+                
+                const cart = await manager.addToCart(filterProduct, filterCart, quantity);
+                
                 res.sendSuccess( cart );
             } catch (err) {
-                res.sendServerError(  'error');
+                res.sendServerError( 'error');
             }
         });
     }

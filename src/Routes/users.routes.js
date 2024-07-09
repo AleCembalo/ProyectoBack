@@ -1,5 +1,5 @@
 import CustomRouter from './custom.router.js';
-import UsersManager from '../dao/users.manager.mdb.js';
+import UsersManager from '../controllers/users.manager.mdb.js';
 
 const manager = new UsersManager();
 

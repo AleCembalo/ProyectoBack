@@ -1,15 +1,14 @@
 
-import productsModel from '../dao/models/products.model.js';
+import productsModel from '../models/products.model.js'
+import ProductService from '../services/products.service.js';
+
+const service = new ProductService();
 
 class ProductManager {
 
     constructor() {}
 
-    getAll = async (req) => {
-        let limit = req.query.limit ? parseInt(req.query.limit) : 10;
-        const page = req.query.page ? parseInt(req.query.page) : 1;
-        const category = req.query.category ? req.query.category : null;
-        let sort = req.query.sort;
+    getAll = async (category, page, limit, sort) => {
         
         try {
             const order = sort === 'asc' ? 1 : -1;
@@ -18,8 +17,7 @@ class ProductManager {
                 limit,
                 sort: { price: order },
             };
-            return await productsModel.paginate({category}, {options, lean: true});
-        
+            return await service.getAllService ({category}, {options})
         } catch (err) {
             return err.message;
         }
@@ -39,7 +37,7 @@ class ProductManager {
 
     add = async (newData) => {
         try {
-            return await productsModel.create(newData);
+            return await service.addService(newData);
         } catch (err) {
             return err.message;
         };
@@ -47,7 +45,7 @@ class ProductManager {
 
     getById = async (id) => {
         try {
-            return await productsModel.findById(id).lean();
+            return await service.getByIdService(id);
         } catch (err) {
             return err.message;
         };
@@ -55,7 +53,7 @@ class ProductManager {
 
     update = async (filter, update, options) => {
         try {
-            return await productsModel.findOneAndUpdate(filter, update, options);
+            return await service.updateService(filter, update, options);
         } catch (err) {
             return err.message;
         };
@@ -63,7 +61,7 @@ class ProductManager {
 
     delete = async (filter) => {
         try {
-            return await productsModel.findOneAndDelete(filter);
+            return await service.deleteService(filter);
         } catch (err) {
             return err.message;
         };

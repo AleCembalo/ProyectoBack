@@ -30,10 +30,6 @@ const schema = new mongoose.Schema({
         type: String,
         enum: ['admin', 'premium', 'user'],
         default: 'user'
-    },
-    cart: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'carts'
     }
 }, {
     versionKey: false

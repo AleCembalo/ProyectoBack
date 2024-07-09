@@ -10,11 +10,11 @@ import passport from 'passport';
 
 import initSocket from './sockets.js';
 import config from './config.js';
-import ProductsRouter from './Routes/products.routes.js';
-import AuthRouter from './Routes/auth.routes.js';
-import CartsRouter from './Routes/carts.routes.js';
-import CookiesRouter from './Routes/cookies.routes.js';
-import UsersRouter from './Routes/users.routes.js';
+import ProductsRouter from './routes/products.routes.js';
+import AuthRouter from './routes/auth.routes.js';
+import CartsRouter from './routes/carts.routes.js';
+import CookiesRouter from './routes/cookies.routes.js';
+import UsersRouter from './routes/users.routes.js';
 import ViewsRouter from './Routes/views.routes.js';
 
 const app = express();
@@ -56,7 +56,7 @@ app.use('/static', express.static(`${config.DIRNAME}/public`));
 
 const expressInstance = app.listen(config.PORT, async () => {
     await mongoose.connect(config.MONGODB_URI);
-    console.log(`Servidor activo en puerto ${config.PORT} enlazada a bbdd ${config.SERVER}`);
+    console.log(`Servidor activo en puerto ${config.PORT} PID ${process.pid} enlazada a bbdd ${config.SERVER}`);
 });
 
 const socketServer = initSocket(expressInstance);

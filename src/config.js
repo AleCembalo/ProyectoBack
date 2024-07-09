@@ -1,27 +1,38 @@
 import * as url from 'url';
+import { Command } from 'commander';
+import dotenv from 'dotenv';
+
+const commandLine = new Command();
+commandLine
+    .option('--mode <mode>')
+    .option('--port <port>')
+    .option('--setup <number>')
+commandLine.parse();
+const clOptions = commandLine.opts();
+
+dotenv.config({path: '../.env'});
 
 const config = {
     APP_NAME: 'proyectocembalo',
     // SERVER: 'Local',
     SERVER: 'Remote',
-    PORT: 8080,
+    PORT: process.env.PORT || clOptions.port || 5050,
     DIRNAME: url.fileURLToPath(new URL('../src/', import.meta.url)),
     get UPLOAD_DIR() {
         return `${this.DIRNAME}/public/img`
     },
-    // MONGODB_URI: 'mongodb://127.0.0.1:27017/ecommerce',
-    MONGODB_URI: 'mongodb+srv://CoderBack:coderback2024@clustercoder.7swfcjo.mongodb.net/ecommerce',
+    MONGODB_URI: process.env.MONGODB_URI,
     MONGODB_ID_REGEX: /^[a-fA-F0-9]{24}$/,
-    SECRET: 'coder2024',
+    SECRET: process.env.SECRET,
     PRODUCTS_PER_PAGE: 10,
 
-    GITHUB_CLIENT_ID: 'Iv23liqZjFhkaxU0ocIM',
-    GITHUB_CLIENT_SECRET: '64841f59fd26cfc4ab4582c6b2a92128f1d71dd4',
-    GITHUB_CALLBACK_URL: 'http://localhost:8080/api/auth/ghlogincallback',
+    GITHUB_CLIENT_ID: process.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.GITHUB_CLIENT_SECRET,
+    GITHUB_CALLBACK_URL: process.env.GITHUB_CALLBACK_URL,
 
-    GOOGLE_CLIENT_ID: '157928750794-3lgdn3a8kodol11kvk5ddapmuh3p3dhr.apps.googleusercontent.com',
-    GOOGLE_CLIENT_SECRET: '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',
-    GOOGLE_CALLBACK_URL: 'http://localhost:8080/api/auth/goologincallback'
+    GOOGLE_CLIENT_ID: process.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL
 }
 
 export default config;

@@ -10,12 +10,13 @@ commandLine
 commandLine.parse();
 const clOptions = commandLine.opts();
 
-dotenv.config({path: '../.env'});
+const environmentFile = clOptions.mode === 'prod' ? '../.env.prod' : '../.env.devel';
+
+dotenv.config({path: environmentFile });
 
 const config = {
     APP_NAME: 'proyectocembalo',
-    // SERVER: 'Local',
-    SERVER: 'Remote',
+    SERVER: process.env.SERVER,
     PORT: process.env.PORT || clOptions.port || 5050,
     DIRNAME: url.fileURLToPath(new URL('../src/', import.meta.url)),
     get UPLOAD_DIR() {

@@ -10,7 +10,7 @@ commandLine
 commandLine.parse();
 const clOptions = commandLine.opts();
 
-const environmentFile = clOptions.mode === 'prod' ? '../.env.prod' : '../.env.devel';
+const environmentFile = clOptions.mode === 'devel' ? '../.env.devel' : '../.env.prod';
 
 dotenv.config({path: environmentFile });
 

@@ -5,17 +5,17 @@ import cors from 'cors';
 import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import FileStore from 'session-file-store';
-// import MongoStore from 'connect-mongo';
+import MongoStore from 'connect-mongo';
 import passport from 'passport';
 
-import initSocket from './sockets.js';
+import initSocket from './services/sockets.js';
 import config from './config.js';
 import ProductsRouter from './routes/products.routes.js';
 import AuthRouter from './routes/auth.routes.js';
 import CartsRouter from './routes/carts.routes.js';
 import CookiesRouter from './routes/cookies.routes.js';
 import UsersRouter from './routes/users.routes.js';
-import ViewsRouter from './Routes/views.routes.js';
+import ViewsRouter from './routes/views.routes.js';
 import MongoSingleton from './services/mongo.singleton.js';
 
 const app = express();
@@ -27,7 +27,7 @@ const expressInstance = app.listen(config.PORT, async () => {
     const socketServer = initSocket(expressInstance);
     app.set('socketServer', socketServer);
 
-    app.use(cors({ origin: '*' }));
+    app.use(cors({ origin: '*', methods: 'GET,POST,PUT,DELETE' }));
     app.use(express.json());
     app.use(express.urlencoded({
         extended: true
@@ -36,12 +36,12 @@ const expressInstance = app.listen(config.PORT, async () => {
 
     const fileStorage = FileStore(session);
     app.use(session({
-        store: new fileStorage({
-            path: './sessions',
-            ttl: 600,
-            retries: 0
-        }),
-        // store: MongoStore.create({ mongoUrl: config.MONGODB_URI, ttl: 600 }),
+        // store: new fileStorage({
+        //     path: './sessions',
+        //     ttl: 600,
+        //     retries: 0
+        // }),
+        store: MongoStore.create({ mongoUrl: config.MONGODB_URI, ttl: 600 }),
         secret: config.SECRET,
         resave: true,
         saveUninitialized: true

@@ -1,6 +1,7 @@
 import CustomRouter from './custom.router.js';
 import config from '../config.js';
-import CartManager from '../controllers/cartManager.mdb.js'
+import { handlePolicies, verifySession, generateCode } from "../services/utils.js";
+import CartManager from '../controllers/cartManager.js'
 
 const manager = new CartManager();
 
@@ -25,25 +26,17 @@ export default class CartsRouter extends CustomRouter {
                 res.sendServerError('error');
             }
         });
-        
-        this.put('/:id', async (req, res) => {
 
-            if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
+        this.post('/:cid/purchase', async (req, res) => {
+            if (!config.MONGODB_ID_REGEX.test(req.params.cid)) {
                 return res.sendUserError( 'Id no válido' );
             }
             try {
-                const filter = {
-                    _id: req.params.id
-                };
-                const update = req.body;
-                const options = {
-                    new: true
-                };
-                const cart = await manager.update(filter, update, options);
-        
-                res.sendSuccess( cart );
+                const filter = req.params.cid;
+                await manager.purchaseCart(filter);
+                res.sendSuccess(filter);
             } catch (err) {
-                res.sendServerError(  'error');
+                res.sendServerError('error');
             }
         });
         
@@ -63,8 +56,23 @@ export default class CartsRouter extends CustomRouter {
                 res.sendServerError(  'error');
             }
         });
+
+        this.put('/:id', async (req, res) => {
+
+            if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
+                return res.sendUserError( 'Id no válido' );
+            }
+            try {
+                const filter = req.params.id;
+                
+                await manager.deleteAllProducts(filter);
+                res.sendSuccess( `se vació el carrito id: ${filter}`);
+            } catch (err) {
+                res.sendServerError(  'error');
+            }
+        });
         
-        this.delete('/:cid/products/pid', async (req, res) => {
+        this.delete('/:cid/products/:pid', verifySession, handlePolicies (['user']), async (req, res) => {
         
             if (!config.MONGODB_ID_REGEX.test(req.params.pid)) {
                 return res.sendUserError( 'Id no válido' );
@@ -75,20 +83,21 @@ export default class CartsRouter extends CustomRouter {
             }
 
             try {
-
+                
                 const filterCart = req.params.cid;
                 const filterProduct = req.params.pid;
-        
-                const cart = await manager.addToCart(filterProduct, filterCart);
+                const quantity = req.body.quantity;
 
-                res.sendSuccess( cart );
+                await manager.deleteToCart(filterProduct, filterCart, quantity);
+                
+                res.sendSuccess(filterCart);
             }
             catch (err) {
                 res.sendServerError( 'error');
             }
         });
         
-        this.put('/:pid/products/:cid', async (req, res) => {
+        this.put('/:pid/products/:cid', verifySession, handlePolicies (['self']), async (req, res) => {
 
             if (!config.MONGODB_ID_REGEX.test(req.params.pid)) {
                 return res.sendUserError( 'Id no válido' );

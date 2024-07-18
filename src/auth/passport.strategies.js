@@ -2,17 +2,15 @@ import passport from 'passport';
 import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import GoogleStrategy from 'passport-google-oauth20';
-import dotenv from 'dotenv';
 
-import config from '../config.js';
-import UsersManager from '../controllers/users.manager.mdb.js';
-import { isValidPassword, createHash } from '../utils.js';
+import CartService from '../dao/mongo/carts.dao.mdb.js';
+import UsersManager from '../controllers/usersManager.js';
+import { isValidPassword, createHash } from '../services/utils.js';
 
 const localStrategy = local.Strategy;
 
 const manager = new UsersManager();
-
-dotenv.config({path: '../.env'});
+const service = new CartService();
 
 const initAuthStrategies = () => { 
 
@@ -24,6 +22,7 @@ const initAuthStrategies = () => {
                 const foundUser = await manager.getOne({ email: username });
 
                 if (foundUser && isValidPassword(password, foundUser.password)) {
+                    
                     const { password, ...filteredFoundUser } = foundUser;
                     return done(null, filteredFoundUser);
                 } else {
@@ -42,10 +41,16 @@ const initAuthStrategies = () => {
                 const { firstName, lastName, age, password} = req.body;
                 const foundUser = await manager.getOne({ email: username });
                 const passHash = createHash(password);
+                
+                let cartId = await service.addService();
+                cartId = cartId._id.toString();
+
 
                 if (!foundUser) {
-                    const newUser = await manager.add({ firstName: firstName, lastName: lastName, email: username, age: age, password: passHash});
+                    const newUser = await manager.add({ firstName: firstName, lastName: lastName, email: username, age: age, password: passHash, cartId: cartId});
                     const { password, ...filteredUser} = newUser
+                    console.log(filteredUser);
+                    
                     return done(null, filteredUser );
                 } else {
                     return done(null, false);

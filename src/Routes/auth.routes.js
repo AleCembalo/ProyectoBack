@@ -1,11 +1,23 @@
 import CustomRouter from './custom.router.js';
 import passport from "passport";
-import UsersManager from "../controllers/users.manager.mdb.js";
-import { verifyRequired, isValidPassword, createHash, adminAuth, createToken, verifyToken, verifyAuthorization } from "../utils.js";
+import UsersManager from "../controllers/usersManager.js";
+import { verifyRequired, isValidPassword, createHash, verifySession, handlePolicies } from "../services/utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
+import nodemailer from 'nodemailer';
+import config from '../config.js';
 
 const manager = new UsersManager();
+
 initAuthStrategies();
+
+const transport = nodemailer.createTransport({
+    service: 'gmail',
+    port: 587,
+    auth: {
+        user: config.GMAIL_APP_USER,
+        pass: config.GMAIL_APP_PASS
+    }
+});
 
 export default class AuthRouter extends CustomRouter {
     
@@ -15,10 +27,22 @@ export default class AuthRouter extends CustomRouter {
             try{
                 const { firstName, lastName, age, email, password } = req.body;
                 const foundUser = await manager.getOne({ email: email });
+                const passHash = createHash(password);
+                
+                let cartId = await service.addService();
+                cartId = cartId._id.toString();
+
         
                 if (!foundUser) {
-                    await manager.add({ firstName, lastName, age, email, password: createHash(password)});
-                    req.session.user = { firstName: firstName, lastName: lastName, age: age, email: email};
+                    await manager.add({ firstName, lastName, age, email, password: passHash, cartId});
+                    req.session.user = { firstName: firstName, lastName: lastName, age: age, email: email, cartId: cartId};
+                    const confirmation = await transport.sendMail({
+                        from: `Sistema Chemba <${config.GMAIL_APP_USER}>`,
+                        to: 'alejandracembalo@hotmail.com',
+                        subject: 'Pruebas Nodemailer',
+                        html: `<h1>Hola, te registraste de manera exitosa! </h1>`
+                    });
+                    res.sendSuccess(confirmation);
                     req.session.save(err => {
                         if (err) return res.sendServerError('error');
                         res.redirect('/profile');
@@ -44,7 +68,7 @@ export default class AuthRouter extends CustomRouter {
             }
         });
         
-        this.post('/login', verifyRequired(['email', 'password']), passport.authenticate('login', { failureRedirect: `/login?error=${encodeURI('Usuario o clave no válidos')}`}), async (req, res) => {
+        this.post('/login', verifyRequired(['email', 'password']), async (req, res) => {
             try {
                 const { email, password } = req.body;
         
@@ -83,7 +107,7 @@ export default class AuthRouter extends CustomRouter {
         
         this.get('/ghlogin', passport.authenticate('ghlogin', {scope: ['user:email']}), async (req, res) => {
         });
-    
+        
         this.get('/ghlogincallback', passport.authenticate('ghlogin', {failureRedirect: `/login?error=${encodeURI('Error al identificar con Github')}`}), async (req, res) => {
             try {
                 req.session.user = req.user;
@@ -112,26 +136,18 @@ export default class AuthRouter extends CustomRouter {
             }
         })
         
-        this.get('/current', adminAuth, async (req, res) => {
+        this.get('/current', verifySession, handlePolicies (['admin']), async (req, res) => {
             try {
-                res.sendSuccess('Bienvenido ' + req.user.firstName);
+                res.sendSuccess('Bienvenido ' + req.session.user.firstName);
             } catch (err) {
                 res.sendServerError( 'error' );
             }
         });
         
-        this.get('/profile', async (req, res) => {
+        this.get('/profile', verifySession, async (req, res) => {
             try {
                 if (!req.session.user) return res.redirect('/login');
                 res.render('profile', {user: req.session.user});
-            } catch (err) {
-                res.sendServerError( 'error' );
-            }
-        });
-        
-        this.get('/admin', verifyToken, verifyAuthorization('admin'), async (req, res) => {
-            try {
-                res.sendSuccess('Bienvenido ADMIN!');
             } catch (err) {
                 res.sendServerError( 'error' );
             }

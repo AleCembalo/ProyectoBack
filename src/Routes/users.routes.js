@@ -1,5 +1,5 @@
 import CustomRouter from './custom.router.js';
-import UsersManager from '../controllers/users.manager.mdb.js';
+import UsersManager from '../controllers/usersManager.js';
 
 const manager = new UsersManager();
 
@@ -38,7 +38,6 @@ export default class UsersRouter extends CustomRouter {
         this.post('/', async (req, res) => {
             try {
                 const process = await manager.add(req.body);
-                
                 res.sendSuccess( process );
             } catch (err) {
                 res.sendServerError( 'error' );

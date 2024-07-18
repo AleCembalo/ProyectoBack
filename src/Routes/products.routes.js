@@ -1,7 +1,7 @@
 import CustomRouter from './custom.router.js';
-import ProductManager from '../controllers/productManager.mdb.js';
+import ProductManager from '../controllers/productManager.js';
 import config from '../config.js';
-import { handlePolicies } from "../utils.js";
+import { handlePolicies } from "../services/utils.js";
 
 const manager = new ProductManager();
 
@@ -37,7 +37,7 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.post ('/', handlePolicies (['admin', 'premium']),  async (req, res) => {
+        this.post ('/', handlePolicies (['admin']),  async (req, res) => {
             
             try {
                 const socketServer = req.app.get('socketServer');
@@ -65,7 +65,7 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.delete('/:id', handlePolicies (['admin', 'premium']), async (req, res) => {
+        this.delete('/:id', handlePolicies (['admin']), async (req, res) => {
 
             try {
 
@@ -81,7 +81,7 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.put('/:id', handlePolicies (['admin', 'premium']), async (req, res) => {
+        this.put('/:id', handlePolicies (['admin']), async (req, res) => {
             const { id } = req.params;
             const nid = +id;
 

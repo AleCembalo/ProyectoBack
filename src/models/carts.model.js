@@ -5,25 +5,25 @@ mongoose.pluralize(null);
 const collection = 'carts';
 
 const schema = new mongoose.Schema({
-
-    user_id: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'users', default: '667f43a4c69cc40e7e33a096' },
-    products: [
-        {
-            product: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'products',
-                required: true
-            },
-            quantity: {
-                type: Number,
-                required: true,
-                default: 1
-            }
-        }
-    ]
-},{ versionKey: false }
+    products: { type: [{ product: mongoose.Schema.Types.ObjectId, quantity: Number }], required: true, ref: 'products' }
+},
+{ versionKey: false }
 );
 
 const model = mongoose.model(collection, schema);
 
 export default model;
+
+
+// const productSchema = new mongoose.Schema({
+//     product: { type: mongoose.Schema.Types.ObjectId, ref: 'products' },
+//     quantity: Number
+// }, { _id: false });
+
+// const cartSchema = new mongoose.Schema({
+//     products: { type: [productSchema], required: true }
+// }, { versionKey: false });
+
+// const model = mongoose.model(collection, cartSchema);
+
+// export default model;

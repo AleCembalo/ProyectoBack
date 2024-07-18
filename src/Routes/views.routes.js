@@ -1,7 +1,8 @@
 import CustomRouter from './custom.router.js';
 import config from '../config.js';
+import { handlePolicies } from '../services/utils.js'
 import productsModel from '../models/products.model.js';
-import ProductsManager from '../controllers/productManager.mdb.js';
+import ProductsManager from '../controllers/productManager.js';
 
 const manager = new ProductsManager();
 
@@ -10,6 +11,7 @@ export default class ViewsRouter extends CustomRouter {
     init () {
 
         this.get('/cart', async (req, res) => {
+            if (!req.session.user) return res.redirect('/login');
             const products = await productsModel.find().lean();
             const user = req.session.user;
             res.render('cart', { products: products, user: user });
@@ -27,7 +29,7 @@ export default class ViewsRouter extends CustomRouter {
             res.render('realtimeproducts', { products: products });
         });
         
-        this.get('/chat', async (req, res) => {
+        this.get('/chat', handlePolicies (['user']), async (req, res) => {
             res.render('chat', { });
         });
         

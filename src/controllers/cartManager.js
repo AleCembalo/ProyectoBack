@@ -22,6 +22,14 @@ class CartManager {
         };
     };
 
+    addTicket = async (newData) => {
+        try {
+            return await service.addTicketService(newData);
+        } catch (err) {
+            return err.message;
+        };
+    };
+
     getById = async (id) => {
         try {
             return await service.getByIdService(id)
@@ -70,9 +78,9 @@ class CartManager {
         }
     };
 
-    purchaseCart = async (idc) => {
+    purchaseCart = async (idc, user) => {
         try {
-            return await service.purchaseCartService(idc);
+            return await service.purchaseCartService(idc, user);
         } catch (err) {
             return err.message;
         }

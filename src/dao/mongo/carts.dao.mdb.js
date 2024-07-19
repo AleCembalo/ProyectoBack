@@ -120,12 +120,14 @@ class CartService {
         }
     };
 
-    purchaseCartService = async (idc) => {
+    purchaseCartService = async (idc, user) => {
         try {
-        const cart = await cartsModel
-        .findById(idc)
-        .populate({ path: 'products.product', model: productsModel })
-        .lean();
+            const mailUser = user.email;
+            
+            const cart = await cartsModel
+            .findById(idc)
+            .populate({ path: 'products.product', model: productsModel })
+            .lean();
     
             if (!cart) {
                 return res.status(404).json({ error: "Carrito no encontrado" });
@@ -144,7 +146,7 @@ class CartService {
                     productsToKeep.push(item);
                 }
             }
-
+            
             await Promise.all(productsToUpdate.map((product) => manager.update(product._id, product)));
             
             await cartsModel.updateOne(
@@ -152,33 +154,36 @@ class CartService {
                 { products: productsToKeep },
                 { new: true});
 
-            const totalAmount = productsToUpdate.reduce((total, product) => {
-                console.log(cart);
-                const quantityInCart = cart.products.find(item => item.product.equals(product._id)).quantity;
-                console.log(quantityInCart);
-                const productPrice = product.price;
-                return total + productPrice * quantityInCart;
-            }, 0);
+            const totalProduct = [];
+
+            for (const item of cart.products) {
+                const product = item.product;
+                const quantityInCart = item.quantity;
+
+                const total = product.price * quantityInCart;
+                totalProduct.push(total);
+            }
+            const totalAmount = totalProduct.reduce((total, product) => total + product, 0);
             
             const ticket = {
                 code: generateCode(),
                 purchase_datetime: new Date(),
-                amount: totalAmount,
-                purchaser: req.session.user.email || 'anon',
+                amount: totalAmount.toFixed(2),
+                purchaser: mailUser,
             };
 
-            console.log(ticket);
-            
-            const createdTicket = await ticketsModel.create(ticket);
+            const newTicket = await ticketsModel.create(ticket);
+            await ticketsModel
+            .findById(newTicket._id)
+            .lean();
 
             const productsNotPurchased = productsToKeep.map(item => item.product);
 
             return res.status(200).json({
                 message: "Compra exitosa",
-                ticket: createdTicket,
+                ticket: newTicket,
                 productsNotPurchased: productsNotPurchased,
             });
-
         } catch (error) {
             return err.message;
         }

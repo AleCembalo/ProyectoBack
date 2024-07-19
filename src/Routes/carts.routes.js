@@ -1,6 +1,6 @@
 import CustomRouter from './custom.router.js';
 import config from '../config.js';
-import { handlePolicies, verifySession, generateCode } from "../services/utils.js";
+import { handlePolicies, verifySession } from "../services/utils.js";
 import CartManager from '../controllers/cartManager.js'
 
 const manager = new CartManager();
@@ -32,9 +32,10 @@ export default class CartsRouter extends CustomRouter {
                 return res.sendUserError( 'Id no válido' );
             }
             try {
+                const user =req.session.user;
                 const filter = req.params.cid;
-                await manager.purchaseCart(filter);
-                res.sendSuccess(filter);
+                await manager.purchaseCart(filter, user);
+                res.sendSuccess("Compra exitosa");
             } catch (err) {
                 res.sendServerError('error');
             }

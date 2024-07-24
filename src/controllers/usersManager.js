@@ -1,5 +1,6 @@
 import usersModel from "../models/users.model.js";
 import UsersService from "../dao/mongo/users.dao.mdb.js";
+import UsersDto from "../dao/DTOs/users.dto.js";
 
 const service = new UsersService();
 
@@ -48,9 +49,10 @@ class UsersManager {
         }
     };
 
-    add = async (newData) => {
+    add = async (user) => {
         try {
-            return await service.addService(newData);
+            const newUser = new UsersDto(user);
+            return await service.addService(newUser);
         } catch (err) {
             return err.message;
         }

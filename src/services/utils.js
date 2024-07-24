@@ -2,6 +2,9 @@
 import bcrypt from 'bcrypt';
 import config from '../config.js';
 
+import { errorsDictionary } from '../config.js';
+import CustomError from './customError.class.js';
+
 export const createHash = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
 export const isValidPassword = (passwordToVerify, storedHash) => bcrypt.compareSync(passwordToVerify, storedHash);
@@ -18,7 +21,8 @@ export const verifyRequired = (requiredFields) => {
             req.body.hasOwnProperty(field) && req.body[field] !== '' && req.body[field] !== null && req.body[field] !== undefined
         );
         
-        if (!allOk) return res.status(400).send({ origin: config.SERVER, payload: 'Faltan propiedades', requiredFields });
+        if (!allOk) throw new CustomError(errorsDictionary.FEW_PARAMETERS)
+        // if (!allOk) return res.status(400).send({ origin: config.SERVER, payload: 'Faltan propiedades', requiredFields });
 
     next();
     };
@@ -35,7 +39,7 @@ export const handlePolicies = policies => {
         
         res.status(403).send({ origin: config.SERVER, payload: 'No tiene permisos para acceder al recurso' });
     }
-}
+};
 
 export function generateCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -49,4 +53,4 @@ export function generateCode() {
     }
 
     return code;
-}
+};

@@ -1,8 +1,5 @@
 import usersModel from '../../models/users.model.js';
 import cartsModel from '../../models/carts.model.js';
-import CartService from '../mongo/carts.dao.mdb.js';
-
-const service = new CartService();
 
 class UsersService {
 
@@ -34,7 +31,7 @@ class UsersService {
             .findById(newUser._id)
             .populate({ path: 'cartId', model: cartsModel })
             .lean();
-            return newUser
+            return newUser;
         } catch (err) {
             return err.message;
         };
@@ -42,7 +39,6 @@ class UsersService {
 
     updateService = async (filter, update, options) => {
         try {
-            // const normalized = new usersDTO(update);
             return await usersModel.findOneAndUpdate(filter, update, options);
         } catch (err) {
             return err.message;

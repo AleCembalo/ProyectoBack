@@ -3,21 +3,11 @@ import passport from "passport";
 import UsersManager from "../controllers/usersManager.js";
 import { verifyRequired, isValidPassword, createHash, verifySession, handlePolicies } from "../services/utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
-import nodemailer from 'nodemailer';
 import config from '../config.js';
 
 const manager = new UsersManager();
 
 initAuthStrategies();
-
-const transport = nodemailer.createTransport({
-    service: 'gmail',
-    port: 587,
-    auth: {
-        user: config.GMAIL_APP_USER,
-        pass: config.GMAIL_APP_PASS
-    }
-});
 
 export default class AuthRouter extends CustomRouter {
     
@@ -32,17 +22,11 @@ export default class AuthRouter extends CustomRouter {
                 let cartId = await service.addService();
                 cartId = cartId._id.toString();
 
-        
                 if (!foundUser) {
                     await manager.add({ firstName, lastName, age, email, password: passHash, cartId});
                     req.session.user = { firstName: firstName, lastName: lastName, age: age, email: email, cartId: cartId};
-                    const confirmation = await transport.sendMail({
-                        from: `Sistema Chemba <${config.GMAIL_APP_USER}>`,
-                        to: 'alejandracembalo@hotmail.com',
-                        subject: 'Pruebas Nodemailer',
-                        html: `<h1>Hola, te registraste de manera exitosa! </h1>`
-                    });
-                    res.sendSuccess(confirmation);
+                    
+                    res.sendSuccess(req.session.user);
                     req.session.save(err => {
                         if (err) return res.sendServerError('error');
                         res.redirect('/profile');

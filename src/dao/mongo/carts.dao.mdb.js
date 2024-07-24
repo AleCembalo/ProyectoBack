@@ -2,9 +2,21 @@ import cartsModel from '../../models/carts.model.js';
 import productsModel from '../../models/products.model.js';
 import ticketsModel from '../../models/tickets.model.js';
 import ProductManager from '../../controllers/productManager.js';
-import { generateCode } from '../../services/utils.js'
+import { generateCode } from '../../services/utils.js';
+import config from '../../config.js';
+import nodemailer from 'nodemailer';
+
 
 const manager = new ProductManager();
+
+const transport = nodemailer.createTransport({
+    service: 'gmail',
+    port: 587,
+    auth: {
+    user: config.GMAIL_APP_USER,
+    pass: config.GMAIL_APP_PASS
+    }
+});
 
 class CartService {
 
@@ -163,12 +175,13 @@ class CartService {
                 const total = product.price * quantityInCart;
                 totalProduct.push(total);
             }
-            const totalAmount = totalProduct.reduce((total, product) => total + product, 0);
+            
+            const totalAmount = totalProduct.reduce((total, product) => total + product, 0).toFixed(2);
             
             const ticket = {
                 code: generateCode(),
                 purchase_datetime: new Date(),
-                amount: totalAmount.toFixed(2),
+                amount: totalAmount,
                 purchaser: mailUser,
             };
 
@@ -176,6 +189,18 @@ class CartService {
             await ticketsModel
             .findById(newTicket._id)
             .lean();
+
+            await transport.sendMail({
+                from: `Sistema Chemba <${config.GMAIL_APP_USER}>`,
+                to: 'alejandracembalo@hotmail.com',
+                subject: 'Pruebas Nodemailer',
+                html: `<div>
+                            <h1>Ticket: ${ticket.code}</h1>
+                            <h2>Products:</h2>
+                            <h2>Total: $${totalAmount}</h2>
+                            <h2>Gracias por su compra</h2>
+                        </div>`
+                });
 
             const productsNotPurchased = productsToKeep.map(item => item.product);
 

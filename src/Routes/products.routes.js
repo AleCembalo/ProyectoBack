@@ -1,7 +1,8 @@
 import CustomRouter from './custom.router.js';
 import ProductManager from '../controllers/productManager.js';
 import config from '../config.js';
-import { handlePolicies } from "../services/utils.js";
+import { handlePolicies, verifyRequired } from "../services/utils.js";
+import { generateMock } from '../services/fake.js'
 
 const manager = new ProductManager();
 
@@ -37,7 +38,16 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.post ('/', handlePolicies (['admin']),  async (req, res) => {
+        this.get('/mocking/:qty', (req, res) => {
+            const qty = parseInt(req.params.qty, 10);
+            if (isNaN(qty) || qty <= 0) {
+                return res.status(400).send({ error: 'not valid quantity' });
+            }
+            const mockProducts = generateMock(qty);
+            res.json(mockProducts);
+        });
+
+        this.post ('/', verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin']), async (req, res) => {
             
             try {
                 const socketServer = req.app.get('socketServer');
@@ -52,12 +62,12 @@ export default class ProductsRouter extends CustomRouter {
                     stock: stock,
                     status: status,
                     category: category,
-                    thumbnails: thumbnails || []
+                    thumbnails: thumbnails || [],
                 };
                 
                 const product = await manager.add(newProduct);
             
-                res.sendSuccess( `se agrego ${product.title} correctamente` );
+                res.sendSuccess( `se agrego ${product} correctamente` );
                 socketServer.emit('newProduct', (req.body));
 
             } catch (err) {

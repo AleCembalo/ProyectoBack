@@ -1,5 +1,6 @@
 import CustomRouter from './custom.router.js';
 import UsersManager from '../controllers/usersManager.js';
+import { handlePolicies, verifyRequired } from '../services/utils.js';
 
 const manager = new UsersManager();
 
@@ -35,7 +36,7 @@ export default class UsersRouter extends CustomRouter {
             }
         });
         
-        this.post('/', async (req, res) => {
+        this.post('/', verifyRequired(['firstName', 'lastName', 'age', 'email', 'password']), async (req, res) => {
             try {
                 const process = await manager.add(req.body);
                 res.sendSuccess( process );
@@ -44,7 +45,7 @@ export default class UsersRouter extends CustomRouter {
             }
         });
         
-        this.put('/:id', async (req, res) => {
+        this.put('/:id', handlePolicies (['admin']), async (req, res) => {
 
             if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
                 res.sendUserError( 'Id no válido' );
@@ -61,7 +62,7 @@ export default class UsersRouter extends CustomRouter {
             }
         });
         
-        this.delete('/:id', async (req, res) => {
+        this.delete('/:id', handlePolicies (['admin']), async (req, res) => {
 
             if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
                 res.sendUserError( 'Id no válido' );

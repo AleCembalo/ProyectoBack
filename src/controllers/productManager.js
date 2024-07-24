@@ -1,5 +1,6 @@
 
-import productsModel from '../models/products.model.js'
+import productsModel from '../models/products.model.js';
+import ProductsDto from '../dao/DTOs/products.dto.js';
 import ProductService from '../dao/mongo/products.dao.mdb.js';
 // import ProductService from '../dao/fs/products.dao.fs.js';
 
@@ -38,8 +39,8 @@ class ProductManager {
 
     add = async (newData) => {
         try {
-            const normalized = new ProductsDTO(newData);
-            return await service.addService(normalized.newData);
+            const newProduct = new ProductsDto(newData);
+            return await service.addService(newProduct);
         } catch (err) {
             return err.message;
         };

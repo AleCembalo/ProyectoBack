@@ -47,7 +47,7 @@ export default class ProductsRouter extends CustomRouter {
             res.json(mockProducts);
         });
 
-        this.post ('/', verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin']), async (req, res) => {
+        this.post ('/', verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['user']), async (req, res) => {
             
             try {
                 const socketServer = req.app.get('socketServer');

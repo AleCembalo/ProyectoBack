@@ -51,7 +51,8 @@ export const errorsDictionary = {
     DATABASE_ERROR: { code: 8, status: 500, message: 'No se puede conectar a la base de datos'},
     INTERNAL_ERROR: { code: 9, status: 500, message: 'Error interno de ejecución del servidor'},
     RECORD_CREATION_ERROR: { code: 10, status: 500, message: 'Error al intentar crear el registro'},
-    RECORD_CREATION_OK: { code: 11, status: 200, message: 'Registro creado'},
+    ACCESS_ERROR: { code: 11, status: 401, message: 'No tiene permisos para acceder al recurso'},
+    RECORD_CREATION_OK: { code: 12, status: 200, message: 'Registro creado'},
 }
 
 export default config;

@@ -4,6 +4,7 @@
         "codercookie",
         "cperren",
         "datetime",
+        "dddh",
         "deletecookie",
         "devel",
         "ecommerce",
@@ -14,11 +15,14 @@
         "googlelogin",
         "goologin",
         "goologincallback",
+        "gstu",
         "jwtlogin",
         "jwtregister",
+        "loggertest",
         "mfooter",
         "mockingproducts",
         "MONGOID",
+        "nkpt",
         "originalname",
         "pplogin",
         "ppregister",
@@ -29,6 +33,7 @@
         "sessionadmin",
         "sessionlogin",
         "sessionregister",
-        "setcookie"
+        "setcookie",
+        "waud"
     ]
 }

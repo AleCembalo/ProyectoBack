@@ -2,7 +2,7 @@ import CustomRouter from './custom.router.js';
 import ProductManager from '../controllers/productManager.js';
 import config from '../config.js';
 import { handlePolicies, verifyRequired } from "../services/utils.js";
-import { generateMock } from '../services/fake.js'
+import { generateMock } from '../services/fake.js';
 
 const manager = new ProductManager();
 
@@ -47,7 +47,7 @@ export default class ProductsRouter extends CustomRouter {
             res.json(mockProducts);
         });
 
-        this.post ('/', verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['user']), async (req, res) => {
+        this.post ('/', verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin']), async (req, res) => {
             
             try {
                 const socketServer = req.app.get('socketServer');
@@ -66,10 +66,11 @@ export default class ProductsRouter extends CustomRouter {
                 };
                 
                 const product = await manager.add(newProduct);
-            
+
+                req.logger.info(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} product id: ${product._id} aggregated by ${req.session.user.email}`);
                 res.sendSuccess( `se agrego ${product} correctamente` );
                 socketServer.emit('newProduct', (req.body));
-
+                
             } catch (err) {
                 res.sendServerError( 'error' );
             }
@@ -84,6 +85,7 @@ export default class ProductsRouter extends CustomRouter {
                 }
                 const filter = { _id: req.params.id };
                 const product = await manager.delete(filter);
+                req.logger.info(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} product id: ${product._id} deleted by ${req.session.user.email}`);
                 res.sendSuccess( `se borró ${product.title} correctamente` );
         
             } catch (err) {

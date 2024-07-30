@@ -3,7 +3,6 @@ import passport from "passport";
 import UsersManager from "../controllers/usersManager.js";
 import { verifyRequired, isValidPassword, createHash, verifySession, handlePolicies } from "../services/utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
-import config from '../config.js';
 
 const manager = new UsersManager();
 
@@ -70,6 +69,7 @@ export default class AuthRouter extends CustomRouter {
                         if (err) return res.sendServerError( 'error' );
                         res.redirect('/products');
                     })
+                    req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
                 }
             }    
             catch (err) {
@@ -84,6 +84,7 @@ export default class AuthRouter extends CustomRouter {
                     if (err) return res.sendServerError( 'error' );
                     res.redirect('/products');
                 });
+                req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
             } catch (err) {
                 res.sendServerError( 'error' );
             }
@@ -139,6 +140,7 @@ export default class AuthRouter extends CustomRouter {
         
         this.get('/logout', async (req, res) => {
             try {
+                req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} logout`);
                 req.session.destroy((err) => {
                     if (err) return res.sendServerError( 'Error al ejecutar logout' );
                     res.redirect('/login');

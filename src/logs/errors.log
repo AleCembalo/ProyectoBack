@@ -1,0 +1,7 @@
+info: Servidor activo en puerto 8080 PID 17284 enlazada a bbdd Remote/ 30/7/2024 - 12:53:36
+fatal: Prueba de log level fatal!
+error: Prueba de log level error!
+warning: Prueba de log level warning!
+http: Prueba de log level http!
+info: Prueba de log level info!
+debug: Prueba de log level debug!

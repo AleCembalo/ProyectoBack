@@ -10,9 +10,12 @@ export const createHash = password => bcrypt.hashSync(password, bcrypt.genSaltSy
 export const isValidPassword = (passwordToVerify, storedHash) => bcrypt.compareSync(passwordToVerify, storedHash);
 
 export const verifySession = (req, res, next) => {
-
-    if (!req.session.user) return res.status(401).send({ origin: config.SERVER, payload: 'Usuario no autenticado' });
-    next();
+    try {
+        if (req.session.user) return next();
+        throw new CustomError(errorsDictionary.LOGIN_ERROR)
+    } catch (error) {
+        next (error)
+    }
 };
 
 export const verifyRequired = (requiredFields) => {

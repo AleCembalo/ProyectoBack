@@ -23,10 +23,12 @@ const config = {
         return `${this.DIRNAME}/public/img`
     },
     MONGODB_URI: process.env.MONGODB_URI,
-    PERSISTENCE: process.env.PERSISTENCE,
+    PERSISTENCE: process.env.PERSISTENCE || 'mongo',
+    MODE: process.env.MODE || 'dev',
     MONGODB_ID_REGEX: /^[a-fA-F0-9]{24}$/,
     SECRET: process.env.SECRET,
     PRODUCTS_PER_PAGE: 10,
+
     GMAIL_APP_USER: 'alejandracembalo@gmail.com',
     GMAIL_APP_PASS: 'gstu waud dddh nkpt',
 
@@ -53,6 +55,7 @@ export const errorsDictionary = {
     RECORD_CREATION_ERROR: { code: 10, status: 500, message: 'Error al intentar crear el registro'},
     ACCESS_ERROR: { code: 11, status: 401, message: 'No tiene permisos para acceder al recurso'},
     RECORD_CREATION_OK: { code: 12, status: 200, message: 'Registro creado'},
+    LOGIN_ERROR: { code:13, status: 400, message: 'Es necesario iniciar sesión'},
 }
 
 export default config;

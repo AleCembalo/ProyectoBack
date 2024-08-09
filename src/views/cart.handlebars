@@ -121,7 +121,7 @@
     }
 
     .table{
-        min-height: 200px;
+        min-height: 150px;
         color: hsl(0, 0%, 100%);
     }
 
@@ -130,6 +130,7 @@
     }
 
     .mfooter{
+        height: 70px;
         position: relative;   
     }
 
@@ -143,19 +144,13 @@
     .botonVaciarCarro{
         position: absolute;
         right: 12px;
-        bottom: 12px;
+        bottom: 20px;
     }
 
     .botonTerminar {
         position: absolute;
         right: 85px;
-        bottom: 12px;
-    }
-
-    .terminarCompra{
-        position: absolute;
-        left: 12px;
-        bottom: 12px;
+        bottom: 20px;
     }
 
 </style>
@@ -168,7 +163,7 @@
                 <div class="carrito">
                     <button>
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
-                        <span id="numerito" class="numerito">0</span>
+                        <span id="number" class="number">0</span>
                     <button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -192,12 +187,10 @@
     </header>
 
     <div class="cart">
-
         <!-- Modal Header -->
         <div>
-            <h2>CARRITO</h2>
+            <h2>CARRITO ID: {{user.cartId}}</h2>
         </div>
-
         <!-- Modal Carrito body -->
         <div>
             <table class="table">
@@ -205,21 +198,31 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody id="tablabody">
-                    <!-- Tabla Carrito  -->
+                    {{#each cart.products}}
+                        <tr>
+                            <td>{{product.title}}</td>
+                            <td>${{product.price}}</td>
+                            <td>{{quantity}}</td>
+                            <td>{{subtotal}}</td>
+                            <td><button class="buttonClear btn" onclick="deleteProductToCart('{{product._id}}')">🗑️</button></td>
+                        </tr>
+                    {{/each}}
                 </tbody>
             </table>
-            <p style="margin: 10px">Total a pagar $: <strong id="total"></strong> </p>
         </div>
-
         <!-- Modal Carrito footer -->
         <div class="mfooter">
+            <p style="margin: 40px">Total a pagar $:<strong id="total">{{cart.total}}</strong></p>
             <button type="button" class="botonTerminar btn" >Terminar<br/>Compra</button>
             <button type="button" class="botonVaciarCarro btn" >Vaciar<br/>Carro</button>
-            {{!-- <button type="button" class="terminarCompra btn" >Terminar<br/>Compra</button> --}}
         </div>
     </div>
 </div>
+
+<script src="/static/products.js"></script>

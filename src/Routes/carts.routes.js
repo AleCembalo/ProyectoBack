@@ -84,7 +84,6 @@ export default class CartsRouter extends CustomRouter {
             }
 
             try {
-                
                 const filterCart = req.params.cid;
                 const filterProduct = req.params.pid;
                 const quantity = req.body.quantity;

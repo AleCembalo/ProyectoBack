@@ -117,7 +117,7 @@
             <div class="container-fluid">
                 <a id="inicio" class="navbar-brand botonMenu logo" href="">Chemba</a>
                 <div class="carrito">
-                    <button>
+                    <button onclick="viewCart()">
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
                         <span id="numerito" class="numerito">0</span>
                     <button>
@@ -150,7 +150,7 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{title}} ($ {{price}})
                     <span class="badge">
-                        <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "addToCart(`{{_id}}`)"></i></button>
+                        <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "addToCart('{{_id}}')"></i></button>
                     </span>
                 </li>
             {{/each}}
@@ -222,9 +222,8 @@
         });
 
         const addToCart = ('submit', async (pid) => {
-
-            const cart = '66552d69384d02184363ddb7';
-            alert(`Quiere agregar al carrito el producto ${pid}`);
+            console.log('pasa');
+            const cart = '6696bf6661c0f8ef4fb3c0c1';
 
             const process = await fetch(`/api/carts/${pid}/products/${cart}`, {
                 method: 'PUT'
@@ -234,3 +233,5 @@
         });
 
     </script> 
+
+    <script src="/static/products.js"></script>

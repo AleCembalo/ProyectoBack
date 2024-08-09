@@ -34,6 +34,7 @@
         "sessionlogin",
         "sessionregister",
         "setcookie",
+        "tablabody",
         "waud"
     ]
 }

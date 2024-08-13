@@ -1,6 +1,6 @@
 import CustomRouter from './custom.router.js';
 import config from '../config.js';
-import { handlePolicies } from '../services/utils.js';
+import { handlePolicies, verifyToken } from '../services/utils.js';
 import productsModel from '../models/products.model.js';
 import cartsModel from '../models/carts.model.js'
 import ProductsManager from '../controllers/productManager.js';
@@ -60,6 +60,16 @@ export default class ViewsRouter extends CustomRouter {
         this.get('/profile', (req, res) => {
             if (!req.session.user) return res.redirect('/login');
             res.render('profile', { user: req.session.user });
+        });
+
+        this.get('/restore', (req, res) => {
+            res.render('restore', { });
+        });
+
+        this.get('/restorepassword', verifyToken, (req, res) => {
+            const user = req.user;
+            if (!req.user) return res.redirect('/restore');
+            res.render('restorepassword', { user: user });
         });
     }
 }

@@ -14,6 +14,7 @@ const schema = new mongoose.Schema({
     thumbnails: { type: String, required: true, default: [] },
     code: { type: String, required: true },
     stock: { type: Number, required: true },
+    owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'users', default: 'admin'},
 }, {
     versionKey: false
 });

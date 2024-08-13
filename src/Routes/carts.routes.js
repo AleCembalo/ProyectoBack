@@ -9,7 +9,7 @@ export default class CartsRouter extends CustomRouter {
     
     init () {
         
-        this.get('/', async (req, res) => {
+        this.get('/', verifySession, handlePolicies (['admin']), async (req, res) => {
             try {
                 const carts = await manager.getAll();
                 res.sendSuccess( carts );
@@ -27,7 +27,7 @@ export default class CartsRouter extends CustomRouter {
             }
         });
 
-        this.post('/:cid/purchase', async (req, res) => {
+        this.post('/:cid/purchase', verifySession, async (req, res) => {
             if (!config.MONGODB_ID_REGEX.test(req.params.cid)) {
                 return res.sendUserError( 'Id no válido' );
             }
@@ -58,7 +58,7 @@ export default class CartsRouter extends CustomRouter {
             }
         });
 
-        this.put('/:id', async (req, res) => {
+        this.put('/:id', verifySession, handlePolicies (['self']), async (req, res) => {
 
             if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
                 return res.sendUserError( 'Id no válido' );
@@ -73,7 +73,7 @@ export default class CartsRouter extends CustomRouter {
             }
         });
         
-        this.delete('/:cid/products/:pid', verifySession, handlePolicies (['user']), async (req, res) => {
+        this.delete('/:cid/products/:pid', verifySession, handlePolicies (['self']), async (req, res) => {
         
             if (!config.MONGODB_ID_REGEX.test(req.params.pid)) {
                 return res.sendUserError( 'Id no válido' );

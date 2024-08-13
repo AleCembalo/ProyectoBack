@@ -10,6 +10,7 @@ class ProductsDto {
         this.stock = product.stock;
         this.category = product.category;
         this.status = product.status;
+        this.owner = product.owner;
     }
 }
 

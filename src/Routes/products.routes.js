@@ -1,7 +1,8 @@
 import CustomRouter from './custom.router.js';
 import ProductManager from '../controllers/productManager.js';
 import config from '../config.js';
-import { handlePolicies, verifyRequired } from "../services/utils.js";
+import { uploader } from '../services/uploader.js';
+import { handlePolicies, verifyRequired, verifySession } from "../services/utils.js";
 import { generateMock } from '../services/fake.js';
 
 const manager = new ProductManager();
@@ -47,8 +48,10 @@ export default class ProductsRouter extends CustomRouter {
             res.json(mockProducts);
         });
 
-        this.post ('/', verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin']), async (req, res) => {
+        this.post ('/', verifySession, verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin', 'premium']), uploader.single('thumbnails'), async (req, res) => {
             
+            const user = req.session.user;
+
             try {
                 const socketServer = req.app.get('socketServer');
                 
@@ -62,6 +65,7 @@ export default class ProductsRouter extends CustomRouter {
                     stock: stock,
                     status: status,
                     category: category,
+                    owner: user._id || 'admin',
                     thumbnails: thumbnails || [],
                 };
                 
@@ -76,7 +80,7 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.delete('/:id', handlePolicies (['admin']), async (req, res) => {
+        this.delete('/:id', verifySession, handlePolicies (['admin']), async (req, res) => {
 
             try {
 
@@ -93,7 +97,7 @@ export default class ProductsRouter extends CustomRouter {
             }
         });
 
-        this.put('/:id', handlePolicies (['admin']), async (req, res) => {
+        this.put('/:id', verifySession, handlePolicies (['admin']), async (req, res) => {
             const { id } = req.params;
             const nid = +id;
 

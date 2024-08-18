@@ -1,0 +1,226 @@
+openapi: 3.0.1
+info:
+  title: Users API
+  description: API to manage users
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /api/users/aggregate/{role}:
+    get:
+      summary: Get users by role
+      description: Retrieve aggregated user data based on role.
+      parameters:
+        - name: role
+          in: path
+          required: true
+          description: The role of the users (admin, premium, or user)
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Aggregated user data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid role supplied
+
+  /api/users/paginate/{page}/{limit}:
+    get:
+      summary: Get paginated list of users
+      description: Retrieve paginated and sorted list of users with the role 'admin'.
+      parameters:
+        - name: page
+          in: path
+          required: true
+          description: Page number for pagination
+          schema:
+            type: integer
+        - name: limit
+          in: path
+          required: true
+          description: Number of users per page
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Paginated list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid parameters supplied
+
+  /api/users:
+    post:
+      summary: Add a new user
+      description: Add a new user to the system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewUser"
+      responses:
+        "201":
+          description: User added successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid input
+
+  /api/users/restoremethod:
+    post:
+      summary: Restore user account
+      description: Send an email to restore the user's account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  required: true
+      responses:
+        "200":
+          description: Restore method email sent successfully
+        "400":
+          description: Invalid email supplied
+
+  /api/users/restorepassmethod/{id}:
+    post:
+      summary: Restore user password
+      description: Restore the user's password using the provided ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  required: true
+                password2:
+                  type: string
+                  required: true
+      responses:
+        "200":
+          description: Password restored successfully
+        "400":
+          description: Invalid ID or passwords do not match
+
+  /api/users/premium/{uid}:
+    put:
+      summary: Upgrade or downgrade user role
+      description: Upgrade a user role to 'premium' or downgrade to 'user' based on the current role.
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User role updated successfully
+        "400":
+          description: Invalid ID supplied
+
+  /api/users/{id}:
+    put:
+      summary: Update user by ID
+      description: Update the details of a user by their ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: User updated successfully
+        "400":
+          description: Invalid ID supplied
+
+    delete:
+      summary: Delete user by ID
+      description: Delete a user from the system by their ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User deleted successfully
+        "400":
+          description: Invalid ID supplied
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The unique identifier for the user
+        firstName:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: integer
+        email:
+          type: string
+        role:
+          type: string
+        password:
+          type: string
+
+    NewUser:
+      type: object
+      properties:
+        firstName:
+          type: string
+          required: true
+        lastName:
+          type: string
+          required: true
+        age:
+          type: integer
+          required: true
+        email:
+          type: string
+          required: true
+        password:
+          type: string
+          required: true

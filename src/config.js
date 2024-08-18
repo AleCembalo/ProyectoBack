@@ -26,6 +26,7 @@ const config = {
     PERSISTENCE: process.env.PERSISTENCE || 'mongo',
     MODE: process.env.MODE || 'dev',
     MONGODB_ID_REGEX: /^[a-fA-F0-9]{24}$/,
+    PASSWORD_REGEX: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
     SECRET: process.env.SECRET,
     PRODUCTS_PER_PAGE: 10,
 

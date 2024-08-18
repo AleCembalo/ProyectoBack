@@ -1,6 +1,13 @@
 
 let cartId = sessionStorage.getItem('cartId');
 
+/**
+ * 
+ * 
+ * @returns 
+ * 
+ */
+
 async function createCart() {
     try {
         const response = await fetch('/api/carts', { method: 'POST' });
@@ -45,7 +52,7 @@ async function deleteProductToCart(productId) {
         }
     };
 
-    async function viewCart() {
+async function viewCart() {
         try {
             if(!cartId) {
                 cartId = await createCart();

@@ -1,0 +1,215 @@
+openapi: 3.0.1
+info:
+  title: Products API
+  description: API to manage products
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /api/products/{id}:
+    get:
+      summary: Get product by ID
+      description: Retrieve a single product by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A single product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Product not found
+
+    delete:
+      summary: Delete a product by ID
+      description: Delete a product from the inventory by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Product deleted successfully
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Product not found
+
+    put:
+      summary: Update a product by ID
+      description: Update the details of a product by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the product
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Product updated successfully
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Product not found
+      
+
+  /api/products/{category}/{page}/{limit}/{sort}:
+    get:
+      summary: Get products by category with pagination
+      description: Retrieve products by category, with pagination and sorting.
+      parameters:
+        - name: category
+          in: path
+          required: true
+          description: The category of the products
+          schema:
+            type: string
+        - name: page
+          in: path
+          required: true
+          description: Page number for pagination
+          schema:
+            type: integer
+        - name: limit
+          in: path
+          required: true
+          description: Number of products per page
+          schema:
+            type: integer
+        - name: sort
+          in: path
+          required: true
+          description: Sort order (asc or desc)
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid parameters supplied
+
+  /api/products/mocking/{qty}:
+    get:
+      summary: Get mock products
+      description: Generate and retrieve a list of mock products.
+      parameters:
+        - name: qty
+          in: path
+          required: true
+          description: The number of mock products to generate
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: A list of mock products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid quantity supplied
+
+  /api/products:
+    post:
+      summary: Add a new product
+      description: Add a new product to the inventory.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/NewProduct"
+      responses:
+        "201":
+          description: Product added successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Invalid input
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The unique identifier for the product
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        code:
+          type: string
+        stock:
+          type: integer
+        status:
+          type: string
+        category:
+          type: string
+        owner:
+          type: string
+        thumbnails:
+          type: array
+          items:
+            type: string
+
+    NewProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          required: true
+        description:
+          type: string
+          required: true
+        price:
+          type: number
+          required: true
+        code:
+          type: string
+          required: true
+        stock:
+          type: integer
+          required: true
+        status:
+          type: string
+          required: true
+        category:
+          type: string
+          required: true
+        thumbnails:
+          type: string
+          format: binary

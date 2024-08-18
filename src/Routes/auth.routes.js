@@ -1,5 +1,6 @@
 import CustomRouter from './custom.router.js';
 import passport from "passport";
+import config from '../config.js';
 import UsersManager from "../controllers/usersManager.js";
 import { verifyRequired, isValidPassword, createHash, verifySession, handlePolicies } from "../services/utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
@@ -12,10 +13,16 @@ export default class AuthRouter extends CustomRouter {
     
     init () {
 
-        this.post('/register', verifyRequired(['firstName', 'lastName', 'email', 'password']), async (req, res) => {
+        this.post('/register', verifyRequired(['firstName', 'lastName', 'email', 'password', 'age']), async (req, res) => {
+
             try{
                 const { firstName, lastName, age, email, password } = req.body;
                 const foundUser = await manager.getOne({ email: email });
+                
+                if (!config.PASSWORD_REGEX.test(password)) {
+                    return alert( 'La contraseña no es válida. Debe incluir una mayúscula, un carácter especial, números y letras.' );
+                }
+                
                 const passHash = createHash(password);
                 
                 let cartId = await service.addService();

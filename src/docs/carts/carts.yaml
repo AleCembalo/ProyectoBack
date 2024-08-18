@@ -1,0 +1,236 @@
+openapi: 3.0.1
+info:
+  title: Carts API
+  description: API to manage carts
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /api/carts:
+    get:
+      summary: Get all carts
+      description: Retrieve all carts.
+      parameters:
+        - name: session
+          in: cookie
+          required: true
+          description: User session token
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A list of carts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Cart"
+        "500":
+          description: Server error
+
+    post:
+      summary: Create a new cart
+      description: Add a new cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewCart"
+      responses:
+        "201":
+          description: Cart created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "500":
+          description: Server error
+
+  /api/carts/{cid}/purchase:
+    post:
+      summary: Purchase a cart
+      description: Complete the purchase of the cart by ID.
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: The ID of the cart
+          schema:
+            type: string
+        - name: session
+          in: cookie
+          required: true
+          description: User session token
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Purchase completed successfully
+        "400":
+          description: Invalid ID supplied
+        "500":
+          description: Server error
+
+  /api/carts/{id}:
+    delete:
+      summary: Delete a cart by ID
+      description: Delete a cart from the database by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the cart
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Cart deleted successfully
+        "400":
+          description: Invalid ID supplied
+        "500":
+          description: Server error
+
+    put:
+      summary: Empty a cart by ID
+      description: Empty all products from the cart by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the cart
+          schema:
+            type: string
+        - name: session
+          in: cookie
+          required: true
+          description: User session token
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Cart emptied successfully
+        "400":
+          description: Invalid ID supplied
+        "500":
+          description: Server error
+
+  /api/carts/{cid}/products/{pid}:
+    delete:
+      summary: Remove a product from a cart
+      description: Remove a specific product from a cart by its ID.
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: The ID of the cart
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: The ID of the product
+          schema:
+            type: string
+        - name: session
+          in: cookie
+          required: true
+          description: User session token
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  description: The quantity of the product to remove
+      responses:
+        "200":
+          description: Product removed from cart successfully
+        "400":
+          description: Invalid ID supplied
+        "500":
+          description: Server error
+
+    put:
+      summary: Add a product to a cart
+      description: Add a specific product to a cart by its ID.
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: The ID of the cart
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: The ID of the product
+          schema:
+            type: string
+        - name: session
+          in: cookie
+          required: true
+          description: User session token
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  description: The quantity of the product to add
+      responses:
+        "200":
+          description: Product added to cart successfully
+        "400":
+          description: Invalid ID supplied
+        "500":
+          description: Server error
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The unique identifier for the cart
+        userId:
+          type: string
+          description: The ID of the user who owns the cart
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductInCart"
+
+    NewCart:
+      type: object
+      properties:
+        userId:
+          type: string
+          required: true
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductInCart"
+
+    ProductInCart:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: The ID of the product
+        quantity:
+          type: integer
+          description: The quantity of the product in the cart

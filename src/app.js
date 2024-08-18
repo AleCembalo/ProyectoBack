@@ -4,6 +4,8 @@ import cors from 'cors';
 // import mongoose from 'mongoose';
 import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express';
 // import FileStore from 'session-file-store';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
@@ -67,6 +69,19 @@ const expressInstance = app.listen(config.PORT, async () => {
     app.use('/api/carts', new CartsRouter().getRouter());
     app.use('/static', express.static(`${config.DIRNAME}/public`));
     app.use(errorsHandler);
+
+    const swaggerOptions = {
+        definition: {
+            openapi: '3.0.1',
+            info: {
+                title: 'Documentación sistema Chemba',
+                description: '',
+            },
+        },
+        apis: [`${config.DIRNAME}/docs/**/*.yaml`],
+    };
+    const specs = swaggerJsdoc(swaggerOptions);
+    app.use('/api/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
     logger.info(`Servidor activo en puerto ${config.PORT} PID ${process.pid} enlazada a bbdd ${config.SERVER}/ ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()}`);
 });

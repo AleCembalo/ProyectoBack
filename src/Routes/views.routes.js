@@ -33,12 +33,28 @@ export default class ViewsRouter extends CustomRouter {
         this.get('/products', async (req, res) => {
             const products = await productsModel.find().lean();
             const user = req.session.user;
+            
             res.render('home', { products: products, user: user });
         });
+
+        this.get('/products/:category', async (req, res) => {
+
+            if (req.params.category === 'herramientas' || req.params.category === 'electricidad' || req.params.category === 'fontaneria') {
+
+                const match = { category: req.params.category };
+                const sort = { price: 1 };
+                const products = await manager.getAggregated(match, sort);
+
+                res.render('category', { products: products });
+            } else {
+                res.sendUserError( 'role: solo se acepta admin, premium o user' );
+            }
+        });        
         
         this.get('/realtimeproducts/:page', async (req, res) => {
             const user = req.session.user;
             const products = await manager.getAllReal(config.PRODUCTS_PER_PAGE, req.params.page);
+            
             res.render('realtimeproducts', { products: products, user: user });
         });
         

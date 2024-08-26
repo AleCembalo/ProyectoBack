@@ -2,9 +2,11 @@ import CustomRouter from './custom.router.js';
 import passport from "passport";
 import config from '../config.js';
 import UsersManager from "../controllers/usersManager.js";
+import CartService from "../dao/mongo/carts.dao.mdb.js";
 import { verifyRequired, isValidPassword, createHash, verifySession, handlePolicies } from "../services/utils.js";
 import initAuthStrategies from '../auth/passport.strategies.js';
 
+const service = new CartService();
 const manager = new UsersManager();
 
 initAuthStrategies();
@@ -19,10 +21,6 @@ export default class AuthRouter extends CustomRouter {
                 const { firstName, lastName, age, email, password } = req.body;
                 const foundUser = await manager.getOne({ email: email });
                 
-                if (!config.PASSWORD_REGEX.test(password)) {
-                    return alert( 'La contraseña no es válida. Debe incluir una mayúscula, un carácter especial, números y letras.' );
-                }
-                
                 const passHash = createHash(password);
                 
                 let cartId = await service.addService();
@@ -35,7 +33,7 @@ export default class AuthRouter extends CustomRouter {
                     res.sendSuccess(req.session.user);
                     req.session.save(err => {
                         if (err) return res.sendServerError('error');
-                        res.redirect('/profile');
+                        // res.redirect('/profile');
                     })
                 } else {
                     res.sendUserError( 'El email ya se encuentra registrado' );
@@ -49,6 +47,7 @@ export default class AuthRouter extends CustomRouter {
 
             try {
                 req.session.user = req.user._doc;
+                res.sendSuccess(req.session.user);
                 req.session.save(err => {
                     if (err) return res.sendServerError( 'error' );
                     res.redirect('/products');
@@ -61,24 +60,29 @@ export default class AuthRouter extends CustomRouter {
         this.post('/login', verifyRequired(['email', 'password']), async (req, res) => {
             try {
                 const { email, password } = req.body;
-        
+                
                 if (!email || !password) {
                     res.sendUserError( 'All fields are required' );
                 }
+                
                 const foundUser = await manager.getOne({ email: email });
                 if (!foundUser) {
                     res.sendUserError( 'User not found' );
                 }
+                
                 if (foundUser && isValidPassword (password, foundUser.password)) {
+                    
                     const { password, ...filteredFoundUser } = foundUser;
                     req.session.user = filteredFoundUser;
+                    res.sendSuccess(req.session.user);
                     req.session.save(err => {
                         if (err) return res.sendServerError( 'error' );
-                        res.redirect('/products');
+                        
+                        // res.redirect('/products');
                     })
                     req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
                 }
-            }    
+            }
             catch (err) {
                 res.sendServerError( 'error' );
             }
@@ -89,7 +93,7 @@ export default class AuthRouter extends CustomRouter {
                 req.session.user = req.user;
                 req.session.save(err => {
                     if (err) return res.sendServerError( 'error' );
-                    res.redirect('/products');
+                    // res.redirect('/products');
                 });
                 req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
             } catch (err) {

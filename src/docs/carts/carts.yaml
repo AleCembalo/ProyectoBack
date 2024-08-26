@@ -1,14 +1,26 @@
 openapi: 3.0.1
 info:
-  title: Carts API
-  description: API to manage carts
+  title: Carts API - OpenAPI 3.0.1
+  description: |-
+    API to manage carts, 
+    link app:
+    - [Chemba Store repository](https://github.com/AleCembalo/ProyectoBack.git)
   version: 1.0.0
 servers:
   - url: http://localhost:8080
-
+tags:
+  - name: users
+    description: Everything about users
+  - name: products
+    description: Access to products
+  - name: carts
+    description: Operations about carts
+    
 paths:
   /api/carts:
     get:
+      tags:
+        - carts
       summary: Get all carts
       description: Retrieve all carts.
       parameters:
@@ -31,6 +43,8 @@ paths:
           description: Server error
 
     post:
+      tags:
+        - carts
       summary: Create a new cart
       description: Add a new cart.
       requestBody:
@@ -51,6 +65,8 @@ paths:
 
   /api/carts/{cid}/purchase:
     post:
+      tags:
+        - carts
       summary: Purchase a cart
       description: Complete the purchase of the cart by ID.
       parameters:
@@ -76,6 +92,8 @@ paths:
 
   /api/carts/{id}:
     delete:
+      tags:
+        - carts
       summary: Delete a cart by ID
       description: Delete a cart from the database by its ID.
       parameters:
@@ -94,6 +112,8 @@ paths:
           description: Server error
 
     put:
+      tags:
+        - carts
       summary: Empty a cart by ID
       description: Empty all products from the cart by its ID.
       parameters:
@@ -119,6 +139,8 @@ paths:
 
   /api/carts/{cid}/products/{pid}:
     delete:
+      tags:
+        - carts
       summary: Remove a product from a cart
       description: Remove a specific product from a cart by its ID.
       parameters:
@@ -159,6 +181,8 @@ paths:
           description: Server error
 
     put:
+      tags:
+        - carts
       summary: Add a product to a cart
       description: Add a specific product to a cart by its ID.
       parameters:

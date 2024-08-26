@@ -49,7 +49,6 @@ const initAuthStrategies = () => {
                 if (!foundUser) {
                     const newUser = await manager.add({ firstName: firstName, lastName: lastName, email: username, age: age, password: passHash, cartId: cartId});
                     const { password, ...filteredUser} = newUser
-                    console.log(filteredUser);
                     
                     return done(null, filteredUser );
                 } else {

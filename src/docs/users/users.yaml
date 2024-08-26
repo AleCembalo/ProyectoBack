@@ -1,14 +1,26 @@
 openapi: 3.0.1
 info:
-  title: Users API
-  description: API to manage users
-  version: 1.0.0
+  title: Users API - OpenAPI 3.0.1
+  description: |-
+    API to manage users, 
+    link app:
+    - [Chemba Store repository](https://github.com/AleCembalo/ProyectoBack.git)
+  version: 1.0.11
 servers:
   - url: http://localhost:8080
-
+tags:
+  - name: users
+    description: Everything about users
+  - name: products
+    description: Access to products
+  - name: carts
+    description: Operations about carts
+    
 paths:
   /api/users/aggregate/{role}:
     get:
+      tags:
+        - users
       summary: Get users by role
       description: Retrieve aggregated user data based on role.
       parameters:
@@ -29,9 +41,11 @@ paths:
                   $ref: "#/components/schemas/User"
         "400":
           description: Invalid role supplied
-
+    
   /api/users/paginate/{page}/{limit}:
     get:
+      tags:
+        - users
       summary: Get paginated list of users
       description: Retrieve paginated and sorted list of users with the role 'admin'.
       parameters:
@@ -48,19 +62,21 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
-          description: Paginated list of users
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/User"
-        "400":
-          description: Invalid parameters supplied
-
+          "200":
+            description: Paginated list of users
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/User"
+          "400":
+            description: Invalid parameters supplied
+  
   /api/users:
     post:
+      tags:
+        - users
       summary: Add a new user
       description: Add a new user to the system.
       requestBody:
@@ -81,6 +97,8 @@ paths:
 
   /api/users/restoremethod:
     post:
+      tags:
+        - users
       summary: Restore user account
       description: Send an email to restore the user's account.
       requestBody:
@@ -101,6 +119,8 @@ paths:
 
   /api/users/restorepassmethod/{id}:
     post:
+      tags:
+        - users
       summary: Restore user password
       description: Restore the user's password using the provided ID.
       parameters:
@@ -131,6 +151,8 @@ paths:
 
   /api/users/premium/{uid}:
     put:
+      tags:
+        - users
       summary: Upgrade or downgrade user role
       description: Upgrade a user role to 'premium' or downgrade to 'user' based on the current role.
       parameters:
@@ -148,6 +170,8 @@ paths:
 
   /api/users/{id}:
     put:
+      tags:
+        - users
       summary: Update user by ID
       description: Update the details of a user by their ID.
       parameters:
@@ -170,6 +194,8 @@ paths:
           description: Invalid ID supplied
 
     delete:
+      tags:
+        - users
       summary: Delete user by ID
       description: Delete a user from the system by their ID.
       parameters:
@@ -184,8 +210,8 @@ paths:
           description: User deleted successfully
         "400":
           description: Invalid ID supplied
-
-components:
+          
+  components:
   schemas:
     User:
       type: object
@@ -223,4 +249,4 @@ components:
           required: true
         password:
           type: string
-          required: true
+          required: true  

@@ -18,6 +18,17 @@ class ProductService {
         
     };
 
+    getAggregatedService = async (match, sort) => {
+        try {
+            return await productsModel.aggregate([
+                { $match: match },
+                { $sort: sort }
+            ]);
+        } catch (err) {
+            return err.message;
+        };
+    };
+
     addService = async (newData) => {
         try {
             const newProduct  = await productsModel.create(newData);

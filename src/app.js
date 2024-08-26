@@ -75,7 +75,9 @@ const expressInstance = app.listen(config.PORT, async () => {
             openapi: '3.0.1',
             info: {
                 title: 'Documentación sistema Chemba',
-                description: '',
+                description: `|-
+    link app:
+    - [Chemba Store repository](https://github.com/AleCembalo/ProyectoBack.git)`,
             },
         },
         apis: [`${config.DIRNAME}/docs/**/*.yaml`],

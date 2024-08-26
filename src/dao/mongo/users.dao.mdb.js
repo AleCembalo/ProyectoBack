@@ -5,6 +5,14 @@ class UsersService {
 
     constructor() {}
 
+    getService = async () => {
+        try {
+            return await usersModel.find().lean();
+        } catch (err) {
+            return err.message;
+        }
+    };
+
     getAggregatedService = async (match, sort) => {
         try {
             return await usersModel.aggregate([
@@ -24,6 +32,22 @@ class UsersService {
         };
     };
 
+    getByIdService = async (id) => {
+        try {
+            return await usersModel.findById(id).lean();
+        } catch (err) {
+            return err.message;
+        }
+    };
+
+    getOneService = async (filter) => {
+        try {
+            return await usersModel.findOne(filter).lean();
+        } catch (err) {
+            return err.message;
+        }
+    };
+
     addService = async (newData) => {
         try {
             const newUser = await usersModel.create(newData);
@@ -31,6 +55,7 @@ class UsersService {
             .findById(newUser._id)
             .populate({ path: 'cartId', model: cartsModel })
             .lean();
+            
             return newUser;
         } catch (err) {
             return err.message;

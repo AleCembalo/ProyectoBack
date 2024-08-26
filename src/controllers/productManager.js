@@ -19,14 +19,15 @@ class ProductManager {
                 limit,
                 sort: { price: order },
             };
-            return await service.getAllService ({category}, {options})
+            return await service.getAllService ({category}, {options});
         } catch (err) {
             return err.message;
         }
     };
 
-    getAllReal = async (limit = 0, page = 1) => {
+    getAllReal = async ( limit = 0, page = 1) => {
         try {
+            
             if (limit === 0) {
                 return await productsModel.find().lean();
             } else {
@@ -35,6 +36,14 @@ class ProductManager {
         } catch (err) {
             return err.message;
         };
+    };
+
+    getAggregated = async (match, sort) => {
+        try {
+            return await service.getAggregatedService(match, sort);
+        } catch (err) {
+            return err.message;
+        }
     };
 
     add = async (newData) => {

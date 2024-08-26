@@ -3,7 +3,8 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 
 mongoose.pluralize(null);
 
-const collection = 'users';
+const collection = 'users_test';
+// const collection = 'users';
 
 const schema = new mongoose.Schema({
     firstName: {
@@ -16,6 +17,7 @@ const schema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         required: true
     },
     age: {

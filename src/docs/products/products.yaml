@@ -1,14 +1,26 @@
 openapi: 3.0.1
 info:
-  title: Products API
-  description: API to manage products
+  title: Products API - OpenAPI 3.0.1
+  description: |-
+    API to manage products, 
+    link app:
+    - [Chemba Store repository](https://github.com/AleCembalo/ProyectoBack.git)
   version: 1.0.0
 servers:
   - url: http://localhost:8080
-
+tags:
+  - name: users
+    description: Everything about users
+  - name: products
+    description: Access to products
+  - name: carts
+    description: Operations about carts
+    
 paths:
   /api/products/{id}:
     get:
+      tags:
+        - products
       summary: Get product by ID
       description: Retrieve a single product by its ID.
       parameters:
@@ -31,6 +43,8 @@ paths:
           description: Product not found
 
     delete:
+      tags:
+        - products
       summary: Delete a product by ID
       description: Delete a product from the inventory by its ID.
       parameters:
@@ -49,6 +63,8 @@ paths:
           description: Product not found
 
     put:
+      tags:
+        - products
       summary: Update a product by ID
       description: Update the details of a product by its ID.
       parameters:
@@ -75,6 +91,8 @@ paths:
 
   /api/products/{category}/{page}/{limit}/{sort}:
     get:
+      tags:
+        - products
       summary: Get products by category with pagination
       description: Retrieve products by category, with pagination and sorting.
       parameters:
@@ -116,6 +134,8 @@ paths:
 
   /api/products/mocking/{qty}:
     get:
+      tags:
+        - products
       summary: Get mock products
       description: Generate and retrieve a list of mock products.
       parameters:
@@ -139,6 +159,8 @@ paths:
 
   /api/products:
     post:
+      tags:
+        - products
       summary: Add a new product
       description: Add a new product to the inventory.
       requestBody:
@@ -211,5 +233,4 @@ components:
           type: string
           required: true
         thumbnails:
-          type: string
-          format: binary
+          type: array

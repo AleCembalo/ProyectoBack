@@ -221,6 +221,13 @@
         font-size: .7em;
         padding-top: .2em;
     }
+    .a3 {
+        color: #f1f1f1;
+    }
+
+    .a3:hover {
+        color: #fff;
+    }
 
 </style>
 
@@ -256,7 +263,6 @@
 
     <div>
         <h1 style="text-align: center; padding-top: 50px">Lista de productos</h1>
-        <h2 style="text-align: center;">Hola {{user.firstName}}</h2>
         <div class="row containerTarget">
             {{#each products}}
                 <section class="col-sm-12 col-md-6 col-lg-4 col-xl-4 tarjeta">    
@@ -296,7 +302,16 @@
         </div>
     </div>
     
+    {{!-- <div class="mt-2 text-end">
+        {{#if products.prevPage}}
+        <a class="a3" href="/category/{{products.prevPage}}">Anterior</a>
+        {{/if}}
+        
+        &nbsp;|&nbsp;
+        
+        {{#if products.nextPage}}
+        <a class="a3" href="/category/{{products.nextPage}}">Siguiente</a>
+        {{/if}}
+    </div> --}}
+
     <script src="/static/products.js"></script>
-
-
-

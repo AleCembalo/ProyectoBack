@@ -7,6 +7,14 @@ const service = new UsersService();
 class UsersManager {
     constructor() { }
 
+    get = async () => {
+        try {
+            return await service.getService();
+        } catch (err) {
+            return err.message;
+        }
+    };
+
     getAll = async (limit = 0) => {
         try {
             return limit === 0
@@ -19,7 +27,7 @@ class UsersManager {
 
     getById = async (id) => {
         try {
-            return await usersModel.findById(id).lean();
+            return await service.getById(id);
         } catch (err) {
             return err.message;
         }
@@ -27,7 +35,7 @@ class UsersManager {
 
     getOne = async (filter) => {
         try {
-            return await usersModel.findOne(filter).lean();
+            return await service.getOneService(filter);
         } catch (err) {
             return err.message;
         }

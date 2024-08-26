@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/app --mode=devel",
-    "start": "node src/app --mode=prod"
+    "start": "node src/app --mode=prod",
+    "test": "mocha test/supertest.test.js"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +39,9 @@
   },
   "description": "",
   "devDependencies": {
-    "@faker-js/faker": "^8.4.1"
+    "@faker-js/faker": "^8.4.1",
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "supertest": "^7.0.0"
   }
 }

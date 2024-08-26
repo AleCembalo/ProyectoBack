@@ -1,9 +1,11 @@
 import CustomRouter from './custom.router.js';
 import UsersManager from '../controllers/usersManager.js';
+import CartService from "../dao/mongo/carts.dao.mdb.js";
 import nodemailer from 'nodemailer';
 import config from '../config.js';
 import { handlePolicies, verifyRequired, createToken, isValidPassword, createHash} from '../services/utils.js';
 
+const service = new CartService();
 const manager = new UsersManager();
 
 const transport = nodemailer.createTransport({
@@ -18,7 +20,16 @@ const transport = nodemailer.createTransport({
 export default class UsersRouter extends CustomRouter {
     
     init () {
-        
+
+        this.get('/', async (req, res) => {
+            try {
+                const process = await manager.get();
+                res.sendSuccess( process );
+            } catch (err) {
+                res.sendServerError( 'error' );
+            }
+        });
+
         this.get('/aggregate/:role', async (req, res) => {
             try {
                 if (req.params.role === 'admin' || req.params.role === 'premium' || req.params.role === 'user') {
@@ -49,8 +60,23 @@ export default class UsersRouter extends CustomRouter {
         
         this.post('/', verifyRequired(['firstName', 'lastName', 'age', 'email', 'password']), async (req, res) => {
             try {
-                const process = await manager.add(req.body);
-                res.sendSuccess( process );
+                const { firstName, lastName, age, email, password } = req.body;
+                const foundUser = await manager.getOne({ email: email });
+                
+                const passHash = createHash(password);
+                
+                let cartId = await service.addService();
+                cartId = cartId._id.toString();
+                
+                if (foundUser === null) {
+                    console.log('llega');
+                    const newUser = await manager.add({ firstName: firstName, lastName: lastName, email: email, age: age, password: passHash, cartId: cartId});
+                    const { password, ...filteredUser} = newUser;
+                
+                    return res.sendSuccess(filteredUser._doc);
+                } else {
+                    res.sendUserError( 'El email ya se encuentra registrado' );
+                }
             } catch (err) {
                 res.sendServerError( 'error' );
             }

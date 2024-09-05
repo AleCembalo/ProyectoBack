@@ -18,7 +18,7 @@ const config = {
     APP_NAME: 'proyectocembalo',
     SERVER: process.env.SERVER,
     PORT: process.env.PORT || clOptions.port || 5050,
-    DIRNAME: url.fileURLToPath(new URL('../src/', import.meta.url)),
+    DIRNAME: url.fileURLToPath(new URL('../', import.meta.url)),
     get UPLOAD_DIR() {
         return `${this.DIRNAME}/uploads`
     },

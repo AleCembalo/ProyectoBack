@@ -4,8 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app --mode=devel",
-    "start": "node src/app.js",
+    "start": "nodemon src/app --mode=devel",
+    
     "test": "mocha test/supertest.test.js"
   },
   "keywords": [],

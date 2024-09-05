@@ -42,6 +42,11 @@
         "sessionregister",
         "setcookie",
         "tablabody",
+        "uploaddocuments",
+        "uploadproductsimages",
+        "uploadprofileimage",
+        "uploadprofileimages",
+        "uploadprofilesimages",
         "waud"
     ]
 }

@@ -375,3 +375,473 @@ info: Servidor activo en puerto 8080 PID 5340 enlazada a bbdd Remote/ 26/8/2024 
 info: Servidor activo en puerto 8080 PID 13000 enlazada a bbdd Remote/ 26/8/2024 - 03:41:47
 info: Servidor activo en puerto 8080 PID 20664 enlazada a bbdd Remote/ 26/8/2024 - 03:42:00
 info: Servidor activo en puerto 8080 PID 8528 enlazada a bbdd Remote/ 26/8/2024 - 03:42:01
+info: Servidor activo en puerto 8080 PID 2052 enlazada a bbdd Remote/ 27/8/2024 - 05:15:27
+info: Servidor activo en puerto 8080 PID 16852 enlazada a bbdd Remote/ 27/8/2024 - 05:17:11
+info: Servidor activo en puerto 8080 PID 14004 enlazada a bbdd Remote/ 27/8/2024 - 05:19:37
+info: Servidor activo en puerto 8080 PID 2996 enlazada a bbdd Remote/ 27/8/2024 - 05:42:22
+info: Servidor activo en puerto 8080 PID 20800 enlazada a bbdd Remote/ 27/8/2024 - 06:40:05
+http: POST in /api/auth - at 27/8/2024 - 06:40:39 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 14500 enlazada a bbdd Remote/ 27/8/2024 - 06:45:28
+http: POST in /api/auth - at 27/8/2024 - 06:45:33 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 20008 enlazada a bbdd Remote/ 27/8/2024 - 06:45:53
+http: POST in /api/auth - at 27/8/2024 - 06:46:06 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 5840 enlazada a bbdd Remote/ 27/8/2024 - 07:35:47
+info: Servidor activo en puerto 8080 PID 12100 enlazada a bbdd Remote/ 27/8/2024 - 07:41:06
+info: Servidor activo en puerto 8080 PID 19928 enlazada a bbdd Remote/ 27/8/2024 - 07:41:55
+info: Servidor activo en puerto 8080 PID 14792 enlazada a bbdd Remote/ 27/8/2024 - 07:49:48
+info: Servidor activo en puerto 8080 PID 18344 enlazada a bbdd Remote/ 27/8/2024 - 07:51:02
+info: Servidor activo en puerto 8080 PID 6572 enlazada a bbdd Remote/ 27/8/2024 - 07:51:39
+info: Servidor activo en puerto 8080 PID 16724 enlazada a bbdd Remote/ 27/8/2024 - 08:23:10
+info: Servidor activo en puerto 8080 PID 8520 enlazada a bbdd Remote/ 27/8/2024 - 08:26:43
+info: Servidor activo en puerto 8080 PID 8500 enlazada a bbdd Remote/ 27/8/2024 - 08:27:43
+info: Servidor activo en puerto 8080 PID 2056 enlazada a bbdd Remote/ 27/8/2024 - 08:28:43
+info: Servidor activo en puerto 8080 PID 19612 enlazada a bbdd Remote/ 27/8/2024 - 08:30:57
+info: Servidor activo en puerto 8080 PID 4548 enlazada a bbdd Remote/ 27/8/2024 - 08:32:27
+info: Servidor activo en puerto 8080 PID 21628 enlazada a bbdd Remote/ 27/8/2024 - 08:33:04
+info: Servidor activo en puerto 8080 PID 19900 enlazada a bbdd Remote/ 27/8/2024 - 08:34:41
+info: Servidor activo en puerto 8080 PID 16076 enlazada a bbdd Remote/ 27/8/2024 - 08:37:52
+info: Servidor activo en puerto 8080 PID 332 enlazada a bbdd Remote/ 27/8/2024 - 08:39:09
+info: Servidor activo en puerto 8080 PID 8260 enlazada a bbdd Remote/ 28/8/2024 - 07:53:47
+info: Servidor activo en puerto 8080 PID 13208 enlazada a bbdd Remote/ 28/8/2024 - 09:08:19
+info: Servidor activo en puerto 8080 PID 22164 enlazada a bbdd Remote/ 29/8/2024 - 08:49:09
+info: Servidor activo en puerto 8080 PID 13076 enlazada a bbdd Remote/ 29/8/2024 - 08:53:13
+info: Servidor activo en puerto 8080 PID 9112 enlazada a bbdd Remote/ 29/8/2024 - 09:09:14
+info: Servidor activo en puerto 8080 PID 14288 enlazada a bbdd Remote/ 29/8/2024 - 09:09:22
+info: Servidor activo en puerto 8080 PID 12028 enlazada a bbdd Remote/ 29/8/2024 - 09:10:21
+info: Servidor activo en puerto 8080 PID 15192 enlazada a bbdd Remote/ 29/8/2024 - 09:11:16
+info: Servidor activo en puerto 8080 PID 18408 enlazada a bbdd Remote/ 29/8/2024 - 09:14:55
+info: Servidor activo en puerto 8080 PID 9640 enlazada a bbdd Remote/ 29/8/2024 - 09:15:16
+info: Servidor activo en puerto 8080 PID 17460 enlazada a bbdd Remote/ 29/8/2024 - 09:17:00
+info: Servidor activo en puerto 8080 PID 10140 enlazada a bbdd Remote/ 29/8/2024 - 09:20:04
+info: Servidor activo en puerto 8080 PID 12616 enlazada a bbdd Remote/ 29/8/2024 - 09:22:29
+info: Servidor activo en puerto 8080 PID 7636 enlazada a bbdd Remote/ 29/8/2024 - 09:54:50
+info: Servidor activo en puerto 8080 PID 18312 enlazada a bbdd Remote/ 29/8/2024 - 09:55:06
+info: Servidor activo en puerto 8080 PID 16304 enlazada a bbdd Remote/ 29/8/2024 - 09:59:43
+info: Servidor activo en puerto 8080 PID 16392 enlazada a bbdd Remote/ 29/8/2024 - 10:00:11
+info: Servidor activo en puerto 8080 PID 19896 enlazada a bbdd Remote/ 29/8/2024 - 10:01:53
+info: Servidor activo en puerto 8080 PID 10340 enlazada a bbdd Remote/ 29/8/2024 - 10:03:38
+info: Servidor activo en puerto 8080 PID 11488 enlazada a bbdd Remote/ 29/8/2024 - 10:04:55
+info: Servidor activo en puerto 8080 PID 13096 enlazada a bbdd Remote/ 29/8/2024 - 10:06:44
+info: Servidor activo en puerto 8080 PID 4144 enlazada a bbdd Remote/ 29/8/2024 - 10:07:36
+info: Servidor activo en puerto 8080 PID 17932 enlazada a bbdd Remote/ 29/8/2024 - 10:08:12
+info: Servidor activo en puerto 8080 PID 17976 enlazada a bbdd Remote/ 29/8/2024 - 10:08:19
+info: Servidor activo en puerto 8080 PID 5332 enlazada a bbdd Remote/ 29/8/2024 - 10:09:10
+info: Servidor activo en puerto 8080 PID 9484 enlazada a bbdd Remote/ 29/8/2024 - 10:10:22
+info: Servidor activo en puerto 8080 PID 14704 enlazada a bbdd Remote/ 29/8/2024 - 10:12:30
+info: Servidor activo en puerto 8080 PID 5588 enlazada a bbdd Remote/ 29/8/2024 - 10:13:14
+http: POST in /api/auth - at 29/8/2024 - 10:13:36 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 10800 enlazada a bbdd Remote/ 29/8/2024 - 10:14:01
+http: GET in /api/auth - at 29/8/2024 - 10:15:01 user id: 6696bf6661c0f8ef4fb3c0c4 logout
+info: Servidor activo en puerto 8080 PID 19328 enlazada a bbdd Remote/ 29/8/2024 - 10:19:15
+http: POST in /api/auth - at 29/8/2024 - 10:19:39 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 18620 enlazada a bbdd Remote/ 29/8/2024 - 10:20:25
+info: Servidor activo en puerto 8080 PID 14520 enlazada a bbdd Remote/ 29/8/2024 - 10:22:45
+http: GET in /api/auth - at 29/8/2024 - 10:22:59 user id: 6696bf6661c0f8ef4fb3c0c4 logout
+info: Servidor activo en puerto 8080 PID 12124 enlazada a bbdd Remote/ 29/8/2024 - 10:24:12
+http: POST in /api/auth - at 29/8/2024 - 10:24:20 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 8232 enlazada a bbdd Remote/ 29/8/2024 - 10:24:42
+info: Servidor activo en puerto 8080 PID 18644 enlazada a bbdd Remote/ 29/8/2024 - 10:28:17
+info: Servidor activo en puerto 8080 PID 21696 enlazada a bbdd Remote/ 29/8/2024 - 10:28:59
+info: Servidor activo en puerto 8080 PID 20820 enlazada a bbdd Remote/ 29/8/2024 - 10:29:38
+http: GET in /api/auth - at 29/8/2024 - 10:29:49 user id: 6696bf6661c0f8ef4fb3c0c4 logout
+info: Servidor activo en puerto 8080 PID 7708 enlazada a bbdd Remote/ 29/8/2024 - 10:30:01
+info: Servidor activo en puerto 8080 PID 22388 enlazada a bbdd Remote/ 29/8/2024 - 10:32:44
+http: POST in /api/auth - at 29/8/2024 - 10:33:48 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 10104 enlazada a bbdd Remote/ 29/8/2024 - 10:34:16
+http: POST in /api/auth - at 29/8/2024 - 10:34:40 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 12420 enlazada a bbdd Remote/ 29/8/2024 - 10:37:37
+http: POST in /api/auth - at 29/8/2024 - 10:38:15 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 15616 enlazada a bbdd Remote/ 29/8/2024 - 10:50:19
+info: Servidor activo en puerto 8080 PID 22116 enlazada a bbdd Remote/ 29/8/2024 - 10:50:44
+info: Servidor activo en puerto 8080 PID 13640 enlazada a bbdd Remote/ 29/8/2024 - 10:54:59
+info: Servidor activo en puerto 8080 PID 1296 enlazada a bbdd Remote/ 29/8/2024 - 10:58:50
+info: Servidor activo en puerto 8080 PID 5784 enlazada a bbdd Remote/ 29/8/2024 - 10:59:53
+http: POST in /api/auth - at 29/8/2024 - 11:00:12 user id: 6696bf6661c0f8ef4fb3c0c4 login
+http: POST in /api/auth - at 29/8/2024 - 11:03:00 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 8024 enlazada a bbdd Remote/ 29/8/2024 - 11:04:08
+info: Servidor activo en puerto 8080 PID 15472 enlazada a bbdd Remote/ 29/8/2024 - 11:06:35
+info: Servidor activo en puerto 8080 PID 15776 enlazada a bbdd Remote/ 29/8/2024 - 11:07:34
+info: Servidor activo en puerto 8080 PID 4584 enlazada a bbdd Remote/ 29/8/2024 - 11:09:12
+info: Servidor activo en puerto 8080 PID 21412 enlazada a bbdd Remote/ 29/8/2024 - 11:28:51
+info: Servidor activo en puerto 8080 PID 19368 enlazada a bbdd Remote/ 29/8/2024 - 11:29:55
+info: Servidor activo en puerto 8080 PID 14600 enlazada a bbdd Remote/ 29/8/2024 - 11:33:09
+info: Servidor activo en puerto 8080 PID 21144 enlazada a bbdd Remote/ 29/8/2024 - 11:33:30
+info: Servidor activo en puerto 8080 PID 1476 enlazada a bbdd Remote/ 29/8/2024 - 11:37:51
+http: POST in /api/auth - at 29/8/2024 - 11:43:45 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 11752 enlazada a bbdd Remote/ 29/8/2024 - 11:47:34
+http: GET in /api/auth - at 29/8/2024 - 11:47:55 user id: 6696bf6661c0f8ef4fb3c0c4 logout
+http: POST in /api/auth - at 29/8/2024 - 11:48:11 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 8776 enlazada a bbdd Remote/ 29/8/2024 - 11:51:58
+info: Servidor activo en puerto 8080 PID 5956 enlazada a bbdd Remote/ 29/8/2024 - 11:54:30
+info: Servidor activo en puerto 8080 PID 21180 enlazada a bbdd Remote/ 29/8/2024 - 11:55:16
+info: Servidor activo en puerto 8080 PID 18612 enlazada a bbdd Remote/ 29/8/2024 - 11:57:10
+info: Servidor activo en puerto 8080 PID 9168 enlazada a bbdd Remote/ 29/8/2024 - 11:58:06
+info: Servidor activo en puerto 8080 PID 14836 enlazada a bbdd Remote/ 29/8/2024 - 11:58:48
+info: Servidor activo en puerto 8080 PID 12024 enlazada a bbdd Remote/ 29/8/2024 - 12:00:10
+info: Servidor activo en puerto 8080 PID 22116 enlazada a bbdd Remote/ 29/8/2024 - 12:00:16
+info: Servidor activo en puerto 8080 PID 7488 enlazada a bbdd Remote/ 29/8/2024 - 12:01:42
+info: Servidor activo en puerto 8080 PID 17340 enlazada a bbdd Remote/ 29/8/2024 - 12:02:17
+info: Servidor activo en puerto 8080 PID 20488 enlazada a bbdd Remote/ 29/8/2024 - 12:03:57
+info: Servidor activo en puerto 8080 PID 6860 enlazada a bbdd Remote/ 29/8/2024 - 12:07:28
+info: Servidor activo en puerto 8080 PID 18200 enlazada a bbdd Remote/ 29/8/2024 - 12:09:58
+info: Servidor activo en puerto 8080 PID 18796 enlazada a bbdd Remote/ 29/8/2024 - 12:20:37
+info: Servidor activo en puerto 8080 PID 8924 enlazada a bbdd Remote/ 29/8/2024 - 12:22:53
+info: Servidor activo en puerto 8080 PID 15848 enlazada a bbdd Remote/ 29/8/2024 - 12:23:46
+http: POST in /api/auth - at 29/8/2024 - 12:24:16 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 3236 enlazada a bbdd Remote/ 29/8/2024 - 12:25:27
+info: Servidor activo en puerto 8080 PID 20588 enlazada a bbdd Remote/ 29/8/2024 - 12:28:32
+info: Servidor activo en puerto 8080 PID 20880 enlazada a bbdd Remote/ 29/8/2024 - 12:29:04
+info: Servidor activo en puerto 8080 PID 13780 enlazada a bbdd Remote/ 29/8/2024 - 12:30:12
+info: Servidor activo en puerto 8080 PID 11460 enlazada a bbdd Remote/ 29/8/2024 - 12:31:42
+info: Servidor activo en puerto 8080 PID 20468 enlazada a bbdd Remote/ 29/8/2024 - 12:48:05
+http: POST in /api/auth - at 29/8/2024 - 12:49:19 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 14168 enlazada a bbdd Remote/ 29/8/2024 - 12:49:44
+info: Servidor activo en puerto 8080 PID 16272 enlazada a bbdd Remote/ 29/8/2024 - 12:50:53
+info: Servidor activo en puerto 8080 PID 4152 enlazada a bbdd Remote/ 29/8/2024 - 12:54:08
+http: POST in /api/auth - at 29/8/2024 - 12:54:59 user id: 6696bf6661c0f8ef4fb3c0c4 login
+info: Servidor activo en puerto 8080 PID 12388 enlazada a bbdd Remote/ 29/8/2024 - 01:01:57
+info: Servidor activo en puerto 8080 PID 12676 enlazada a bbdd Remote/ 29/8/2024 - 01:02:15
+info: Servidor activo en puerto 8080 PID 14224 enlazada a bbdd Remote/ 29/8/2024 - 01:04:49
+info: Servidor activo en puerto 8080 PID 16944 enlazada a bbdd Remote/ 29/8/2024 - 01:05:57
+info: Servidor activo en puerto 8080 PID 14472 enlazada a bbdd Remote/ 29/8/2024 - 01:08:51
+info: Servidor activo en puerto 8080 PID 19532 enlazada a bbdd Remote/ 29/8/2024 - 01:09:31
+info: Servidor activo en puerto 8080 PID 6736 enlazada a bbdd Remote/ 29/8/2024 - 01:51:34
+info: Servidor activo en puerto 8080 PID 18252 enlazada a bbdd Remote/ 29/8/2024 - 01:52:29
+info: Servidor activo en puerto 8080 PID 8036 enlazada a bbdd Remote/ 29/8/2024 - 01:54:23
+info: Servidor activo en puerto 8080 PID 15368 enlazada a bbdd Remote/ 29/8/2024 - 01:55:18
+http: GET in /api/auth - at 29/8/2024 - 01:59:43 user id: undefined logout
+info: Servidor activo en puerto 8080 PID 18292 enlazada a bbdd Remote/ 29/8/2024 - 02:04:52
+http: GET in /api/auth - at 29/8/2024 - 02:06:51 user id: undefined logout
+info: Servidor activo en puerto 8080 PID 21192 enlazada a bbdd Remote/ 29/8/2024 - 02:08:39
+info: Servidor activo en puerto 8080 PID 11132 enlazada a bbdd Remote/ 29/8/2024 - 02:21:57
+http: GET in /api/auth - at 29/8/2024 - 02:25:34 user id: undefined logout
+info: Servidor activo en puerto 8080 PID 9716 enlazada a bbdd Remote/ 29/8/2024 - 02:25:43
+info: Servidor activo en puerto 8080 PID 5040 enlazada a bbdd Remote/ 29/8/2024 - 02:30:57
+info: Servidor activo en puerto 8080 PID 6520 enlazada a bbdd Remote/ 29/8/2024 - 02:31:22
+info: Servidor activo en puerto 8080 PID 2296 enlazada a bbdd Remote/ 29/8/2024 - 02:32:02
+info: Servidor activo en puerto 8080 PID 5284 enlazada a bbdd Remote/ 29/8/2024 - 02:35:02
+info: Servidor activo en puerto 8080 PID 6160 enlazada a bbdd Remote/ 29/8/2024 - 02:35:10
+info: Servidor activo en puerto 8080 PID 13736 enlazada a bbdd Remote/ 29/8/2024 - 02:39:22
+info: Servidor activo en puerto 8080 PID 19976 enlazada a bbdd Remote/ 29/8/2024 - 02:39:59
+info: Servidor activo en puerto 8080 PID 22488 enlazada a bbdd Remote/ 29/8/2024 - 02:43:48
+info: Servidor activo en puerto 8080 PID 16296 enlazada a bbdd Remote/ 29/8/2024 - 02:46:49
+info: Servidor activo en puerto 8080 PID 21660 enlazada a bbdd Remote/ 29/8/2024 - 02:52:29
+info: Servidor activo en puerto 8080 PID 15720 enlazada a bbdd Remote/ 29/8/2024 - 03:56:07
+http: GET in /api/auth - at 29/8/2024 - 03:57:19 user id: undefined logout
+info: Servidor activo en puerto 8080 PID 22296 enlazada a bbdd Remote/ 29/8/2024 - 03:57:51
+info: Servidor activo en puerto 8080 PID 17624 enlazada a bbdd Remote/ 29/8/2024 - 03:58:31
+http: GET in /api/auth - at 29/8/2024 - 03:59:23 user id: undefined logout
+http: POST in /api/auth - at 29/8/2024 - 03:59:55 user id: 66d0c4f48605e619849c9175 login
+info: Servidor activo en puerto 8080 PID 17572 enlazada a bbdd Remote/ 29/8/2024 - 04:00:08
+info: Servidor activo en puerto 8080 PID 16816 enlazada a bbdd Remote/ 29/8/2024 - 04:14:20
+info: Servidor activo en puerto 8080 PID 19640 enlazada a bbdd Remote/ 29/8/2024 - 04:14:58
+info: Servidor activo en puerto 8080 PID 21104 enlazada a bbdd Remote/ 29/8/2024 - 04:15:25
+http: POST in /api/auth - at 29/8/2024 - 04:15:29 user id: 66d0c8d1ed2a18a3236211fc login
+info: Servidor activo en puerto 8080 PID 13008 enlazada a bbdd Remote/ 29/8/2024 - 04:16:20
+http: POST in /api/auth - at 29/8/2024 - 04:16:35 user id: 66d0c9135585fec1283c8d74 login
+info: Servidor activo en puerto 8080 PID 6612 enlazada a bbdd Remote/ 29/8/2024 - 04:18:01
+http: POST in /api/auth - at 29/8/2024 - 04:18:22 user id: 66d0c97d9c0072899c889a53 login
+info: Servidor activo en puerto 8080 PID 19264 enlazada a bbdd Remote/ 29/8/2024 - 04:19:08
+http: POST in /api/auth - at 29/8/2024 - 04:19:26 user id: 66d0c9bde817ed1a4a8c2b3e login
+info: Servidor activo en puerto 8080 PID 560 enlazada a bbdd Remote/ 29/8/2024 - 04:19:41
+info: Servidor activo en puerto 8080 PID 20932 enlazada a bbdd Remote/ 29/8/2024 - 04:19:51
+http: POST in /api/auth - at 29/8/2024 - 04:20:10 user id: 66d0c9e9beed505b1ec1ddb5 login
+info: Servidor activo en puerto 8080 PID 12528 enlazada a bbdd Remote/ 29/8/2024 - 04:20:23
+info: Servidor activo en puerto 8080 PID 15804 enlazada a bbdd Remote/ 29/8/2024 - 04:21:13
+http: POST in /api/auth - at 29/8/2024 - 04:21:45 user id: 66d0c9e9beed505b1ec1ddb5 login
+http: POST in /api/auth - at 29/8/2024 - 04:22:58 user id: 66d0ca92297b28171bbe6f91 login
+info: Servidor activo en puerto 8080 PID 13216 enlazada a bbdd Remote/ 29/8/2024 - 04:23:29
+http: POST in /api/auth - at 29/8/2024 - 04:23:42 user id: 66d0cabd99d7fd2ab8c3af14 login
+info: Servidor activo en puerto 8080 PID 12380 enlazada a bbdd Remote/ 29/8/2024 - 04:24:11
+http: POST in /api/auth - at 29/8/2024 - 04:24:23 user id: 66d0cae6a3a3fad1579be244 login
+info: Servidor activo en puerto 8080 PID 9736 enlazada a bbdd Remote/ 29/8/2024 - 04:25:39
+http: POST in /api/auth - at 29/8/2024 - 04:26:00 user id: 66d0cb4895cf34d49c74495e login
+info: Servidor activo en puerto 8080 PID 19024 enlazada a bbdd Remote/ 29/8/2024 - 07:34:38
+http: POST in /api/auth - at 29/8/2024 - 07:34:53 user id: 66d0f78c3f3a3e4b4c8558c5 login
+info: Servidor activo en puerto 8080 PID 20404 enlazada a bbdd Remote/ 29/8/2024 - 07:39:46
+http: POST in /api/auth - at 29/8/2024 - 07:40:03 user id: 66d0f8c2418e52bdb086bf18 login
+info: Servidor activo en puerto 8080 PID 12920 enlazada a bbdd Remote/ 29/8/2024 - 07:43:17
+http: POST in /api/auth - at 29/8/2024 - 07:43:36 user id: 66d0f997ee40467f767edcb7 login
+info: Servidor activo en puerto 8080 PID 5516 enlazada a bbdd Remote/ 29/8/2024 - 07:44:38
+http: POST in /api/auth - at 29/8/2024 - 07:44:54 user id: 66d0f9e5ebd3fc89dc886597 login
+info: Servidor activo en puerto 8080 PID 18908 enlazada a bbdd Remote/ 29/8/2024 - 07:47:18
+http: POST in /api/auth - at 29/8/2024 - 07:49:04 user id: 66d0fae0f52cc44981ba1a03 login
+info: Servidor activo en puerto 8080 PID 6576 enlazada a bbdd Remote/ 29/8/2024 - 07:49:33
+http: POST in /api/auth - at 29/8/2024 - 07:50:01 user id: 66d0fb196df410b8e77f0aa8 login
+info: Servidor activo en puerto 8080 PID 2532 enlazada a bbdd Remote/ 29/8/2024 - 07:51:28
+http: POST in /api/auth - at 29/8/2024 - 07:52:31 user id: 66d0fbaf1cc56a4f646bc3d5 login
+info: Servidor activo en puerto 8080 PID 22120 enlazada a bbdd Remote/ 29/8/2024 - 07:53:42
+http: POST in /api/auth - at 29/8/2024 - 07:53:56 user id: 66d0fc0412ec015764b94ec8 login
+info: Servidor activo en puerto 8080 PID 5084 enlazada a bbdd Remote/ 29/8/2024 - 07:54:22
+info: Servidor activo en puerto 8080 PID 8736 enlazada a bbdd Remote/ 29/8/2024 - 08:00:54
+http: POST in /api/auth - at 29/8/2024 - 08:01:06 user id: 66d0fdb1322695c6f4a1c29a login
+info: Servidor activo en puerto 8080 PID 19620 enlazada a bbdd Remote/ 29/8/2024 - 08:01:54
+http: POST in /api/auth - at 29/8/2024 - 08:02:11 user id: 66d0fdf3407d4e05e8881837 login
+info: Servidor activo en puerto 8080 PID 13696 enlazada a bbdd Remote/ 29/8/2024 - 08:02:53
+http: POST in /api/auth - at 29/8/2024 - 08:03:20 user id: 66d0fe371f0f65d418c3c805 login
+info: Servidor activo en puerto 8080 PID 21724 enlazada a bbdd Remote/ 29/8/2024 - 08:03:33
+info: Servidor activo en puerto 8080 PID 6200 enlazada a bbdd Remote/ 29/8/2024 - 08:04:32
+http: POST in /api/auth - at 29/8/2024 - 08:04:43 user id: 66d0fe8b6445c1001167805a login
+info: Servidor activo en puerto 8080 PID 13612 enlazada a bbdd Remote/ 29/8/2024 - 08:05:32
+info: Servidor activo en puerto 8080 PID 21512 enlazada a bbdd Remote/ 29/8/2024 - 08:11:25
+http: POST in /api/auth - at 29/8/2024 - 08:11:55 user id: 66d1003b8f47778c20f24eef login
+info: Servidor activo en puerto 8080 PID 5820 enlazada a bbdd Remote/ 29/8/2024 - 08:15:01
+http: POST in /api/auth - at 29/8/2024 - 08:15:15 user id: 66d101023211f45c56dedd9e login
+info: Servidor activo en puerto 8080 PID 15496 enlazada a bbdd Remote/ 29/8/2024 - 08:15:54
+info: Servidor activo en puerto 8080 PID 6504 enlazada a bbdd Remote/ 29/8/2024 - 08:19:05
+info: Servidor activo en puerto 8080 PID 18104 enlazada a bbdd Remote/ 29/8/2024 - 08:20:23
+info: Servidor activo en puerto 8080 PID 868 enlazada a bbdd Remote/ 29/8/2024 - 08:25:39
+info: Servidor activo en puerto 8080 PID 18584 enlazada a bbdd Remote/ 29/8/2024 - 08:25:53
+http: POST in /api/auth - at 29/8/2024 - 08:26:18 user id: 66d1039a49482a183bc633f0 login
+info: Servidor activo en puerto 8080 PID 3804 enlazada a bbdd Remote/ 30/8/2024 - 09:03:01
+info: Servidor activo en puerto 8080 PID 5864 enlazada a bbdd Remote/ 30/8/2024 - 09:08:04
+info: Servidor activo en puerto 8080 PID 7552 enlazada a bbdd Remote/ 30/8/2024 - 09:11:09
+info: Servidor activo en puerto 8080 PID 17428 enlazada a bbdd Remote/ 30/8/2024 - 09:17:54
+info: Servidor activo en puerto 8080 PID 16492 enlazada a bbdd Remote/ 30/8/2024 - 09:23:06
+info: Servidor activo en puerto 8080 PID 22092 enlazada a bbdd Remote/ 30/8/2024 - 09:24:05
+info: Servidor activo en puerto 8080 PID 17672 enlazada a bbdd Remote/ 30/8/2024 - 09:26:45
+info: Servidor activo en puerto 8080 PID 9572 enlazada a bbdd Remote/ 30/8/2024 - 09:27:17
+info: Servidor activo en puerto 8080 PID 18612 enlazada a bbdd Remote/ 30/8/2024 - 09:29:59
+info: Servidor activo en puerto 8080 PID 20464 enlazada a bbdd Remote/ 30/8/2024 - 09:31:24
+info: Servidor activo en puerto 8080 PID 15296 enlazada a bbdd Remote/ 30/8/2024 - 09:33:43
+info: Servidor activo en puerto 8080 PID 8332 enlazada a bbdd Remote/ 30/8/2024 - 09:35:18
+info: Servidor activo en puerto 8080 PID 20880 enlazada a bbdd Remote/ 30/8/2024 - 09:37:58
+info: Servidor activo en puerto 8080 PID 8564 enlazada a bbdd Remote/ 2/9/2024 - 02:57:48
+info: Servidor activo en puerto 8080 PID 11552 enlazada a bbdd Remote/ 2/9/2024 - 03:03:36
+info: Servidor activo en puerto 8080 PID 16008 enlazada a bbdd Remote/ 2/9/2024 - 03:04:22
+info: Servidor activo en puerto 8080 PID 7752 enlazada a bbdd Remote/ 2/9/2024 - 03:05:06
+info: Servidor activo en puerto 8080 PID 13108 enlazada a bbdd Remote/ 2/9/2024 - 04:00:44
+http: POST in /api/auth - at 2/9/2024 - 04:01:02 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 21952 enlazada a bbdd Remote/ 2/9/2024 - 04:03:33
+info: Servidor activo en puerto 8080 PID 13712 enlazada a bbdd Remote/ 2/9/2024 - 04:04:18
+http: POST in /api/auth - at 2/9/2024 - 04:04:44 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 15140 enlazada a bbdd Remote/ 2/9/2024 - 04:31:55
+http: POST in /api/auth - at 2/9/2024 - 04:32:06 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 12320 enlazada a bbdd Remote/ 2/9/2024 - 10:26:30
+info: Servidor activo en puerto 8080 PID 22720 enlazada a bbdd Remote/ 2/9/2024 - 10:26:41
+http: POST in /api/auth - at 2/9/2024 - 10:26:52 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 12552 enlazada a bbdd Remote/ 2/9/2024 - 10:26:54
+info: Servidor activo en puerto 8080 PID 22612 enlazada a bbdd Remote/ 2/9/2024 - 10:27:14
+info: Servidor activo en puerto 8080 PID 22784 enlazada a bbdd Remote/ 2/9/2024 - 10:27:16
+info: Servidor activo en puerto 8080 PID 4996 enlazada a bbdd Remote/ 2/9/2024 - 10:27:19
+http: POST in /api/auth - at 2/9/2024 - 10:28:07 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 11448 enlazada a bbdd Remote/ 2/9/2024 - 10:28:10
+http: POST in /api/auth - at 2/9/2024 - 10:28:17 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 5204 enlazada a bbdd Remote/ 2/9/2024 - 10:28:19
+http: POST in /api/auth - at 2/9/2024 - 10:28:28 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 284 enlazada a bbdd Remote/ 2/9/2024 - 10:28:30
+http: POST in /api/auth - at 2/9/2024 - 10:28:35 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 20160 enlazada a bbdd Remote/ 2/9/2024 - 10:28:37
+http: POST in /api/auth - at 2/9/2024 - 10:28:45 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 18252 enlazada a bbdd Remote/ 2/9/2024 - 10:28:47
+info: Servidor activo en puerto 8080 PID 5632 enlazada a bbdd Remote/ 2/9/2024 - 10:29:53
+http: POST in /api/auth - at 2/9/2024 - 10:30:09 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 4896 enlazada a bbdd Remote/ 2/9/2024 - 10:30:11
+info: Servidor activo en puerto 8080 PID 7532 enlazada a bbdd Remote/ 2/9/2024 - 10:31:42
+http: POST in /api/auth - at 2/9/2024 - 10:31:47 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 12988 enlazada a bbdd Remote/ 2/9/2024 - 10:31:48
+info: Servidor activo en puerto 8080 PID 23224 enlazada a bbdd Remote/ 2/9/2024 - 10:32:29
+info: Servidor activo en puerto 8080 PID 22708 enlazada a bbdd Remote/ 2/9/2024 - 10:32:47
+http: POST in /api/auth - at 2/9/2024 - 10:32:57 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 15116 enlazada a bbdd Remote/ 2/9/2024 - 10:32:59
+info: Servidor activo en puerto 8080 PID 3804 enlazada a bbdd Remote/ 2/9/2024 - 10:33:23
+http: POST in /api/auth - at 2/9/2024 - 10:33:27 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 23104 enlazada a bbdd Remote/ 2/9/2024 - 10:33:29
+info: Servidor activo en puerto 8080 PID 13204 enlazada a bbdd Remote/ 2/9/2024 - 10:34:23
+info: Servidor activo en puerto 8080 PID 8620 enlazada a bbdd Remote/ 2/9/2024 - 10:35:07
+info: Servidor activo en puerto 8080 PID 5008 enlazada a bbdd Remote/ 2/9/2024 - 10:35:12
+info: Servidor activo en puerto 8080 PID 9408 enlazada a bbdd Remote/ 2/9/2024 - 10:35:26
+info: Servidor activo en puerto 8080 PID 11528 enlazada a bbdd Remote/ 2/9/2024 - 10:45:56
+info: Servidor activo en puerto 8080 PID 280 enlazada a bbdd Remote/ 2/9/2024 - 10:46:06
+info: Servidor activo en puerto 8080 PID 14548 enlazada a bbdd Remote/ 2/9/2024 - 10:46:07
+http: POST in /api/auth - at 2/9/2024 - 10:46:12 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 8008 enlazada a bbdd Remote/ 2/9/2024 - 10:46:13
+http: POST in /api/auth - at 2/9/2024 - 10:46:21 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 22700 enlazada a bbdd Remote/ 2/9/2024 - 10:46:23
+info: Servidor activo en puerto 8080 PID 13072 enlazada a bbdd Remote/ 3/9/2024 - 08:17:42
+info: Servidor activo en puerto 8080 PID 22844 enlazada a bbdd Remote/ 3/9/2024 - 08:17:56
+info: Servidor activo en puerto 8080 PID 10692 enlazada a bbdd Remote/ 3/9/2024 - 08:18:00
+http: POST in /api/auth - at 3/9/2024 - 08:18:06 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 4328 enlazada a bbdd Remote/ 3/9/2024 - 08:18:08
+info: Servidor activo en puerto 8080 PID 10540 enlazada a bbdd Remote/ 3/9/2024 - 08:20:47
+info: Servidor activo en puerto 8080 PID 7084 enlazada a bbdd Remote/ 3/9/2024 - 08:30:45
+http: POST in /api/auth - at 3/9/2024 - 08:31:10 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 9548 enlazada a bbdd Remote/ 3/9/2024 - 08:31:12
+info: Servidor activo en puerto 8080 PID 5972 enlazada a bbdd Remote/ 3/9/2024 - 08:32:34
+info: Servidor activo en puerto 8080 PID 4552 enlazada a bbdd Remote/ 3/9/2024 - 08:33:01
+http: POST in /api/auth - at 3/9/2024 - 08:33:08 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 19668 enlazada a bbdd Remote/ 3/9/2024 - 08:33:09
+info: Servidor activo en puerto 8080 PID 15528 enlazada a bbdd Remote/ 3/9/2024 - 08:34:37
+info: Servidor activo en puerto 8080 PID 9820 enlazada a bbdd Remote/ 3/9/2024 - 08:46:47
+http: POST in /api/auth - at 3/9/2024 - 08:47:00 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 928 enlazada a bbdd Remote/ 3/9/2024 - 08:47:01
+info: Servidor activo en puerto 8080 PID 6504 enlazada a bbdd Remote/ 3/9/2024 - 08:48:02
+info: Servidor activo en puerto 8080 PID 18452 enlazada a bbdd Remote/ 3/9/2024 - 08:48:07
+info: Servidor activo en puerto 8080 PID 9620 enlazada a bbdd Remote/ 3/9/2024 - 08:48:17
+info: Servidor activo en puerto 8080 PID 5456 enlazada a bbdd Remote/ 3/9/2024 - 08:48:34
+http: POST in /api/auth - at 3/9/2024 - 08:48:43 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 12684 enlazada a bbdd Remote/ 3/9/2024 - 08:48:45
+http: POST in /api/auth - at 3/9/2024 - 08:48:55 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 20332 enlazada a bbdd Remote/ 3/9/2024 - 08:48:57
+info: Servidor activo en puerto 8080 PID 15724 enlazada a bbdd Remote/ 3/9/2024 - 08:49:45
+http: POST in /api/auth - at 3/9/2024 - 08:49:53 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 16596 enlazada a bbdd Remote/ 3/9/2024 - 08:49:55
+info: Servidor activo en puerto 8080 PID 8036 enlazada a bbdd Remote/ 3/9/2024 - 08:51:28
+info: Servidor activo en puerto 8080 PID 11924 enlazada a bbdd Remote/ 3/9/2024 - 08:58:57
+info: Servidor activo en puerto 8080 PID 2360 enlazada a bbdd Remote/ 3/9/2024 - 08:59:04
+info: Servidor activo en puerto 8080 PID 10020 enlazada a bbdd Remote/ 3/9/2024 - 09:00:46
+info: Servidor activo en puerto 8080 PID 6024 enlazada a bbdd Remote/ 3/9/2024 - 09:00:54
+info: Servidor activo en puerto 8080 PID 6760 enlazada a bbdd Remote/ 3/9/2024 - 09:01:10
+info: Servidor activo en puerto 8080 PID 5784 enlazada a bbdd Remote/ 3/9/2024 - 09:01:23
+http: POST in /api/auth - at 3/9/2024 - 09:01:34 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 13708 enlazada a bbdd Remote/ 3/9/2024 - 09:01:36
+info: Servidor activo en puerto 8080 PID 3572 enlazada a bbdd Remote/ 3/9/2024 - 09:29:07
+http: POST in /api/auth - at 3/9/2024 - 09:29:13 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 7368 enlazada a bbdd Remote/ 3/9/2024 - 09:29:14
+info: Servidor activo en puerto 8080 PID 2480 enlazada a bbdd Remote/ 3/9/2024 - 09:29:28
+info: Servidor activo en puerto 8080 PID 11384 enlazada a bbdd Remote/ 3/9/2024 - 09:30:23
+info: Servidor activo en puerto 8080 PID 12264 enlazada a bbdd Remote/ 3/9/2024 - 09:30:27
+info: Servidor activo en puerto 8080 PID 8472 enlazada a bbdd Remote/ 3/9/2024 - 09:30:34
+info: Servidor activo en puerto 8080 PID 20632 enlazada a bbdd Remote/ 3/9/2024 - 09:31:43
+info: Servidor activo en puerto 8080 PID 5568 enlazada a bbdd Remote/ 3/9/2024 - 09:31:49
+info: Servidor activo en puerto 8080 PID 5368 enlazada a bbdd Remote/ 3/9/2024 - 09:32:01
+info: Servidor activo en puerto 8080 PID 5284 enlazada a bbdd Remote/ 3/9/2024 - 09:32:13
+info: Servidor activo en puerto 8080 PID 7176 enlazada a bbdd Remote/ 3/9/2024 - 09:32:18
+info: Servidor activo en puerto 8080 PID 8092 enlazada a bbdd Remote/ 3/9/2024 - 09:32:21
+info: Servidor activo en puerto 8080 PID 17720 enlazada a bbdd Remote/ 3/9/2024 - 09:32:36
+info: Servidor activo en puerto 8080 PID 17552 enlazada a bbdd Remote/ 3/9/2024 - 09:33:06
+info: Servidor activo en puerto 8080 PID 12276 enlazada a bbdd Remote/ 3/9/2024 - 09:33:37
+info: Servidor activo en puerto 8080 PID 5872 enlazada a bbdd Remote/ 3/9/2024 - 09:34:58
+info: Servidor activo en puerto 8080 PID 2780 enlazada a bbdd Remote/ 3/9/2024 - 09:35:42
+info: Servidor activo en puerto 8080 PID 14960 enlazada a bbdd Remote/ 3/9/2024 - 09:36:05
+info: Servidor activo en puerto 8080 PID 7788 enlazada a bbdd Remote/ 3/9/2024 - 09:36:13
+info: Servidor activo en puerto 8080 PID 6096 enlazada a bbdd Remote/ 3/9/2024 - 09:36:34
+info: Servidor activo en puerto 8080 PID 20204 enlazada a bbdd Remote/ 3/9/2024 - 09:38:14
+info: Servidor activo en puerto 8080 PID 20564 enlazada a bbdd Remote/ 3/9/2024 - 09:38:48
+http: POST in /api/auth - at 3/9/2024 - 09:38:59 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 15956 enlazada a bbdd Remote/ 3/9/2024 - 09:39:01
+info: POST in /api/products - at 3/9/2024 - 09:39:26 product id: 66d7037e14f4132519dd34b1 aggregated by ac@gmail.com
+info: Servidor activo en puerto 8080 PID 6000 enlazada a bbdd Remote/ 3/9/2024 - 09:39:28
+info: Servidor activo en puerto 8080 PID 20056 enlazada a bbdd Remote/ 3/9/2024 - 09:40:55
+info: Servidor activo en puerto 8080 PID 12052 enlazada a bbdd Remote/ 3/9/2024 - 09:49:59
+info: Servidor activo en puerto 8080 PID 9056 enlazada a bbdd Remote/ 3/9/2024 - 09:50:06
+http: POST in /api/auth - at 3/9/2024 - 09:50:50 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 22220 enlazada a bbdd Remote/ 3/9/2024 - 09:50:52
+info: POST in /api/products - at 3/9/2024 - 09:51:42 product id: 66d7065e75237a6a3832c272 aggregated by ac@gmail.com
+info: Servidor activo en puerto 8080 PID 13116 enlazada a bbdd Remote/ 3/9/2024 - 09:51:44
+info: Servidor activo en puerto 8080 PID 23464 enlazada a bbdd Remote/ 3/9/2024 - 09:52:55
+info: Servidor activo en puerto 8080 PID 22684 enlazada a bbdd Remote/ 3/9/2024 - 09:55:01
+info: Servidor activo en puerto 8080 PID 15668 enlazada a bbdd Remote/ 3/9/2024 - 09:56:09
+info: Servidor activo en puerto 8080 PID 5296 enlazada a bbdd Remote/ 3/9/2024 - 09:56:56
+info: Servidor activo en puerto 8080 PID 5668 enlazada a bbdd Remote/ 3/9/2024 - 09:57:04
+info: Servidor activo en puerto 8080 PID 23316 enlazada a bbdd Remote/ 3/9/2024 - 09:57:08
+info: Servidor activo en puerto 8080 PID 8064 enlazada a bbdd Remote/ 3/9/2024 - 09:57:10
+info: Servidor activo en puerto 8080 PID 15480 enlazada a bbdd Remote/ 3/9/2024 - 09:57:13
+info: Servidor activo en puerto 8080 PID 9452 enlazada a bbdd Remote/ 3/9/2024 - 09:57:15
+info: Servidor activo en puerto 8080 PID 22560 enlazada a bbdd Remote/ 3/9/2024 - 09:57:40
+info: Servidor activo en puerto 8080 PID 6344 enlazada a bbdd Remote/ 3/9/2024 - 09:59:45
+info: Servidor activo en puerto 8080 PID 7840 enlazada a bbdd Remote/ 3/9/2024 - 10:03:18
+info: Servidor activo en puerto 8080 PID 9032 enlazada a bbdd Remote/ 3/9/2024 - 10:03:43
+info: Servidor activo en puerto 8080 PID 6372 enlazada a bbdd Remote/ 3/9/2024 - 10:16:41
+info: Servidor activo en puerto 8080 PID 14544 enlazada a bbdd Remote/ 3/9/2024 - 10:16:50
+info: Servidor activo en puerto 8080 PID 19572 enlazada a bbdd Remote/ 3/9/2024 - 10:16:55
+info: Servidor activo en puerto 8080 PID 16452 enlazada a bbdd Remote/ 3/9/2024 - 10:16:57
+info: Servidor activo en puerto 8080 PID 17808 enlazada a bbdd Remote/ 3/9/2024 - 10:17:00
+info: Servidor activo en puerto 8080 PID 11252 enlazada a bbdd Remote/ 3/9/2024 - 10:17:02
+info: Servidor activo en puerto 8080 PID 20264 enlazada a bbdd Remote/ 3/9/2024 - 10:17:23
+info: Servidor activo en puerto 8080 PID 20808 enlazada a bbdd Remote/ 3/9/2024 - 10:17:46
+info: Servidor activo en puerto 8080 PID 22844 enlazada a bbdd Remote/ 3/9/2024 - 10:17:50
+info: Servidor activo en puerto 8080 PID 1168 enlazada a bbdd Remote/ 3/9/2024 - 10:19:18
+info: Servidor activo en puerto 8080 PID 4976 enlazada a bbdd Remote/ 3/9/2024 - 10:25:20
+info: Servidor activo en puerto 8080 PID 7928 enlazada a bbdd Remote/ 3/9/2024 - 10:25:22
+info: Servidor activo en puerto 8080 PID 2472 enlazada a bbdd Remote/ 3/9/2024 - 10:26:46
+info: Servidor activo en puerto 8080 PID 19572 enlazada a bbdd Remote/ 3/9/2024 - 10:27:06
+http: POST in /api/auth - at 3/9/2024 - 10:27:13 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 260 enlazada a bbdd Remote/ 3/9/2024 - 10:27:15
+info: Servidor activo en puerto 8080 PID 5328 enlazada a bbdd Remote/ 3/9/2024 - 10:28:26
+info: Servidor activo en puerto 8080 PID 13416 enlazada a bbdd Remote/ 3/9/2024 - 10:28:29
+info: Servidor activo en puerto 8080 PID 7384 enlazada a bbdd Remote/ 3/9/2024 - 10:28:32
+info: Servidor activo en puerto 8080 PID 13676 enlazada a bbdd Remote/ 3/9/2024 - 10:28:34
+info: Servidor activo en puerto 8080 PID 12408 enlazada a bbdd Remote/ 3/9/2024 - 10:28:37
+info: Servidor activo en puerto 8080 PID 8632 enlazada a bbdd Remote/ 3/9/2024 - 10:29:01
+info: Servidor activo en puerto 8080 PID 7748 enlazada a bbdd Remote/ 3/9/2024 - 10:30:00
+info: Servidor activo en puerto 8080 PID 13088 enlazada a bbdd Remote/ 3/9/2024 - 10:30:22
+info: Servidor activo en puerto 8080 PID 11568 enlazada a bbdd Remote/ 3/9/2024 - 10:30:31
+info: Servidor activo en puerto 8080 PID 22380 enlazada a bbdd Remote/ 3/9/2024 - 10:30:35
+info: Servidor activo en puerto 8080 PID 5316 enlazada a bbdd Remote/ 3/9/2024 - 10:30:58
+info: Servidor activo en puerto 8080 PID 15140 enlazada a bbdd Remote/ 3/9/2024 - 10:31:52
+info: Servidor activo en puerto 8080 PID 15196 enlazada a bbdd Remote/ 3/9/2024 - 10:32:13
+info: Servidor activo en puerto 8080 PID 22716 enlazada a bbdd Remote/ 3/9/2024 - 10:32:42
+info: Servidor activo en puerto 8080 PID 12212 enlazada a bbdd Remote/ 3/9/2024 - 10:32:54
+info: Servidor activo en puerto 8080 PID 10044 enlazada a bbdd Remote/ 3/9/2024 - 10:33:23
+info: Servidor activo en puerto 8080 PID 3512 enlazada a bbdd Remote/ 3/9/2024 - 10:34:45
+info: Servidor activo en puerto 8080 PID 16652 enlazada a bbdd Remote/ 3/9/2024 - 10:37:49
+info: Servidor activo en puerto 8080 PID 11796 enlazada a bbdd Remote/ 3/9/2024 - 10:37:52
+info: Servidor activo en puerto 8080 PID 18632 enlazada a bbdd Remote/ 3/9/2024 - 10:37:54
+info: Servidor activo en puerto 8080 PID 20272 enlazada a bbdd Remote/ 3/9/2024 - 10:37:58
+info: Servidor activo en puerto 8080 PID 4420 enlazada a bbdd Remote/ 3/9/2024 - 10:38:01
+info: Servidor activo en puerto 8080 PID 14792 enlazada a bbdd Remote/ 3/9/2024 - 10:38:03
+info: Servidor activo en puerto 8080 PID 2380 enlazada a bbdd Remote/ 3/9/2024 - 10:38:05
+info: Servidor activo en puerto 8080 PID 13304 enlazada a bbdd Remote/ 3/9/2024 - 10:38:08
+info: Servidor activo en puerto 8080 PID 20744 enlazada a bbdd Remote/ 3/9/2024 - 10:38:11
+info: Servidor activo en puerto 8080 PID 21704 enlazada a bbdd Remote/ 3/9/2024 - 10:38:13
+info: Servidor activo en puerto 8080 PID 13000 enlazada a bbdd Remote/ 3/9/2024 - 10:38:42
+info: Servidor activo en puerto 8080 PID 19588 enlazada a bbdd Remote/ 3/9/2024 - 10:38:57
+info: Servidor activo en puerto 8080 PID 16260 enlazada a bbdd Remote/ 3/9/2024 - 10:39:07
+info: Servidor activo en puerto 8080 PID 6060 enlazada a bbdd Remote/ 3/9/2024 - 10:39:45
+info: Servidor activo en puerto 8080 PID 1548 enlazada a bbdd Remote/ 3/9/2024 - 10:40:35
+info: Servidor activo en puerto 8080 PID 22680 enlazada a bbdd Remote/ 3/9/2024 - 10:40:46
+http: POST in /api/auth - at 3/9/2024 - 10:40:55 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 18212 enlazada a bbdd Remote/ 3/9/2024 - 10:40:57
+info: Servidor activo en puerto 8080 PID 20644 enlazada a bbdd Remote/ 3/9/2024 - 10:41:17
+info: Servidor activo en puerto 8080 PID 17468 enlazada a bbdd Remote/ 3/9/2024 - 10:41:28
+info: Servidor activo en puerto 8080 PID 15996 enlazada a bbdd Remote/ 3/9/2024 - 10:41:34
+info: Servidor activo en puerto 8080 PID 11536 enlazada a bbdd Remote/ 3/9/2024 - 10:42:04
+info: Servidor activo en puerto 8080 PID 14700 enlazada a bbdd Remote/ 3/9/2024 - 10:42:36
+info: Servidor activo en puerto 8080 PID 2544 enlazada a bbdd Remote/ 3/9/2024 - 10:42:47
+info: Servidor activo en puerto 8080 PID 22980 enlazada a bbdd Remote/ 3/9/2024 - 10:43:15
+info: Servidor activo en puerto 8080 PID 15756 enlazada a bbdd Remote/ 3/9/2024 - 10:43:24
+info: Servidor activo en puerto 8080 PID 11664 enlazada a bbdd Remote/ 3/9/2024 - 10:43:30
+info: Servidor activo en puerto 8080 PID 8648 enlazada a bbdd Remote/ 3/9/2024 - 10:43:34
+info: Servidor activo en puerto 8080 PID 18296 enlazada a bbdd Remote/ 3/9/2024 - 10:43:52
+info: Servidor activo en puerto 8080 PID 9120 enlazada a bbdd Remote/ 3/9/2024 - 10:44:49
+info: Servidor activo en puerto 8080 PID 16620 enlazada a bbdd Remote/ 3/9/2024 - 10:45:18
+info: Servidor activo en puerto 8080 PID 17332 enlazada a bbdd Remote/ 3/9/2024 - 10:45:22
+info: Servidor activo en puerto 8080 PID 18972 enlazada a bbdd Remote/ 3/9/2024 - 10:45:27
+info: Servidor activo en puerto 8080 PID 6308 enlazada a bbdd Remote/ 3/9/2024 - 10:45:32
+info: Servidor activo en puerto 8080 PID 22068 enlazada a bbdd Remote/ 3/9/2024 - 10:50:43
+info: Servidor activo en puerto 8080 PID 13556 enlazada a bbdd Remote/ 3/9/2024 - 10:53:24
+info: Servidor activo en puerto 8080 PID 22532 enlazada a bbdd Remote/ 3/9/2024 - 10:53:36
+info: Servidor activo en puerto 8080 PID 13708 enlazada a bbdd Remote/ 3/9/2024 - 10:54:20
+info: Servidor activo en puerto 8080 PID 5644 enlazada a bbdd Remote/ 3/9/2024 - 10:54:44
+info: Servidor activo en puerto 8080 PID 13012 enlazada a bbdd Remote/ 3/9/2024 - 03:43:43
+info: Servidor activo en puerto 8080 PID 7616 enlazada a bbdd Remote/ 3/9/2024 - 03:43:53
+http: POST in /api/auth - at 3/9/2024 - 03:44:18 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 20076 enlazada a bbdd Remote/ 3/9/2024 - 03:44:19
+info: Servidor activo en puerto 8080 PID 6832 enlazada a bbdd Remote/ 3/9/2024 - 03:44:57
+info: Servidor activo en puerto 8080 PID 9276 enlazada a bbdd Remote/ 3/9/2024 - 03:46:49
+info: Servidor activo en puerto 8080 PID 19776 enlazada a bbdd Remote/ 3/9/2024 - 03:46:55
+http: POST in /api/auth - at 3/9/2024 - 03:47:01 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 2512 enlazada a bbdd Remote/ 3/9/2024 - 03:47:02
+info: Servidor activo en puerto 8080 PID 8284 enlazada a bbdd Remote/ 3/9/2024 - 03:47:05
+info: Servidor activo en puerto 8080 PID 11664 enlazada a bbdd Remote/ 3/9/2024 - 03:47:32
+http: POST in /api/auth - at 3/9/2024 - 03:47:45 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 5872 enlazada a bbdd Remote/ 3/9/2024 - 03:47:46
+info: Servidor activo en puerto 8080 PID 20072 enlazada a bbdd Remote/ 3/9/2024 - 03:58:08
+http: POST in /api/auth - at 3/9/2024 - 03:58:45 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 2076 enlazada a bbdd Remote/ 3/9/2024 - 03:58:46
+http: POST in /api/auth - at 3/9/2024 - 03:59:34 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 20072 enlazada a bbdd Remote/ 3/9/2024 - 03:59:36
+http: POST in /api/auth - at 3/9/2024 - 03:59:48 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 284 enlazada a bbdd Remote/ 3/9/2024 - 03:59:49
+info: Servidor activo en puerto 8080 PID 18768 enlazada a bbdd Remote/ 4/9/2024 - 09:21:50
+info: Servidor activo en puerto 8080 PID 7916 enlazada a bbdd Remote/ 4/9/2024 - 09:22:13
+info: Servidor activo en puerto 8080 PID 15468 enlazada a bbdd Remote/ 4/9/2024 - 09:22:22
+info: Servidor activo en puerto 8080 PID 21644 enlazada a bbdd Remote/ 4/9/2024 - 09:22:42
+http: POST in /api/auth - at 4/9/2024 - 09:22:51 user id: 66d5fe2f763dfba2adb62e3c login
+info: Servidor activo en puerto 8080 PID 13344 enlazada a bbdd Remote/ 4/9/2024 - 09:22:52
+info: Servidor activo en puerto 8080 PID 15760 enlazada a bbdd Remote/ 4/9/2024 - 09:23:08
+info: Servidor activo en puerto 8080 PID 20760 enlazada a bbdd Remote/ 4/9/2024 - 09:23:26
+info: Servidor activo en puerto 8080 PID 21284 enlazada a bbdd Remote/ 4/9/2024 - 09:25:56
+info: Servidor activo en puerto 8080 PID 23272 enlazada a bbdd Remote/ 4/9/2024 - 09:27:18
+info: Servidor activo en puerto 8080 PID 17528 enlazada a bbdd Remote/ 4/9/2024 - 09:27:29

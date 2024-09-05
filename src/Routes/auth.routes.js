@@ -1,6 +1,5 @@
 import CustomRouter from './custom.router.js';
 import passport from "passport";
-import config from '../config.js';
 import UsersManager from "../controllers/usersManager.js";
 import CartService from "../dao/mongo/carts.dao.mdb.js";
 import { verifyRequired, isValidPassword, createHash, verifySession, handlePolicies } from "../services/utils.js";
@@ -18,21 +17,21 @@ export default class AuthRouter extends CustomRouter {
         this.post('/register', verifyRequired(['firstName', 'lastName', 'email', 'password', 'age']), async (req, res) => {
 
             try{
-                const { firstName, lastName, age, email, password } = req.body;
+                const { firstName, lastName, age, email, password, role } = req.body;
                 const foundUser = await manager.getOne({ email: email });
                 
                 const passHash = createHash(password);
                 
                 let cartId = await service.addService();
                 cartId = cartId._id.toString();
-
+                role ? role : 'user';
                 if (!foundUser) {
-                    await manager.add({ firstName, lastName, age, email, password: passHash, cartId});
-                    req.session.user = { firstName: firstName, lastName: lastName, age: age, email: email, cartId: cartId};
+                    await manager.add({ firstName, lastName, age, role, email, password: passHash, cartId});
+                    req.session.user = { firstName: firstName, lastName: lastName, age: age, role: role, email: email, cartId: cartId};
                     
-                    res.sendSuccess(req.session.user);
                     req.session.save(err => {
                         if (err) return res.sendServerError('error');
+                        res.sendSuccess(req.session.user);
                         // res.redirect('/profile');
                     })
                 } else {
@@ -62,25 +61,25 @@ export default class AuthRouter extends CustomRouter {
                 const { email, password } = req.body;
                 
                 if (!email || !password) {
-                    res.sendUserError( 'All fields are required' );
+                    res.sendUserError( 'Todos los campos deben ser completados' );
                 }
-                
                 const foundUser = await manager.getOne({ email: email });
-                if (!foundUser) {
-                    res.sendUserError( 'User not found' );
-                }
                 
-                if (foundUser && isValidPassword (password, foundUser.password)) {
-                    
+                if (foundUser && isValidPassword (password, foundUser.password) && foundUser.active === true) {
                     const { password, ...filteredFoundUser } = foundUser;
+                    await manager.update({_id: filteredFoundUser._id}, {
+                        last_connection: new Date()}, { new: true})
                     req.session.user = filteredFoundUser;
-                    res.sendSuccess(req.session.user);
                     req.session.save(err => {
                         if (err) return res.sendServerError( 'error' );
-                        
                         // res.redirect('/products');
+                        res.sendSuccess(req.session.user);
+                        
                     })
+                    
                     req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
+                } else {
+                    res.sendUserError( 'No se encuentra el usuario' );
                 }
             }
             catch (err) {
@@ -93,6 +92,7 @@ export default class AuthRouter extends CustomRouter {
                 req.session.user = req.user;
                 req.session.save(err => {
                     if (err) return res.sendServerError( 'error' );
+                    res.sendSuccess(req.session.user);
                     // res.redirect('/products');
                 });
                 req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
@@ -134,7 +134,7 @@ export default class AuthRouter extends CustomRouter {
         
         this.get('/current', verifySession, handlePolicies (['admin']), async (req, res) => {
             try {
-                res.sendSuccess('Bienvenido ' + req.session.user.firstName);
+                res.sendSuccess(req.session.user);
             } catch (err) {
                 res.sendServerError( 'error' );
             }
@@ -151,11 +151,11 @@ export default class AuthRouter extends CustomRouter {
         
         this.get('/logout', async (req, res) => {
             try {
-                req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} logout`);
                 req.session.destroy((err) => {
                     if (err) return res.sendServerError( 'Error al ejecutar logout' );
                     res.redirect('/login');
                 });
+                req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} logout`);
             } catch (err) {
                 res.sendServerError( 'error' );
             }

@@ -3,8 +3,8 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 
 mongoose.pluralize(null);
 
-const collection = 'users_test';
-// const collection = 'users';
+// const collection = 'users_test';
+const collection = 'users';
 
 const schema = new mongoose.Schema({
     firstName: {
@@ -32,6 +32,24 @@ const schema = new mongoose.Schema({
         type: String,
         enum: ['admin', 'premium', 'user'],
         default: 'user'
+    },
+    documents: [
+        {
+            name: {
+                type: String
+            },
+            reference: {
+                type: String
+            }
+        }
+    ],
+    last_connection: {
+        type: Date,
+        default: Date.now
+    },
+    active: { 
+        type: Boolean, 
+        default: true 
     },
     cartId: {
         type: mongoose.Schema.Types.ObjectId,

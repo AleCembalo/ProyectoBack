@@ -6,8 +6,8 @@ import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
-// import FileStore from 'session-file-store';
-import MongoStore from 'connect-mongo';
+import FileStore from 'session-file-store';
+// import MongoStore from 'connect-mongo';
 import passport from 'passport';
 
 import initSocket from './services/sockets.js';
@@ -19,6 +19,7 @@ import TestRouter from './routes/test.routes.js';
 import CookiesRouter from './routes/cookies.routes.js';
 import UsersRouter from './routes/users.routes.js';
 import ViewsRouter from './routes/views.routes.js';
+import UploadsRouter from './routes/uploads.routes.js';
 import MongoSingleton from './services/mongo.singleton.js';
 import errorsHandler from './services/errors.handler.js';
 import addLogger, { logger } from './services/logger.js';
@@ -39,14 +40,14 @@ const expressInstance = app.listen(config.PORT, async () => {
     }));
     app.use(cookieParser(config.SECRET));
 
-    // const fileStorage = FileStore(session);
+    const fileStorage = FileStore(session);
     app.use(session({
-        // store: new fileStorage({
-        //     path: './sessions',
-        //     ttl: 600,
-        //     retries: 0
-        // }),
-        store: MongoStore.create({ mongoUrl: config.MONGODB_URI, ttl: 600 }),
+        store: new fileStorage({
+            path: './sessions',
+            ttl: 600,
+            retries: 0
+        }),
+        // store: MongoStore.create({ mongoUrl: config.MONGODB_URI, ttl: 600 }),
         secret: config.SECRET,
         resave: true,
         saveUninitialized: true
@@ -67,6 +68,7 @@ const expressInstance = app.listen(config.PORT, async () => {
     app.use('/api/test', new TestRouter().getRouter());
     app.use('/api/users', new UsersRouter().getRouter());
     app.use('/api/carts', new CartsRouter().getRouter());
+    app.use('/uploads', new UploadsRouter().getRouter());
     app.use('/static', express.static(`${config.DIRNAME}/public`));
     app.use(errorsHandler);
 

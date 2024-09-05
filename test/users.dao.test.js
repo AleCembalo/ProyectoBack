@@ -6,7 +6,7 @@ const connection  = await mongoose.connect('mongodb+srv://CoderBack:coderback202
 const dao = new UsersService();
 const expect = chai.expect;
 const cartId = new mongoose.Types.ObjectId();
-const testUser = { firstName: 'Juana', lastName: 'Cembalo', email: 'jcembalo@gmail.com', age: 30, role: 'premium', password: 'abc123', cartId: cartId };
+const testUser = { firstName: 'Juana', lastName: 'Cembalo', email: 'jj@gmail.com', age: 30, role: 'premium', password: 'abc123', cartId: cartId };
 
 describe('Test DAO Users', function () {
 

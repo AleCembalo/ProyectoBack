@@ -172,13 +172,13 @@
     <div class="mt-5">
         <h3>Nuevo producto</h3>
 
-        <form id="productForm">
+        <form id="productForm" action="/api/products" method="POST" enctype="multipart/form-data">
             <input class="form-control" type="text" id="title" name="title" placeholder="Title" style="width: 300px;"><br />
             <input class="form-control" type="text" id="description" name="description" placeholder="Description" style="width: 300px;"><br />
             <input class="form-control" type="number" id="price" name="price" placeholder="Price" style="width: 100px;"><br />
             <input class="form-control" type="text" id="category" name="category" placeholder="Category" style="width: 300px;"><br />
             <input class="form-control" type="boolean" id="status" name="status" placeholder="Status" style="width: 300px;"><br />
-            <button class="btn btn-success">upload</button><br><input class="form-control" type="text" id="thumbnails" name="thumbnails" placeholder="Thumbnails" style="width: 300px;"><br />
+            <button class="btn btn-success">upload</button><br><input class="form-control" type="file" id="thumbnails" name="thumbnails" placeholder="Thumbnails" style="width: 300px;" multiple><br />
             <input class="form-control" type="text" id="code" name="code" placeholder="Code" style="width: 300px;"><br />
             <input class="form-control" type="number" id="stock" name="stock" placeholder="stock" style="width: 300px;"><br />
 
@@ -202,7 +202,7 @@
             
         });
 
-        productForm.addEventListener('submit', async (evt) => {
+        {{!-- productForm.addEventListener('submit', async (evt) => {
             evt.preventDefault();
 
             const title = document.getElementById('title').value;
@@ -230,7 +230,7 @@
             });
             const result = await process.json();
             console.log(result);
-        });
+        }); --}}
 
     </script> 
 

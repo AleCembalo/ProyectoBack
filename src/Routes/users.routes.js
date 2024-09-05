@@ -1,6 +1,7 @@
 import CustomRouter from './custom.router.js';
 import UsersManager from '../controllers/usersManager.js';
 import CartService from "../dao/mongo/carts.dao.mdb.js";
+import { uploader } from '../services/uploader.js';
 import nodemailer from 'nodemailer';
 import config from '../config.js';
 import { handlePolicies, verifyRequired, createToken, isValidPassword, createHash} from '../services/utils.js';
@@ -140,7 +141,28 @@ export default class UsersRouter extends CustomRouter {
             }
         });
 
-        this.put('/premium/:uid', async (req, res) => {
+        this.post('/:uid/documents', uploader.array('documents', 3), async (req, res) => {
+            
+            if (!config.MONGODB_ID_REGEX.test(req.params.uid)) {
+                res.sendUserError( 'Id no válido' );
+            }
+            try {
+                const { uid } = req.params;
+                const files = req.files;
+
+                const user = await manager.uploadDocuments(uid, files);
+
+                if (user) {
+                    res.sendSuccess('Documentos actualizados correctamente');
+                } else {
+                    res.sendUserError('No se encontró el usuario');
+                }
+            } catch (err) {
+
+            }
+        });
+
+        this.put('/premium/:uid', handlePolicies (['admin']), async (req, res) => {
 
             if (!config.MONGODB_ID_REGEX.test(req.params.uid)) {
                 res.sendUserError( 'Id no válido' );

@@ -81,6 +81,14 @@ class UsersManager {
             return err.message;
         }
     };
+
+    uploadDocuments = async (uid, files) =>  {
+        try {
+            return await service.uploadDocumentsService(uid, files);
+        } catch (err) {
+            return err.message;
+        }
+    };
 }
 
 export default UsersManager;

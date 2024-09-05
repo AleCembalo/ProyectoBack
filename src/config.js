@@ -20,7 +20,7 @@ const config = {
     PORT: process.env.PORT || clOptions.port || 5050,
     DIRNAME: url.fileURLToPath(new URL('../src/', import.meta.url)),
     get UPLOAD_DIR() {
-        return `${this.DIRNAME}/public/img`
+        return `${this.DIRNAME}/uploads`
     },
     MONGODB_URI: process.env.MONGODB_URI,
     PERSISTENCE: process.env.PERSISTENCE || 'mongo',

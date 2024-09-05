@@ -67,7 +67,7 @@ export default class ViewsRouter extends CustomRouter {
         });
         
         this.get('/login', (req, res) => {
-            if (req.session.user){ 
+            if (req.session.user){
                 res.redirect('/profile');
             }
             res.render('login', { showError: req.query.error ? true: false, errorMessage: req.query.error });
@@ -86,6 +86,19 @@ export default class ViewsRouter extends CustomRouter {
             const user = req.user;
             if (!req.user) return res.redirect('/restore');
             res.render('restorepassword', { user: user });
+        });
+
+        this.get('/uploaddocuments', (req, res) => {
+            if (!req.session.user) return res.redirect('/login');
+            res.render('uploaddocuments', { user: req.session.user });
+        });
+
+        this.get('/uploadproductsimages', (req, res) => {
+            res.render('uploadproductsimages', { });
+        });
+
+        this.get('/uploadprofilesimages', (req, res) => {
+            res.render('uploadprofilesimages', { });
         });
     }
 }

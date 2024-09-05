@@ -77,6 +77,29 @@ class UsersService {
             return err.message;
         };
     };
+
+    uploadDocumentsService = async (uid, documents) => {
+        try {
+            const user = await usersModel.findById(uid);
+            if (!user) {
+                res.sendUserError('No se encontró el usuario');
+            }
+    
+            user.documents = user.documents || [];
+    
+            documents.forEach(doc => {
+                user.documents.push({
+                    name: doc.originalname,
+                    reference: doc.path 
+                });
+            });
+    
+            const updatedUser = await user.save();
+            res.sendSuccess(updatedUser);
+        } catch (err) {
+            return err.message;
+        };
+    };
 }
 
 export default UsersService;

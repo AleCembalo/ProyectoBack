@@ -20,7 +20,7 @@ const initAuthStrategies = () => {
             try {
                 
                 const foundUser = await manager.getOne({ email: username });
-
+                
                 if (foundUser && isValidPassword(password, foundUser.password)) {
                     
                     const { password, ...filteredFoundUser } = foundUser;

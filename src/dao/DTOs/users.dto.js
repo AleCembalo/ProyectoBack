@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { createHash } from '../../services/utils.js'
 
 class UsersDto {
     
@@ -9,7 +8,11 @@ class UsersDto {
         this.lastName = user.lastName.toUpperCase();
         this.email = user.email;
         this.age = user.age;
-        this.password = createHash(user.password);
+        this.role = user.role;
+        this.documents = user.documents;
+        this.last_connection = user.last_connection;
+        this.active = user.active;
+        this.password = user.password;
         this.cartId = user.cartId instanceof mongoose.Types.ObjectId ? user.cartId : new mongoose.Types.ObjectId (user.cartId);
     }
 }

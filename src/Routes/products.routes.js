@@ -48,10 +48,10 @@ export default class ProductsRouter extends CustomRouter {
             res.json(mockProducts);
         });
 
-        this.post ('/', verifySession, verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin', 'premium']), uploader.single('thumbnails'), async (req, res) => {
+        this.post ('/', verifySession, verifyRequired(['title', 'description', 'price', 'category', 'status', 'thumbnails', 'code', 'stock']), handlePolicies (['admin', 'premium']), uploader.array('thumbnails', 3), async (req, res) => {
             
             const user = req.session.user;
-
+            
             try {
                 const socketServer = req.app.get('socketServer');
                 
@@ -70,9 +70,9 @@ export default class ProductsRouter extends CustomRouter {
                 };
                 
                 const product = await manager.add(newProduct);
-
+                
                 req.logger.info(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} product id: ${product._id} aggregated by ${req.session.user.email}`);
-                res.sendSuccess( `se agrego ${product} correctamente` );
+                res.sendSuccess( `se agrego ${product} correctamente`, req.files );
                 socketServer.emit('newProduct', (req.body));
                 
             } catch (err) {

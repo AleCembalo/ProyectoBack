@@ -1,14 +1,16 @@
 import multer from 'multer';
+import path from 'path';
 import config from '../config.js';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, `${config.DIRNAME}/${config.UPLOAD_DIR}`)
-        // cb(null, config.UPLOAD_DIR)
+        const subFolder = path.basename(req.path)
+        cb(null, `${config.UPLOAD_DIR}/${subFolder}/`)
     },
 
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        // cb(null, file.originalname);
+        cb(null, `${Date.now()}-${file.originalname}`)
     }
 });
 

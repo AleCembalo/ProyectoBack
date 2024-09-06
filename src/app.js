@@ -12,17 +12,19 @@ import passport from 'passport';
 
 import initSocket from './services/sockets.js';
 import config from './config.js';
-import ProductsRouter from './routes/products.routes.js';
-import AuthRouter from './routes/auth.routes.js';
-import CartsRouter from './routes/carts.routes.js';
-import TestRouter from './routes/test.routes.js';
-import CookiesRouter from './routes/cookies.routes.js';
-import UsersRouter from './routes/users.routes.js';
-import ViewsRouter from './routes/views.routes.js';
-import UploadsRouter from './routes/uploads.routes.js';
+import ProductsRouter from './Routes/products.routes.js';
+import AuthRouter from './Routes/auth.routes.js';
+import CartsRouter from './Routes/carts.routes.js';
+import TestRouter from './Routes/test.routes.js';
+import CookiesRouter from './Routes/cookies.routes.js';
+import UsersRouter from './Routes/users.routes.js';
+import ViewsRouter from './Routes/views.routes.js';
+import UploadsRouter from './Routes/uploads.routes.js';
 import MongoSingleton from './services/mongo.singleton.js';
 import errorsHandler from './services/errors.handler.js';
-import addLogger, { logger } from './services/logger.js';
+import addLogger, {
+    logger
+} from './services/logger.js';
 
 const app = express();
 
@@ -33,7 +35,10 @@ const expressInstance = app.listen(config.PORT, async () => {
     const socketServer = initSocket(expressInstance);
     app.set('socketServer', socketServer);
 
-    app.use(cors({ origin: '*', methods: 'GET,POST,PUT,DELETE' }));
+    app.use(cors({
+        origin: '*',
+        methods: 'GET,POST,PUT,DELETE'
+    }));
     app.use(express.json());
     app.use(express.urlencoded({
         extended: true

@@ -193,7 +193,7 @@ class CartService {
 
             await transport.sendMail({
                 from: `Sistema Chemba <${config.GMAIL_APP_USER}>`,
-                to: 'alejandracembalo@hotmail.com',
+                to: `${mailUser}`,
                 subject: 'Pruebas Nodemailer',
                 html: `<div>
                             <h1>Ticket: ${ticket.code}</h1>

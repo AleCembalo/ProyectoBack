@@ -1,0 +1,245 @@
+[33mcommit 12c880a38c217b6e87764329be74b3e85d32db55[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Sep 5 22:20:01 2024 -0300
+
+    VI
+
+[33mcommit 8525f92ccb3aeb24c8aa7d7d02acbcf6b920e0ad[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Sep 5 19:19:50 2024 -0300
+
+    V
+
+[33mcommit 6254cc54c74bd0cc6b1c0618f3cf2c1b2c978a15[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Sep 5 19:07:49 2024 -0300
+
+    deployIV
+
+[33mcommit 0bdc69a6fa3da0112cf8deb4c252208064b32eb6[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Sep 5 18:17:19 2024 -0300
+
+    deployIII
+
+[33mcommit 4f5198e8e4acdaeb5669834cf8c26a85e1f6c3df[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Sep 5 15:57:04 2024 -0300
+
+    deployII
+
+[33mcommit 604d5ffef9b581da255120995bbf2f7912bd1b9b[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Sep 5 15:51:59 2024 -0300
+
+    deploy
+
+[33mcommit d0deeea9f027f53cf5471c8ddaecf32aff0009a2[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Sep 4 21:32:32 2024 -0300
+
+    ultimaPreEntrega
+
+[33mcommit ff504a4309c09177e373dd6d6964e7f8d0ec5e1d[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Mon Aug 26 15:44:20 2024 -0300
+
+    Test
+
+[33mcommit a82f0e6e9387bb5e192c6a56d9e42a36bc84bed6[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Sun Aug 18 19:21:35 2024 -0300
+
+    documentacion_API
+
+[33mcommit cc600e7064e4eb0e5d80e361969220f2f11890b5[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Mon Aug 12 21:09:41 2024 -0300
+
+    restore
+
+[33mcommit 25587c9b4a754f8a73a5d4abab46f80a14c56eae[m[33m ([m[1;32mdevel[m[33m)[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Fri Aug 9 10:48:28 2024 -0300
+
+    loggerTestII
+
+[33mcommit c0fe09f88b74174198713c8bcbf3b4ab0ab1ffea[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jul 30 13:34:38 2024 -0300
+
+    loggerTest
+
+[33mcommit a0d07750dd54f465327789cadcbf8d3457861cd8[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Jul 25 21:56:54 2024 -0300
+
+    ErrorII
+
+[33mcommit 635fcf4c9cdb25e4f4aeeab9729ee67639ae844f[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Jul 24 12:57:09 2024 -0300
+
+    errors/mocking
+
+[33mcommit b1e1b40feb30cbce614fe79b5886122fd3e468da[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Fri Jul 19 11:19:46 2024 -0300
+
+    ticketII
+
+[33mcommit 6b89101adc09efe8bdc1246dd37e3fcf793af925[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Jul 17 21:11:15 2024 -0300
+
+    Ticket
+
+[33mcommit 135f401d0ab972e15ee0585bdda00c865912c6f4[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Jul 10 10:28:17 2024 -0300
+
+    Detalles
+
+[33mcommit 2cdf34e2c2572c84f2379519a8533658e4acbfc4[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jul 9 18:23:53 2024 -0300
+
+    Variables de entorno II
+
+[33mcommit 296d45975580b34e85388793af6e70e7d153bc0f[m[33m ([m[1;31morigin/ramon[m[33m)[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Mon Jul 8 21:10:30 2024 -0300
+
+    VariablesDeEntorno
+
+[33mcommit bacad632930753f4363b96454992f2ae8b8a4980[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Mon Jul 1 21:57:11 2024 -0300
+
+    CustomRouter
+
+[33mcommit 7ef4627a0a594697f84c7e4ad23ceff664c9a43a[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Jun 27 12:28:00 2024 -0300
+
+    Routes
+
+[33mcommit 27a0cccb30f77fe77427903eca4da56dc5c36d75[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Jun 26 20:33:50 2024 -0300
+
+    Entregable
+
+[33mcommit 5b95cb43b9b9ae6ff71c12f6d2c3dd8f25699515[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jun 25 23:21:06 2024 -0300
+
+    AuthV
+
+[33mcommit 517b0cdc7f697166706f030abda3324e57d67e60[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jun 25 23:02:20 2024 -0300
+
+    Dale
+
+[33mcommit d949f707c0cdeb902fcc1934397162d4e078e8df[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jun 25 22:06:12 2024 -0300
+
+    Front
+
+[33mcommit 9bb0fdcc340c355245b99052e6feb862b0c0e861[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jun 25 20:36:24 2024 -0300
+
+    Front
+
+[33mcommit b36f313c03da753488bc0d79505d826c87b887a9[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue Jun 25 20:16:46 2024 -0300
+
+    front
+
+[33mcommit b2f7229844c24a058f583f1e55df5ac0f47f7102[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Fri Jun 14 15:39:43 2024 -0300
+
+    authIV
+
+[33mcommit 9e2b9a2d99d7950987eed1b401fddef5077e4a5c[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Jun 13 21:23:40 2024 -0300
+
+    authIII
+
+[33mcommit a6faa6cf4c464b5372e09abcf0a72933473b1ae0[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu Jun 13 15:02:27 2024 -0300
+
+    authII
+
+[33mcommit e41a111bbaa0806c58b7d2a42da3c07ad3b9067e[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Jun 12 20:16:33 2024 -0300
+
+    Auth
+
+[33mcommit 32a3c84707d8992be586613d64bb97694bef1d75[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Sat Jun 8 22:00:22 2024 -0300
+
+    Hash
+
+[33mcommit d03ba820e63470649400829afcf35a7e185aee00[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed Jun 5 22:04:30 2024 -0300
+
+    Log
+
+[33mcommit 2cce49eb67265d1e9c75f1dbe9158682898f2bde[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Sat Jun 1 23:15:08 2024 -0300
+
+    PaginateII
+
+[33mcommit 2bba9dd937b71c083a105d64b13c01c6a8c31e3d[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Fri May 31 19:26:22 2024 -0300
+
+    paginate
+
+[33mcommit de4852f860669b9742174ee49c0ae183c474dc05[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Thu May 30 10:14:18 2024 -0300
+
+    ProductToCartIII
+
+[33mcommit ea0e53433982d05b8e32d46d1454265fcbdb9603[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed May 29 22:12:10 2024 -0300
+
+    ProductTocartII
+
+[33mcommit b4fc97413f7c5e60fe7c1d9493f76b7c792d3837[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Wed May 29 19:54:13 2024 -0300
+
+    ProdToCart
+
+[33mcommit 172a8742f1b0a341725e2fa50d41adbf8879746e[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Tue May 21 11:37:17 2024 -0300
+
+    PruebaNombre
+
+[33mcommit 79cc6072e1fcbb1f8a6e2ed1b54cd57b43115f27[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Mon May 13 12:44:23 2024 -0300
+
+    segundo_commit
+
+[33mcommit 3d73b25daf1f6830b526eeca8ac442e1789e7130[m
+Author: AleCembalo <alejandracembalo@hotmail.com>
+Date:   Fri May 3 19:21:44 2024 -0300
+
+    Entregable4

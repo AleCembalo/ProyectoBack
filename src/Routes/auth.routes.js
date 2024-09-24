@@ -31,8 +31,8 @@ export default class AuthRouter extends CustomRouter {
                     
                     req.session.save(err => {
                         if (err) return res.sendServerError('error');
-                        res.sendSuccess(req.session.user);
-                        // res.redirect('/profile');
+                        // res.sendSuccess(req.session.user);
+                        res.redirect('/profile');
                     })
                 } else {
                     res.sendUserError( 'El email ya se encuentra registrado' );

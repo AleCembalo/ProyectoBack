@@ -71,7 +71,6 @@ class CartService {
                 { products: products },
                 { new: true}
             );
-            console.log(cart);
             cart.save();
         } catch (err) {
             return err.message;
@@ -87,7 +86,7 @@ class CartService {
             const exist = cart.products.find(p => p.product.toHexString() === idp);
             
             if ( exist ) {
-                exist.quantity += quantity;
+                exist.quantity += 1;
                 await cart.save();
             } else {
                 cart.products.push({ product: product, quantity: 1});
@@ -101,12 +100,12 @@ class CartService {
 
     deleteToCartService = async (idp, idc, quantity) => {
         try {
-            let cart = await cartsModel.findById(idc);
+            const cart = await cartsModel.findById(idc);
             const exist = cart.products.find(p => p.product._id.toHexString() === idp);
             quantity ? quantity : exist.quantity;
 
             if ( exist.quantity > 0 ) {
-                exist.quantity = exist.quantity - 1;
+                exist.quantity -= 1;
                 await cart.save();
             }else {
                 cart.products.pull(exist);
@@ -125,7 +124,7 @@ class CartService {
                 { products: [] },
                 { new: true}
             );
-            console.log(cart);
+            
             cart.save();
         } catch (error) {
             return err.message;
@@ -190,13 +189,15 @@ class CartService {
             .findById(newTicket._id)
             .lean();
 
+            const productsJson = JSON.stringify(productsToUpdate);
+
             await transport.sendMail({
                 from: `Sistema Chemba <${config.GMAIL_APP_USER}>`,
                 to: 'alejandracembalo@hotmail.com',
                 subject: 'Pruebas Nodemailer',
                 html: `<div>
                             <h1>Ticket: ${ticket.code}</h1>
-                            <h2>Products:</h2>
+                            <h2>Products:<br>${productsJson}</h2>
                             <h2>Total: $${totalAmount}</h2>
                             <h2>Gracias por su compra</h2>
                         </div>`

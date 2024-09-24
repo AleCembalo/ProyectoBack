@@ -133,7 +133,7 @@
                 <div class="carrito">
                     <button onclick="viewCart()">
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
-                        <span id="numerito" class="numerito">0</span>
+                        <span id="number" class="number"></span>
                     <button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,7 +159,7 @@
     <div class="login-container">
         <h2 style="text-align: center"><b>Login de usuario</b></h2>
 
-        <form action="/api/auth/login" method="post" style="margin-top: 32px;">
+        <form action="/api/auth/sessionlogin" method="post" style="margin-top: 32px;">
             <div class="input-group" style="width: 300px; margin-bottom: 32px;">
                 <span class="input-group-text" id="group1"><i class="fa-solid fa-user"></i></span>
                 <input type="email" name="email" class="form-control" placeholder="Usuario" required="required" autofocus="autofocus">

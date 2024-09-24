@@ -65,6 +65,13 @@ export default class AuthRouter extends CustomRouter {
                 }
                 const foundUser = await manager.getOne({ email: email });
                 
+                // Calculo de los tres meses
+                const threeMonthsAgo = new Date();
+                threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+                
+                // Se compara con last_conection para evaluar active
+                foundUser.active = foundUser.last_connection < threeMonthsAgo ? false : true;
+
                 if (foundUser && isValidPassword (password, foundUser.password) && foundUser.active === true) {
                     const { password, ...filteredFoundUser } = foundUser;
                     await manager.update({_id: filteredFoundUser._id}, {
@@ -72,14 +79,12 @@ export default class AuthRouter extends CustomRouter {
                     req.session.user = filteredFoundUser;
                     req.session.save(err => {
                         if (err) return res.sendServerError( 'error' );
-                        // res.redirect('/products');
-                        res.sendSuccess(req.session.user);
-                        
+                        res.redirect('/products');
+                        // res.sendSuccess(req.session.user);
                     })
-                    
                     req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
                 } else {
-                    res.sendUserError( 'No se encuentra el usuario' );
+                    return res.sendUserError('No se encuentra el usuario o han pasado 3 meses desde su última conexión');
                 }
             }
             catch (err) {
@@ -92,8 +97,8 @@ export default class AuthRouter extends CustomRouter {
                 req.session.user = req.user;
                 req.session.save(err => {
                     if (err) return res.sendServerError( 'error' );
-                    res.sendSuccess(req.session.user);
-                    // res.redirect('/products');
+                    // res.sendSuccess(req.session.user);
+                    res.redirect('/products');
                 });
                 req.logger.http(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} user id: ${req.session.user._id} login`);
             } catch (err) {

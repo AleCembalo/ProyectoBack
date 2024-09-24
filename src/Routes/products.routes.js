@@ -83,12 +83,15 @@ export default class ProductsRouter extends CustomRouter {
         this.delete('/:id', verifySession, handlePolicies (['admin']), async (req, res) => {
 
             try {
-
+                
                 if (!config.MONGODB_ID_REGEX.test(req.params.id)) {
                     res.sendUserError( 'Id no válido' );
                 }
+                
+                const user = req.session.user;
                 const filter = { _id: req.params.id };
-                const product = await manager.delete(filter);
+                const product = await manager.delete(filter, user);
+                
                 req.logger.info(`${req.method} in ${req.baseUrl} - at ${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} product id: ${product._id} deleted by ${req.session.user.email}`);
                 res.sendSuccess( `se borró ${product.title} correctamente` );
         

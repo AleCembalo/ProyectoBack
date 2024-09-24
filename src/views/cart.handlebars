@@ -159,11 +159,11 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a id="inicio" class="navbar-brand botonMenu logo" href="">Chemba</a>
+                <a id="inicio" class="navbar-brand botonMenu logo" href="#">Chemba</a>
                 <div class="carrito">
                     <button>
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
-                        <span id="number" class="number">0</span>
+                        <span id="number" class="number"></span>
                     <button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -219,8 +219,8 @@
         <!-- Modal Carrito footer -->
         <div class="mfooter">
             <p style="margin: 40px">Total a pagar $:<strong id="total">{{cart.total}}</strong></p>
-            <button type="button" class="botonTerminar btn" >Terminar<br/>Compra</button>
-            <button type="button" class="botonVaciarCarro btn" >Vaciar<br/>Carro</button>
+            <button type="button" class="botonTerminar btn" onclick="purchase('{{cart._id}}')">Terminar<br/>Compra</button>
+            <button type="button" class="botonVaciarCarro btn" onclick="deleteAllInCart('{{cart._id}}')">Vaciar<br/>Carro</button>
         </div>
     </div>
 </div>

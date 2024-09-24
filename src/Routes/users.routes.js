@@ -31,6 +31,17 @@ export default class UsersRouter extends CustomRouter {
             }
         });
 
+        this.get('/getuser', async (req, res) => {
+            try {
+                if (!req.session.user){
+                    return res.redirect('/login');
+                }
+                res.sendSuccess( req.session.user);
+            } catch (err) {
+                res.sendServerError( 'error' );
+            }
+        });
+
         this.get('/aggregate/:role', async (req, res) => {
             try {
                 if (req.params.role === 'admin' || req.params.role === 'premium' || req.params.role === 'user') {

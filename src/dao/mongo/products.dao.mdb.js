@@ -1,4 +1,16 @@
 import productsModel from '../../models/products.model.js';
+import usersModel from '../../models/users.model.js';
+import config from '../../config.js';
+import nodemailer from 'nodemailer';
+
+const transport = nodemailer.createTransport({
+    service: 'gmail',
+    port: 587,
+    auth: {
+    user: config.GMAIL_APP_USER,
+    pass: config.GMAIL_APP_PASS
+    }
+});
 
 class ProductService {
 
@@ -42,9 +54,30 @@ class ProductService {
         };
     };
 
-    deleteService = async (filter) => {
+    deleteService = async (filter, user) => {
         try {
-            return await productsModel.findOneAndDelete(filter);
+            const product = await productsModel
+            .findById(filter)
+            .populate({ path: 'owner', model: usersModel })
+            .lean();
+
+            const userAdmin = user;
+            const userPremium = product.owner;
+            const mailUser = userPremium.email;
+            
+            await productsModel.findOneAndDelete(product);
+
+            if (userPremium.role === 'premium') {
+                await transport.sendMail({
+                    from: `Sistema Chemba <${config.GMAIL_APP_USER}>`,
+                    to: `${mailUser}`,
+                    subject: 'Pruebas Nodemailer',
+                    html: `<div>
+                                <h2>Hola ${userPremium.firstName}</h2>
+                                <h3>Tu producto ${product.title}, ha sido borrado por el Admin: ${userAdmin.firstName}, ${userAdmin.lastName}</h3>
+                            </div>`
+                });
+            };
         } catch (err) {
             return err.message;
         };

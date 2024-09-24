@@ -26,8 +26,8 @@ export default class CustomRouter {
 
     generateCustomResponses(req, res, next) {
         res.sendSuccess = payload => res.status(200).send({ origin: config.SERVER, payload: payload });
-        res.sendUserError = err => res.status(400).send({ origin: config.SERVER, payload: null, error: err.message });
-        res.sendServerError = err => res.status(500).send({ origin: config.SERVER, payload: null, error: err.message });
+        res.sendUserError = err => res.status(400).send({ origin: config.SERVER, payload: err, error: err.message });
+        res.sendServerError = err => res.status(500).send({ origin: config.SERVER, payload: err, error: err.message });
         next();
     }
 

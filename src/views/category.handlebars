@@ -238,7 +238,7 @@
                 <div class="carrito">
                     <button onclick="viewCart()">
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
-                        <span id="numerito" class="numerito" style="color:  hsl(217, 54%, 11%);">0</span>
+                        <span id="number" class="number" style="color:  hsl(217, 54%, 11%);"></span>
                     <button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -301,17 +301,5 @@
             {{/each}}
         </div>
     </div>
-    
-    {{!-- <div class="mt-2 text-end">
-        {{#if products.prevPage}}
-        <a class="a3" href="/category/{{products.prevPage}}">Anterior</a>
-        {{/if}}
-        
-        &nbsp;|&nbsp;
-        
-        {{#if products.nextPage}}
-        <a class="a3" href="/category/{{products.nextPage}}">Siguiente</a>
-        {{/if}}
-    </div> --}}
 
-    <script src="/static/products.js"></script>
+<script src="/static/products.js"></script>

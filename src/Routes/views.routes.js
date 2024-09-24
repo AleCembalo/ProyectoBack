@@ -2,7 +2,7 @@ import CustomRouter from './custom.router.js';
 import config from '../config.js';
 import { handlePolicies, verifyToken } from '../services/utils.js';
 import productsModel from '../models/products.model.js';
-import cartsModel from '../models/carts.model.js'
+import cartsModel from '../models/carts.model.js';
 import ProductsManager from '../controllers/productManager.js';
 
 const manager = new ProductsManager();
@@ -15,8 +15,9 @@ export default class ViewsRouter extends CustomRouter {
             if (!req.session.user) return res.redirect('/login');
             const products = await productsModel.find().lean();
             const user = req.session.user;
+            
             const cart = await cartsModel
-            .findById(user.cartId)
+            .findById( user.cartId )
             .populate({ path: 'products.product', model: productsModel })
             .lean();
             
@@ -26,6 +27,7 @@ export default class ViewsRouter extends CustomRouter {
                     subtotal: product.product.price * product.quantity
                 };
             });
+            
             cart.total = cart.products.reduce((acc, product) => acc + product.subtotal, 0).toFixed(2);
             res.render('cart', { products: products, user: user, cart: cart });
         });

@@ -10,10 +10,10 @@ class UsersDto {
         this.age = user.age;
         this.role = user.role;
         this.documents = user.documents;
-        this.last_connection = user.last_connection;
         this.active = user.active;
         this.password = user.password;
         this.cartId = user.cartId instanceof mongoose.Types.ObjectId ? user.cartId : new mongoose.Types.ObjectId (user.cartId);
+        this.last_connection = user.last_connection;
     }
 }
     

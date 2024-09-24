@@ -71,9 +71,9 @@ class ProductManager {
         };
     };
 
-    delete = async (filter) => {
+    delete = async (filter, user) => {
         try {
-            return await service.deleteService(filter);
+            return await service.deleteService(filter, user);
         } catch (err) {
             return err.message;
         };

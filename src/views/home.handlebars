@@ -231,7 +231,7 @@
                 <div class="carrito">
                     <button onclick="viewCart()">
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
-                        <span id="numerito" class="numerito" style="color:  hsl(217, 54%, 11%);">0</span>
+                        <span id="number" class="number" style="color:  hsl(217, 54%, 11%);"></span>
                     <button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -261,7 +261,7 @@
             {{#each products}}
                 <section class="col-sm-12 col-md-6 col-lg-4 col-xl-4 tarjeta">    
                                 <div class="imagen">
-                                <img class="coco" src='' alt="productPic">
+                                <img class="coco" src={{thumbnails}} alt="productPic">
                                     <div class="icono">
                                         <strong>STOCK<br>{{stock}}</strong>
                                     </div>
@@ -286,7 +286,7 @@
                                 </div>
                                 <hr>
                                 <div class="texto4">
-                                    <button class="comprar" onclick="addProductToCart('{{_id}}')" >
+                                    <button class="comprar" onclick="addProductToCart(`{{_id}}`)">
                                         <i class="fa-solid fa-cart-arrow-down" style="color: #ffffff;"></i>
                                         <span class="agregar">Agregar al carrito</span>
                                     </button>
@@ -297,6 +297,5 @@
     </div>
     
     <script src="/static/products.js"></script>
-
 
 

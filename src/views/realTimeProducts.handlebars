@@ -119,7 +119,7 @@
                 <div class="carrito">
                     <button onclick="viewCart()">
                         <i class="fa-solid fa-cart-shopping" style="color: #8bacda;"></i>
-                        <span id="numerito" class="numerito">0</span>
+                        <span id="number" class="number"></span>
                     <button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,7 +150,7 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{title}} ($ {{price}})
                     <span class="badge">
-                        <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "addToCart('{{_id}}')"></i></button>
+                        <button type= "submit" class="btn btn-success"><i class="fa-solid fa-cart-plus" onclick= "('{{_id}}')"></i></button>
                     </span>
                 </li>
             {{/each}}
@@ -202,7 +202,7 @@
             
         });
 
-        {{!-- productForm.addEventListener('submit', async (evt) => {
+        productForm.addEventListener('submit', async (evt) => {
             evt.preventDefault();
 
             const title = document.getElementById('title').value;
@@ -220,17 +220,6 @@
                 body: JSON.stringify({ title, price, description, category, status, thumbnails, code, stock })
             });
         });
-
-        const addToCart = ('submit', async (pid) => {
-            console.log('pasa');
-            const cart = '6696bf6661c0f8ef4fb3c0c1';
-
-            const process = await fetch(`/api/carts/${pid}/products/${cart}`, {
-                method: 'PUT'
-            });
-            const result = await process.json();
-            console.log(result);
-        }); --}}
 
     </script> 
 
